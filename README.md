@@ -9,7 +9,7 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### ps.
-This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however don't use it in PVP or you'll be in for a REALLY bad time.
+This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however don't use it in PVP or you'll be in for a REALLY bad time. I haven't actually had time to test it so it might not work.
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
