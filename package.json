@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Saegusae/fps-utils.git"
+    "url": "git+https://github.com/hugedong69/fps-utils.git"
   },
   "author": "Saegusae",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Saegusae/fps-utils/issues"
+    "url": "https://github.com/hugedong69/fps-utils/issues"
   },
-  "homepage": "https://github.com/Saegusae/fps-utils#readme"
+  "homepage": "https://github.com/hugedong69/fps-utils#readme"
 }
