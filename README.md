@@ -1,13 +1,15 @@
 # fps-utils
 
   Written for tera-proxy, a free script filled with features dedicated to improve your fps, in the open world and in dungeons.
+  edited by me, hugedong, to add more things ;3c!!
+  full rewrite coming soon!
 
-  **To support development and me:** ~~I accept any amount of MWA as donations on the EU-Killian server (I have debts to pay off) Saegusa/Saegusa-chan or PM me on discord Saegusa#3195 thanks.~~
-
-  I now have a [patreon page](https://www.patreon.com/saegusa) where you can show your support, for reminder all my mods will remain 100% free and the free users will keep getting my mods and updates for free. Free.
+  **To support development Saegusae, who made this mod:** 
+  throw money [here](https://www.patreon.com/saegusa) where you can show your support for him!
+  I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### ps.
-The commands list here is for the next update which will be FpsUtils3, some will work some won't approach with caution, and yes !fps 2 is still a meme, using is not advised.
+This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however don't use it in PVP or you'll be in for a REALLY bad time.
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
@@ -17,18 +19,30 @@ The commands list here is for the next update which will be FpsUtils3, some will
 
 ## Commands:
 
-Command | Argument(s) | Usage | Alias* | Description
----|---|---|---|---
-**!fps** | 0, 1, 2, 3 | !fps [state] | --- | Sets the current fps-utils oprtimization state. Check further in the notes for the states' details.
-**!fps** | fireworks | !fps fireworks | firework, fireworks, fw | Enables/Disables hiding of firework entities in open world (true = shown / false = hidden)
-**!fps** | hide | !fps hide [args] | hide, delete, h | Takes *dps*, *healers*, *tanks* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
-**!fps** | show | !fps show [args] | show, s | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
-**!fps** | list | !fps list | list, l | Prints a list of characters currently hidden by *hide* command to chat.
-**!fps** | save | !fps save | save, config | Saves your current settings to the configuration file for the next launch.
+Command | Argument(s) | Usage | Description
+---|---|---|---
+**!fps** | 0, 1, 2, 3 | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations(can be wonky), 3 hides all players.
+**!fps** | fireworks | !fps fireworks | Enables/Disables hiding of firework entities in open world.
+**!fps** | tc | !fps tc | Enables/Disables the traverse cut buff abnormality spam that has been lagging users. Default true (see index.js to disable)
+**!fps** | hit | !fps hit | Enables/Disables hiding of damage numbers.
+**!fps** | logo | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
+**!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
+**!fps** | show | !fps show [args] | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
+**!fps** | list | !fps list |  Prints a list of characters currently hidden by *hide* command to chat.
+**!fps** | save | !fps save |  Saves your current settings to the configuration file for the next launch.
 
+## Dong Changes:
+* Added support for Traverse Cut hiding
+* Added support for damage number hiding (not sure why you would want this but ok)
+* Added support for hiding guild logos (not sure why you'd want this either)
+* Fixed !fps 2
 
 ## Work In Progress:
 * Overall improvements.
 * Save configuration upon exit to remember last state.
-* button toggle between fps states 0-1-2-3
-* Revive !fps 2 to it's full glory and screw this "2 IS A MEME" gaem.
+* ~~Revive !fps 2 to it's full glory and screw this "2 IS A MEME" gaem.~~
+* Add support for hiding ranged DPS and certain classes
+* Rewrite and command support
+
+## Suggestions:
+* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 on pinkies discord)
