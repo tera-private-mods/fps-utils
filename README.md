@@ -24,7 +24,8 @@ Command | Argument(s) | Usage | Description
 **!fps** | 0, 1, 2, 3 | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations(can be wonky), 3 hides all players.
 **!fps** | fireworks | !fps fireworks | Enables/Disables hiding of firework entities in open world.
 **!fps** | tc | !fps tc | Enables/Disables the traverse cut buff abnormality spam that has been lagging users. Default true (see index.js to disable)
-**!fps** | hit | !fps hit | Enables/Disables hiding of damage numbers.
+**!fps** | damage | !fps damage | Enables/Disables hiding of damage numbers.
+**!fps** | hit | !fps hit | Enables/Disables hiding of the entire hit effect (including damage).
 **!fps** | logo | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
 **!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
 **!fps** | show | !fps show [args] | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
@@ -33,9 +34,9 @@ Command | Argument(s) | Usage | Description
 
 ## Dong Changes:
 * Added support for Traverse Cut hiding
-* Added support for damage number hiding (not sure why you would want this but ok)
-* Added support for hiding guild logos (not sure why you'd want this either)
-* Fixed !fps 2
+* Added support for damage number hiding and hits 
+* Added support for hiding guild logos (not sure why you'd want this tbh)
+* Fixed !fps 2 (maybe, could not test)
 
 ## Work In Progress:
 * Overall improvements.
