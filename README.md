@@ -9,7 +9,7 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### ps.
-This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however don't use it in PVP or you'll be in for a REALLY bad time. I haven't actually had time to test it so it might not work.
+This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however I personally wouldn't use it in PVP or anything like that.
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
@@ -36,7 +36,7 @@ Command | Argument(s) | Usage | Description
 * Added support for Traverse Cut hiding
 * Added support for damage number hiding and hits 
 * Added support for hiding guild logos (not sure why you'd want this tbh)
-* Fixed !fps 2 (maybe, could not test)
+* Fixed !fps 2 (I hope!)
 
 ## Work In Progress:
 * Overall improvements.
