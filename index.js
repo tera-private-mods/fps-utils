@@ -139,8 +139,8 @@ module.exports = function FpsUtils(dispatch) {
                     //disable players attack markers
                 case "hit":
                     flags.hit = !flags.hit;
-                    log('fps-utils toggled player damage numbers: ' + flags.hit);
-                    systemMsg(`Player damage numbers toggled off: ${flags.hit}`);
+                    log('fps-utils toggled player hit effects: ' + flags.hit);
+                    systemMsg(`Player damage hit effects toggled off: ${flags.hit}`);
                     break;
                     //as above so below 
                 case "damage":
