@@ -1,11 +1,6 @@
-/*
+//  FpsUtils revision 1.4 - Hugedong Edition
 //  FpsUtils revision1.3 - Saegusa
-//  New iterations through player objects,
-//  Should be around 3x faster in process speed.
-//  Also added a bunch more commands and functions
-//  Read README.md for more info about how to use.
-//  Thanks: Bernkastel - PinkiePie for ideas. - and code (love, hugedong)
-*/
+//  Check readme for this versions updates, thank. +50 +50 +50 +50
 
 var config = require('./config.json');
 const format = require('./format.js');
@@ -142,8 +137,8 @@ module.exports = function FpsUtils(dispatch) {
                     //disable players attack markers
                 case "hit":
                     flags.hit = !flags.hit;
-                    log('fps-utils toggled player damage numbers: ' + flags.hit);
-                    systemMsg(`Player damage numbers toggled off: ${flags.hit}`);
+                    log('fps-utils toggled player hit effects: ' + flags.hit);
+                    systemMsg(`Player hit effects turned off: ${flags.hit}`);
                     break;
                     //as above so below 
                 case "damage":
@@ -376,21 +371,17 @@ module.exports = function FpsUtils(dispatch) {
     });
     dispatch.hook('S_EACH_SKILL_RESULT', 3, {order: 6969}, (event) => {
         if (flags.damage) {
-            if (event.source === pcid) {
-                event.damage = '';
+                 event.damage = '';
                 return true;
-            }
-        }
+                   }
         if (flags.hit) {
-            if (event.source === pcid) {
-                event.skill = '',
+                    event.skill = '',
                     event.type = '',
                     event.type2 = '';
                 //event.model = '',
                 //event.crit = ''				
                 return true;
-            }
-        }
+                }
     });
     dispatch.hook('S_SPAWN_USER', 5, (event) => {
         if (flags.logo) {
