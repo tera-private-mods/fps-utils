@@ -1,6 +1,9 @@
 /*
-//  FpsUtils revision 1.4 - Hugedong Edition
-//  Check readme for this versions updates, thank.
+//  FpsUtils revision1.3 - Saegusa
+//  New iterations through player objects,
+//  Should be around 3x faster in process speed.
+//  Also added a bunch more commands and functions
+//  Read README.md for more info about how to use.
 //  Thanks: Bernkastel - PinkiePie for ideas. - and code (love, hugedong)
 */
 
@@ -139,8 +142,8 @@ module.exports = function FpsUtils(dispatch) {
                     //disable players attack markers
                 case "hit":
                     flags.hit = !flags.hit;
-                    log('fps-utils toggled player hit effects: ' + flags.hit);
-                    systemMsg(`Player damage hit effects toggled off: ${flags.hit}`);
+                    log('fps-utils toggled player damage numbers: ' + flags.hit);
+                    systemMsg(`Player damage numbers toggled off: ${flags.hit}`);
                     break;
                     //as above so below 
                 case "damage":
@@ -353,8 +356,6 @@ module.exports = function FpsUtils(dispatch) {
         // Why would you want this on, seriously...
         if (flags.hide.healers && classes.healers.indexOf(getClass(event.model)) > -1) {
             return false;
-            locx[event.cid] = event.x;
-            locy[event.cid] = event.y;
         }
 
     });
@@ -373,9 +374,7 @@ module.exports = function FpsUtils(dispatch) {
                 return false;
         }
     });
-    dispatch.hook('S_EACH_SKILL_RESULT', 3, {
-        order: 6969
-    }, (event) => {
+    dispatch.hook('S_EACH_SKILL_RESULT', 3, {order: 6969}, (event) => {
         if (flags.damage) {
             if (event.source === pcid) {
                 event.damage = '';
@@ -425,9 +424,6 @@ module.exports = function FpsUtils(dispatch) {
         hiddenPlayers[event.target].y = event.y2;
         hiddenPlayers[event.target].z = event.z2;
         hiddenPlayers[event.target].w = event.w;
-        locx[event.target] = event.x2;
-        locy[event.target] = event.y2;
-
         if (state > 2 || hiddenIndividual[event.target]) {
             return false;
         }
@@ -439,7 +435,7 @@ module.exports = function FpsUtils(dispatch) {
         if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             return false;
         }
-        if (state === 2) {
+        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenplayers[event.source] || hiddenIndividual[event.source])){
             dispatch.toClient('S_USER_LOCATION', 1, {
                 target: event.source,
                 x1: locx[event.source],
