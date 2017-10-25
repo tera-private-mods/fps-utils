@@ -10,7 +10,6 @@ const fs = require('fs');
 module.exports = function FpsUtils(dispatch) {
 
     let DEBUG = config.debug || false;
-
     let player,
         cid,
         model,
@@ -19,6 +18,7 @@ module.exports = function FpsUtils(dispatch) {
     let locx = [];
     let locy = [];
     let state = 0,
+	    hitsource = 0,
         lastState = 0,
         hiddenPlayers = {},
         hiddenIndividual = {};
@@ -32,6 +32,7 @@ module.exports = function FpsUtils(dispatch) {
         fireworks: false, //these options control the settings, true will enable them upon login, flase disabled. By default all are false except TC.
         hit: false,
         damage: false,
+		hitother: false,
         logo: false,
         tc: true
     };
@@ -137,8 +138,14 @@ module.exports = function FpsUtils(dispatch) {
                     //disable players attack markers
                 case "hit":
                     flags.hit = !flags.hit;
-                    log('fps-utils toggled player hit effects: ' + flags.hit);
-                    systemMsg(`Player hit effects turned off: ${flags.hit}`);
+                    log('fps-utils toggled user hit effects: ' + flags.hit);
+                    systemMsg(`User hit effects turned off: ${flags.hit}`);
+                    break;
+                    //as above so below 
+				case "hitother":
+                    flags.hitother = !flags.hitother;
+                    log('fps-utils toggled player hit effects on others: ' + flags.hitother);
+                    systemMsg(`Player hit effects on others turned off: ${flags.hitother}`);
                     break;
                     //as above so below 
                 case "damage":
@@ -313,11 +320,8 @@ module.exports = function FpsUtils(dispatch) {
     }
 
     dispatch.hook('S_LOGIN', 2, (event) => {
-        pcid = event.cid;
-        ({
-            cid,
-            model
-        } = event);
+		pcid = event.cid;
+        ({cid, model} = event);
         player = event.name;
         clss = getClass(event.model);
         state = config.state || 0;
@@ -369,19 +373,28 @@ module.exports = function FpsUtils(dispatch) {
                 return false;
         }
     });
-    dispatch.hook('S_EACH_SKILL_RESULT', 3, {order: 6969}, (event) => {
+    dispatch.hook('S_EACH_SKILL_RESULT', 3, (event) => {
+
+		if (event.source.equals(pcid) || event.owner.equals(pcid)) {
         if (flags.damage) {
-                 event.damage = '';
-                return true;
+               event.damage = '';
+			   return true;
                    }
         if (flags.hit) {
                     event.skill = '',
                     event.type = '',
                     event.type2 = '';
-                //event.model = '',
-                //event.crit = ''				
                 return true;
                 }
+		}
+		if (flags.hitother) {
+		if (!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0)) {
+				event.skill = '',
+                 event.type = '',
+                 event.type2 = '';
+				return true;
+		}
+		}
     });
     dispatch.hook('S_SPAWN_USER', 5, (event) => {
         if (flags.logo) {
