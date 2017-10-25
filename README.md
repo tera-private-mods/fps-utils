@@ -28,22 +28,24 @@ Command | Argument(s) | Usage | Description
 **!fps** | hit | !fps hit | Enables/Disables hiding of hit effects.
 **!fps** | hitme | !fps hitme | Enables/Disables hiding of hit effects for the player.
 **!fps** | logo | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
-**!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
+**!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* *ranged* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
 **!fps** | show | !fps show [args] | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
 **!fps** | list | !fps list |  Prints a list of characters currently hidden by *hide* command to chat.
 **!fps** | save | !fps save |  Saves your current settings to the configuration file for the next launch.
 
-## Dong Changes:
+## Update Log:
 * Added support for Traverse Cut hiding
 * Added support for damage number hiding and hits 
 * Added support for hiding guild logos (not sure why you'd want this tbh)
-* Fixed !fps 2 (I hope!)
+* Fixed !fps 2 (again)
+* Added !fps hide ranged
+* Made 
 
 ## Work In Progress:
 * Overall improvements.
 * Save configuration upon exit to remember last state.
 * ~~Revive !fps 2 to it's full glory and screw this "2 IS A MEME" gaem.~~
-* Add support for hiding ranged DPS and certain classes
+* Add support for hiding ~~ranged DPS~~ and certain classes
 * Rewrite and command support
 
 ## Suggestions:
