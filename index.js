@@ -1,5 +1,4 @@
-//  FpsUtils revision 1.4 - Hugedong Edition
-//  FpsUtils revision1.3 - Saegusa
+//  FpsUtils revision 1.4.1 - Hugedong Edition
 //  Check readme for this versions updates, thank. +50 +50 +50 +50
 
 var config = require('./config.json');
@@ -18,7 +17,7 @@ module.exports = function FpsUtils(dispatch) {
     let locx = [];
     let locy = [];
     let state = 0,
-	    hitsource = 0,
+        hitsource = 0,
         lastState = 0,
         hiddenPlayers = {},
         hiddenIndividual = {};
@@ -26,13 +25,14 @@ module.exports = function FpsUtils(dispatch) {
     let flags = {
         hide: {
             tanks: false,
+            dps: false,
             healers: false,
-            dps: false
+            ranged: false
         },
         fireworks: false, //these options control the settings, true will enable them upon login, flase disabled. By default all are false except TC.
         hit: false,
         damage: false,
-		hitother: false,
+        hitother: false,
         logo: false,
         tc: true
     };
@@ -142,7 +142,7 @@ module.exports = function FpsUtils(dispatch) {
                     systemMsg(`User hit effects turned off: ${flags.hit}`);
                     break;
                     //as above so below 
-				case "hit":
+                case "hit":
                     flags.hitother = !flags.hitother;
                     log('fps-utils toggled hit effects on others: ' + flags.hitother);
                     systemMsg(`Player hit effects on others turned off: ${flags.hitother}`);
@@ -181,6 +181,20 @@ module.exports = function FpsUtils(dispatch) {
                                     flags.hide.dps = true;
                                     for (let pl in hiddenPlayers) {
                                         if ((!hiddenPlayers[pl].block || !hiddenIndividual[hiddenPlayers[pl].cid]) && classes.dps.indexOf(getClass(hiddenPlayers[pl].model)) > -1) {
+                                            dispatch.toClient('S_DESPAWN_USER', 2, {
+                                                target: hiddenPlayers[pl].cid,
+                                                type: 1
+                                            });
+                                        }
+                                    }
+                                    break;
+                                    // Hide all dps classes
+                                case "ranged":
+                                    log('fps-utils hiding ranged classes');
+                                    systemMsg(`hiding ranged classes.`);
+                                    flags.hide.ranged = true;
+                                    for (let pl in hiddenPlayers) {
+                                        if ((!hiddenPlayers[pl].block || !hiddenIndividual[hiddenPlayers[pl].cid]) && classes.ranged.indexOf(getClass(hiddenPlayers[pl].model)) > -1) {
                                             dispatch.toClient('S_DESPAWN_USER', 2, {
                                                 target: hiddenPlayers[pl].cid,
                                                 type: 1
@@ -239,7 +253,7 @@ module.exports = function FpsUtils(dispatch) {
                 case "show":
                     if (command.length < 3) {
                         log('fps-utils missing arguments for command "show"');
-                        systemMsg(`missing arguments for command "show" [dps, healers, tanks] or [username]`);
+                        systemMsg(`missing arguments for command "show" [dps, ranged, healers, tanks] or [username]`);
                         break;
                     } else {
                         let arg2 = command[2];
@@ -248,6 +262,7 @@ module.exports = function FpsUtils(dispatch) {
                                 case "dps":
                                 case "healers":
                                 case "tanks":
+                                case "ranged":
                                     if (flags.hide[arg2.toString()]) {
                                         flags.hide[arg2.toString()] = false;
                                         log('fps-utils showing: ' + arg2);
@@ -320,8 +335,11 @@ module.exports = function FpsUtils(dispatch) {
     }
 
     dispatch.hook('S_LOGIN', 2, (event) => {
-		pcid = event.cid;
-        ({cid, model} = event);
+        pcid = event.cid;
+        ({
+            cid,
+            model
+        } = event);
         player = event.name;
         clss = getClass(event.model);
         state = config.state || 0;
@@ -344,6 +362,11 @@ module.exports = function FpsUtils(dispatch) {
 
         // Hide dps enabled, remove dps characters;
         if (flags.hide.dps && classes.dps.indexOf(getClass(event.model)) > -1) {
+            return false;
+        }
+
+        //hide ranged enabled, delet ranged characters;
+        if (flags.hide.ranged && classes.ranged.indexOf(getClass(event.model)) > -1) {
             return false;
         }
 
@@ -375,26 +398,26 @@ module.exports = function FpsUtils(dispatch) {
     });
     dispatch.hook('S_EACH_SKILL_RESULT', 3, (event) => {
 
-		if (event.source.equals(pcid) || event.owner.equals(pcid)) {
-        if (flags.damage) {
-               event.damage = '';
-			   return true;
-                   }
-        if (flags.hit) {
-                    event.skill = '',
+        if (event.source.equals(pcid) || event.owner.equals(pcid)) {
+            if (flags.damage) {
+                event.damage = '';
+                return true;
+            }
+            if (flags.hit) {
+                event.skill = '',
                     event.type = '',
                     event.type2 = '';
                 return true;
-                }
-		}
-		if (flags.hitother) {
-		if (!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0) || !event.target.equals(pcid)) {
-				event.skill = '',
-                 event.type = '',
-                 event.type2 = '';
-				return true;
-		}
-		}
+            }
+        }
+        if (flags.hitother) {
+            if ((!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0)) && !event.target.equals(pcid)) {
+                event.skill = '',
+                    event.type = '',
+                    event.type2 = '';
+                return true;
+            }
+        }
     });
     dispatch.hook('S_SPAWN_USER', 5, (event) => {
         if (flags.logo) {
@@ -439,7 +462,7 @@ module.exports = function FpsUtils(dispatch) {
         if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             return false;
         }
-        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenplayers[event.source] || hiddenIndividual[event.source])){
+        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenplayers[event.source] || hiddenIndividual[event.source])) {
             dispatch.toClient('S_USER_LOCATION', 1, {
                 target: event.source,
                 x1: locx[event.source],
