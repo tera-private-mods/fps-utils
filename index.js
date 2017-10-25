@@ -136,15 +136,15 @@ module.exports = function FpsUtils(dispatch) {
                     systemMsg(`Fireworks toggled off: ${flags.fireworks}`);
                     break;
                     //disable players attack markers
-                case "hit":
+                case "hitme":
                     flags.hit = !flags.hit;
-                    log('fps-utils toggled user hit effects: ' + flags.hit);
+                    log('fps-utils toggled users hit effects: ' + flags.hit);
                     systemMsg(`User hit effects turned off: ${flags.hit}`);
                     break;
                     //as above so below 
-				case "hitother":
+				case "hit":
                     flags.hitother = !flags.hitother;
-                    log('fps-utils toggled player hit effects on others: ' + flags.hitother);
+                    log('fps-utils toggled hit effects on others: ' + flags.hitother);
                     systemMsg(`Player hit effects on others turned off: ${flags.hitother}`);
                     break;
                     //as above so below 
