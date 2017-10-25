@@ -388,7 +388,7 @@ module.exports = function FpsUtils(dispatch) {
                 }
 		}
 		if (flags.hitother) {
-		if (!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0)) {
+		if (!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0) || !event.target.equals(pcid)) {
 				event.skill = '',
                  event.type = '',
                  event.type2 = '';
