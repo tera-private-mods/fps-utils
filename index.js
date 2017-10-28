@@ -1,5 +1,6 @@
-//  FpsUtils revision 1.4.1 - Hugedong Edition
-//  Check readme for this versions updates, thank. +50 +50 +50 +50
+//  FpsUtils revision 1.4.2 - Hugedong Edition
+//  Fixes and beautification
+// !fps hit should now work correctly, !fps 2 now toggles hit
 
 var config = require('./config.json');
 const format = require('./format.js');
@@ -17,7 +18,6 @@ module.exports = function FpsUtils(dispatch) {
     let locx = [];
     let locy = [];
     let state = 0,
-        hitsource = 0,
         lastState = 0,
         hiddenPlayers = {},
         hiddenIndividual = {};
@@ -93,9 +93,10 @@ module.exports = function FpsUtils(dispatch) {
                     // Set state to 2: Hide all skill animations.
                 case "2":
                     state = 2;
+                    flags.hitother = !flags.hitother;
                     config.state = 2;
                     log('fps-utils optimization set to stage 2, disabling skill animations.');
-                    systemMsg('optimization set to remove skill animations. [2]');
+                    systemMsg('optimization set to remove skill animations and hit effects. [2]');
 
                     // Spawn all players with disabled animations.
                     if (lastState > 2) {
@@ -411,7 +412,7 @@ module.exports = function FpsUtils(dispatch) {
             }
         }
         if (flags.hitother) {
-            if ((!event.source.equals(pcid) || (!event.owner.equals(pcid) && event.owner > 0)) && !event.target.equals(pcid)) {
+            if (hiddenPlayers[event.source] || hiddenPlayers[event.owner]) {
                 event.skill = '',
                     event.type = '',
                     event.type2 = '';
@@ -462,7 +463,7 @@ module.exports = function FpsUtils(dispatch) {
         if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             return false;
         }
-        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenplayers[event.source] || hiddenIndividual[event.source])) {
+        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             dispatch.toClient('S_USER_LOCATION', 1, {
                 target: event.source,
                 x1: locx[event.source],
