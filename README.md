@@ -35,11 +35,11 @@ Command | Argument(s) | Usage | Description
 
 ## Update Log:
 * Added support for Traverse Cut hiding
-* Added support for damage number hiding and hits 
+* Added support for damage number hiding and hits (now working fully)
 * Added support for hiding guild logos (not sure why you'd want this tbh)
 * Fixed !fps 2 (again)
 * Added !fps hide ranged
-* Made 
+* Made fps 2 automatically hide other players hit effects
 
 ## Work In Progress:
 * Overall improvements.
