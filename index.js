@@ -1,6 +1,10 @@
 //  FpsUtils revision 1.4.2 - Hugedong Edition
-//  Fixes and beautification
-// !fps hit should now work correctly, !fps 2 now toggles hit
+//  Credits to Xiphon, Saegusa & Bernkastel for code snippets and ideas
+// 
+// Changes:
+// TC shows the buff (does not cause lag I hope)
+// All FPS modes now toggle !fps hit automatically
+
 
 var config = require('./config.json');
 const format = require('./format.js');
@@ -34,7 +38,8 @@ module.exports = function FpsUtils(dispatch) {
         damage: false,
         hitother: false,
         logo: false,
-        tc: true
+        tc: true,
+        tcwarrior: true
     };
 
     const classes = config.classes;
@@ -77,6 +82,7 @@ module.exports = function FpsUtils(dispatch) {
                 case "1":
                     state = 1;
                     config.state = 1;
+                    flags.hitother = true;
                     log('fps-utils optimization set to stage 1, disabling skill particles.');
                     systemMsg('optimization set to remove skill particles. [1]');
 
@@ -93,7 +99,7 @@ module.exports = function FpsUtils(dispatch) {
                     // Set state to 2: Hide all skill animations.
                 case "2":
                     state = 2;
-                    flags.hitother = !flags.hitother;
+                    flags.hitother = true;
                     config.state = 2;
                     log('fps-utils optimization set to stage 2, disabling skill animations.');
                     systemMsg('optimization set to remove skill animations and hit effects. [2]');
@@ -110,6 +116,7 @@ module.exports = function FpsUtils(dispatch) {
                     // Set state to 3: Hide all other players.
                 case "3":
                     state = 3;
+                    flags.hitother = true;
                     config.state = 3;
                     log('fps-utils optimization set to stage 3, disabling other player models.');
                     systemMsg('optimization set to remove other player models [3]');
@@ -160,10 +167,16 @@ module.exports = function FpsUtils(dispatch) {
                     log('fps-utils toggled guild logos: ' + flags.logo);
                     systemMsg(`toggled guild logos off: ${flags.logo}`);
                     break;
+                    //Hide TC abnormality spam
                 case "tc":
                     flags.tc = !flags.tc;
                     log('fps-utils toggled showing traverse cut: ' + flags.tc);
                     systemMsg(`toggled toggled showing traverse cut off: ${flags.tc}`);
+                    break;
+                case "tcwarrior":
+                    flags.tcwarrior = !flags.tcwarrior;
+                    log('fps-utils toggled traverse cut warrior mode: ' + flags.tc);
+                    systemMsg(`toggled toggled traverse cut warrior mode: ${flags.tc}`);
                     break;
                     // Toggle individual classes on and off
                 case "hide":
@@ -343,6 +356,7 @@ module.exports = function FpsUtils(dispatch) {
         } = event);
         player = event.name;
         clss = getClass(event.model);
+        job = (event.model - 10101) % 100;
         state = config.state || 0;
     });
 
@@ -434,17 +448,26 @@ module.exports = function FpsUtils(dispatch) {
     });
 
     dispatch.hook('S_ABNORMALITY_BEGIN', 2, (event) => {
-        if (flags.tc) {
-            if (event.id === 101300 || event.id === 101200)
-                return false;
+        if (flags.tc) { //abnormality begin doesn't cause the lag I don't think so this might be safe to remove
+            if (event.id === 101300 || event.id === 101200) {
+                event.duration = 0;
+                return true; // set to false if it does cause lag
+            }
         }
+      
     });
     dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD', 3, (event) => {
-        if (flags.tc) {
-            if (event.id === 101300 || event.id === 101200)
-                return false;
+        if ((event.id === 101300 || event.id === 101200) && flags.tc) { //this probably will cause lag so leave return false
+            return false;
         }
     });
+    dispatch.hook('S_ABNORMALITY_REFRESH', 1, (event) => {
+        if (flags.tc) {
+            if (event.id === 101300 || event.id === 101200) {
+                return false;
+            }
+        }
+        });
 
     dispatch.hook('S_USER_LOCATION', 1, (event) => {
         // Update locations of every player in case we need to spawn them.
