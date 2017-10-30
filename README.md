@@ -9,7 +9,7 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### Note
-Big update today, please redownload all files. See changelog and commands for more details.
+Big update today, please redownload all files. See changelog and commands for more details. Commands have changed so please read.
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
