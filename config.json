@@ -18,7 +18,7 @@
         "reaper" : [9],
         "gunner" : [10],
         "brawler" : [11],
-		"ninja" : [12],
+        "ninja" : [12],
         "valkyrie" : [13]        
     },
     "hiddenPeople" : []
