@@ -9,7 +9,7 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### ps.
-This is a new fork and a new project for me, and is going to be rewritten/updated more in the future !fps 2 should work better, however I personally wouldn't use it in PVP or anything like that.
+This gets updated a fair amount so check back frequently! Rewrite soon!
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
@@ -24,9 +24,9 @@ Command | Argument(s) | Usage | Description
 **!fps** | 0, 1, 2, 3 | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations(can be wonky), 3 hides all players.
 **!fps** | fireworks | !fps fireworks | Enables/Disables hiding of firework entities in open world.
 **!fps** | tc | !fps tc | Enables/Disables the traverse cut buff abnormality spam that has been lagging users. Default true (see index.js to disable)
-**!fps** | damage | !fps damage | Enables/Disables hiding of damage numbers for the player.
 **!fps** | hit | !fps hit | Enables/Disables hiding of hit effects.
-**!fps** | hitme | !fps hitme | Enables/Disables hiding of hit effects for the player.
+**!fps** | hitme | !fps hitme | Enables/Disables hiding of hit effects for the player (also hides damage numbers, unfortunatey this cannot be changed).
+**!fps** | damage | !fps damage | Enables/Disables hiding of damage numbers for the player.
 **!fps** | logo | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
 **!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* *ranged* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
 **!fps** | show | !fps show [args] | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
@@ -34,12 +34,8 @@ Command | Argument(s) | Usage | Description
 **!fps** | save | !fps save |  Saves your current settings to the configuration file for the next launch.
 
 ## Update Log:
-* Added support for Traverse Cut hiding
-* Added support for damage number hiding and hits (now working fully)
-* Added support for hiding guild logos (not sure why you'd want this tbh)
-* Fixed !fps 2 (again)
-* Added !fps hide ranged
-* Made fps 2 automatically hide other players hit effects
+* All FPS modes now activate !fps hit as there's no reason for them not to
+* Fixed TC, now displays the buff without the spam, there is no duration or stack amount however it still expires normally
 
 ## Work In Progress:
 * Overall improvements.
