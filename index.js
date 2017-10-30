@@ -1,5 +1,5 @@
-//  FpsUtils revision 1.5 - Hugedong Edition
-//  Credits to Xiphon, Saegusa & Bernkastel for code and ideas
+//  FpsUtils revision 1.5.1 - Hugedong Edition
+//  Credits to Xiphon, TeraProxy Saegusa & Bernkastel for code and ideas
 // 
 // Changes:
 // Moved to Command
@@ -67,8 +67,28 @@ module.exports = function FpsUtils(dispatch) {
     }
     command.add('fps', (setting, value) => {
         switch (setting) {
+           /* case "help": //yes this is ugly, code comes from the Surgeon module by TeraPorxy
+                // too much effort, check readme
+                command.message('Commands:<br>'
+								+ ' |fps mode| [1, 2, 3, off]" (Sets the FPS mode, 1 = hides skill particles, 2 = hides animations, 3 = hides players. Also turns fps hit on. e.g. "fps mode 1"),<br>'
+								+ ' |fps hit| [on, me, damage](Hides hit effects, on = hides other players hit effects, me = hides your own, damage = hides damage numbers e.g. "fps hit damage"),<br>'
+								+ ' |fps tc| [remove, party, on](Defaults = on, party)(on = refreshes Traverse Cut every 7th hit- see config, party = hides party members TC buffs, remove = locks the duration to 0 e.g. "fps tc on" ),<br>'
+								+ ' |fps hide| [playername, class, role] (Hides specific players. e.g. "fps hide dps"),<br>'
+								+ ' |fps show| [playername, class, role] (Unhides specific players. e.g. "fps unhide Spacecats"),<br>'
+								+ ' |fps list| (Displays a list of all hidden players. e.g. "fps list"),<br>'
+								+ ' |fps logo| (Hides guild logos on players, requires the area to be re-entered e.g. "fps logo"),<br>'
+								+ ' |fps fireworks| (Hides annoying fireworks e.g. "fps fireworks"),<br>'
+);
+            break*/
             // Set state to 0: Disabled.
+            case "mode":
+              if (value === null || value === undefined || value === "") {
+                    command.message(`Missing command arguments, "fps mode [0, 1, 2, 3]"`);
+                    break
+                } else {
+                    switch (value) {
             case "0":
+            case "off":
                 state = 0;
                 config.state = 0;
                 log('fps-utils optimization disabled by client.');
@@ -82,7 +102,7 @@ module.exports = function FpsUtils(dispatch) {
                         }
                     }
                 }
-
+break;
                 break;
                 // Set state to 1: Only hide projectiles.
             case "1":
@@ -139,10 +159,12 @@ module.exports = function FpsUtils(dispatch) {
                     }
                 }
                 break;
+        }}
+    break;
                 // Save configuration to file.
-            case "save":
+           /* case "save":
                 saveConfig();
-                break;
+                break;*/
                 // Disable fireworks.
             case "fireworks":
                 flags.fireworks = !flags.fireworks;
