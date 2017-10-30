@@ -67,8 +67,8 @@ module.exports = function FpsUtils(dispatch) {
     }
     command.add('fps', (setting, value) => {
         switch (setting) {
-           /* case "help": //yes this is ugly, code comes from the Surgeon module by TeraPorxy
-                // too much effort, check readme
+            case "help": //yes this is ugly, code comes from the Surgeon module by TeraPorxy
+               //too much effort, check readme
                 command.message('Commands:<br>'
 								+ ' |fps mode| [1, 2, 3, off]" (Sets the FPS mode, 1 = hides skill particles, 2 = hides animations, 3 = hides players. Also turns fps hit on. e.g. "fps mode 1"),<br>'
 								+ ' |fps hit| [on, me, damage](Hides hit effects, on = hides other players hit effects, me = hides your own, damage = hides damage numbers e.g. "fps hit damage"),<br>'
@@ -79,7 +79,7 @@ module.exports = function FpsUtils(dispatch) {
 								+ ' |fps logo| (Hides guild logos on players, requires the area to be re-entered e.g. "fps logo"),<br>'
 								+ ' |fps fireworks| (Hides annoying fireworks e.g. "fps fireworks"),<br>'
 );
-            break*/
+            break
             // Set state to 0: Disabled.
             case "mode":
               if (value === null || value === undefined || value === "") {
