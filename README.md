@@ -8,34 +8,34 @@
   throw money [here](https://www.patreon.com/saegusa) where you can show your support for him!
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
-### ps.
-This gets updated a fair amount so check back frequently! Rewrite soon!
+### Note
+Big update today, please redownload all files. See changelog and commands for more details.
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
 * put the script folder "fps-utils" into bin/node_modules
 * Log the game using the proxy.
 * Now you have access to fps-utils commands
+* Default commands can be found in index.js
 
 ## Commands:
 
-Command | Argument(s) | Usage | Description
+Command | Argument(s) | Example | Description
 ---|---|---|---
-**!fps** | 0, 1, 2, 3 | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations(can be wonky), 3 hides all players.
-**!fps** | fireworks | !fps fireworks | Enables/Disables hiding of firework entities in open world.
-**!fps** | tc | !fps tc | Enables/Disables the traverse cut buff abnormality spam that has been lagging users. Default true (see index.js to disable)
-**!fps** | hit | !fps hit | Enables/Disables hiding of hit effects.
-**!fps** | hitme | !fps hitme | Enables/Disables hiding of hit effects for the player (also hides damage numbers, unfortunatey this cannot be changed).
-**!fps** | damage | !fps damage | Enables/Disables hiding of damage numbers for the player.
-**!fps** | logo | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
-**!fps** | hide | !fps hide [args] | Takes *dps*, *healers*, *tanks* *ranged* or *any username* as a sub argument, tries to hide all respective characters of said specifics off the screen.
-**!fps** | show | !fps show [args] | Again takes *healers*, *tanks* or *any username* as a sub argument, tries to show all hidden characters of said specifics on the screen.
+**fps mode** | 1, 2, 3, off | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
+**!fps tc** | remove, party, on | !fps tc remove | Hides traverse cut spam, by default this is turned on. *Remove* stops the buff from being refreshed except for when it ends, *party*" turns the effect off/on on other players.
+**!fps hit** | me, damage, on | !fps hit damage | Enables/Disables hiding of hit effects for the player. *Damage* toggles damage numbers off. *Me* turns hit effects off for the player (disables damage numbers also unfortunately).
+**!fps logo** |  | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
+**!fps hide ** | <playername>, dps, healers, tanks, ranged, <class> | !fps hide [args] |hides *dps*, *healers*, *tanks* *ranged* *any username* or *a class name* , class names can be found in config.js.
+**!fps** | show | !fps show [args] | Again takes *healers*, *tanks*, *any username* or *class* as a sub argument, tries to show all hidden characters of said specifics on the screen.
 **!fps** | list | !fps list |  Prints a list of characters currently hidden by *hide* command to chat.
-**!fps** | save | !fps save |  Saves your current settings to the configuration file for the next launch.
+**!fps** | fireworks | !fps fireworks | Enables/Disables hiding of firework entities in open world.
 
 ## Update Log:
 * All FPS modes now activate !fps hit as there's no reason for them not to
-* Fixed TC, now displays the buff without the spam, there is no duration or stack amount however it still expires normally
+* Fixed TC, now displays the buff without the spam, by default it refreshes every 7 hits
+* Now using Command instead of chathooks, some commands have also changed
+* Added class support to fps hide/show
 
 ## Work In Progress:
 * Overall improvements.
