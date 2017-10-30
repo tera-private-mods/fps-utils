@@ -38,8 +38,7 @@ module.exports = function FpsUtils(dispatch) {
         damage: false,
         hitother: false,
         logo: false,
-        tc: true,
-        tcwarrior: true
+        tc: true
     };
 
     const classes = config.classes;
@@ -172,11 +171,6 @@ module.exports = function FpsUtils(dispatch) {
                     flags.tc = !flags.tc;
                     log('fps-utils toggled showing traverse cut: ' + flags.tc);
                     systemMsg(`toggled toggled showing traverse cut off: ${flags.tc}`);
-                    break;
-                case "tcwarrior":
-                    flags.tcwarrior = !flags.tcwarrior;
-                    log('fps-utils toggled traverse cut warrior mode: ' + flags.tc);
-                    systemMsg(`toggled toggled traverse cut warrior mode: ${flags.tc}`);
                     break;
                     // Toggle individual classes on and off
                 case "hide":
