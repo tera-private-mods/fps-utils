@@ -1,12 +1,8 @@
-//  FpsUtils revision 1.5.1 - Hugedong Edition
+//  FpsUtils revision 1.5.2 - Hugedong Edition
 //  Credits to Xiphon, TeraProxy Saegusa & Bernkastel for code and ideas
 // 
 // Changes:
-// Moved to Command
-// Added all classes to fps hide and show
-// Made commands more user friendly (imo)
-// TC buff has a limited mode that reduces spam while still retaining duration, default is it updating every 7 hits
-
+// Fixed FPS mode 2 (maybe)
 const Command = require('command');
 const fs = require('fs');
 
@@ -516,7 +512,7 @@ break;
         if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             return false;
         }
-        if (state === 2 && (((event.x - locx[event.source]) > 25 || (locx[event.source] - event.x) > 25) || ((event.y - locy[event.source]) > 25 || (locy[event.source] - event.y) > 25)) && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
+        if (state === 2 && (((event.x - locx[event.source]) > 15 || (locx[event.source] - event.x) > 15) || ((event.y - locy[event.source]) > 15 || (locy[event.source] - event.y) > 15)) && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             dispatch.toClient('S_USER_LOCATION', 1, {
                 target: event.source,
                 x1: locx[event.source],
@@ -536,11 +532,11 @@ break;
         }
     });
 
-    dispatch.hook('S_ACTION_END', 1, (event) => {
-        // If we're removing skill animations we should ignore the end packet too.
-        if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
-            return false;
-    });
+//    dispatch.hook('S_ACTION_END', 1, (event) => { 
+  //      // If we're removing skill animations we should ignore the end packet too. // wrong
+    //    if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
+      //      return false;
+    //});
 
     dispatch.hook('S_START_USER_PROJECTILE', 1, (event) => {
         // State 1 and higher ignores particles and projectiles so we're ignoring this.
