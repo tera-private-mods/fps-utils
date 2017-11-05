@@ -9,7 +9,7 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### Note
-Big update today, please redownload all files. See changelog and commands for more details. Commands have changed so please read.
+Updated frequently, please redownload if something doesn't work before telling me about issues, thanks!
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
@@ -36,6 +36,8 @@ Command | Argument(s) | Example | Description
 * Fixed TC, now displays the buff without the spam, by default it refreshes every 7 hits
 * Now using Command instead of chathooks, some commands have also changed
 * Added class support to fps hide/show
+* Fixed player hiding and mode 3
+* Minor changes to various things
 
 ## Work In Progress:
 * Overall improvements.
