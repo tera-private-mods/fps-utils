@@ -42,8 +42,9 @@ module.exports = function FpsUtils(dispatch) {
         tc: true, // Shows refreshes at a reduced rate (once every 7 hits by default)
         tcp: true //party abnormality refresh spam
     };
-    let DEBUG = false; ////// Don't change anything under this
-    let player,
+    let DEBUG = false; 
+    let state = 0,// Change this to the mode number you want always active ////// Don't change anything under this
+        player,
         cid,
         model,
         pcid,
@@ -53,8 +54,7 @@ module.exports = function FpsUtils(dispatch) {
         dur,
         laststate,
         locx = [],
-        locy = [],
-        state = 0,
+        locy = [],        
         hiddenPlayers = {},
         hiddenIndividual = {};
     const command = Command(dispatch);
