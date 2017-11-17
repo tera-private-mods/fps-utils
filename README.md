@@ -9,6 +9,8 @@
   I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
 
 ### Note
+**There might be issues with the script and the EU version of the game currently, will fix when NA gets the update
+
 Updated frequently, please redownload if something doesn't work before telling me about issues, thanks!
 
 ## How to use:
