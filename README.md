@@ -44,6 +44,7 @@ Command | Argument(s) | Example | Description
 
 ## Work In Progress:
 * Overall improvements.
+* Adding aliasing for commands
 * Save configuration upon exit to remember last state.
 * ~~Revive !fps 2 to it's full glory and screw this "2 IS A MEME" gaem.~~
 * ~~Add support for hiding ranged dps and certain classes~~
