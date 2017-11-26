@@ -483,7 +483,7 @@ module.exports = function FpsUtils(dispatch) {
             return false;
         }
     });
-    dispatch.hook('S_ABNORMALITY_REFRESH',3, {
+    dispatch.hook('S_ABNORMALITY_REFRESH',1, {
         order: 999
     }, (event) => {
          if (flags.heal && (event.id === 10154031 || event.id === 700409 || 701606 || 701607)){
