@@ -548,7 +548,7 @@ module.exports = function FpsUtils(dispatch) {
     //      return false;
     //});
 
-    dispatch.hook('S_START_USER_PROJECTILE', 2,(event) => {
+    dispatch.hook('S_START_USER_PROJECTILE', 1,(event) => {
         // State 1 and higher ignores particles and projectiles so we're ignoring this.
         if (state > 0 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
             return false;
