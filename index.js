@@ -1,7 +1,7 @@
-//  FpsUtils revision 1.5.5 - Hugedong Edition
+//  FpsUtils revision 1.5.5.5.5 - Hugedong Edition
 //  Credits to Xiphon, TeraProxy Saegusa & Bernkastel for code and ideas
 // 
-// Fixed
+// Fixed again... agian.
 const Command = require('command');
 const fs = require('fs');
 
@@ -149,8 +149,8 @@ module.exports = function FpsUtils(dispatch) {
                             // Hide all players on screen and disable spawn.
                             for (let pl in hiddenPlayers) {
                                 if (!hiddenIndividual[hiddenPlayers[pl].cid]) {
-                                    dispatch.toClient('S_DESPAWN_USER', {
-                                        target: hiddenPlayers[pl].guid,
+                                    dispatch.toClient('S_DESPAWN_USER',3, {
+                                        gameId: hiddenPlayers[pl].guid,
                                         type: 1
                                     });
                                 }
