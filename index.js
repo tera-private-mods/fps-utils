@@ -93,8 +93,8 @@ module.exports = function FpsUtils(dispatch) {
                             // Display all hidden players.
                             if (laststate === 3) {
                                 for (let pl in hiddenPlayers) {
-                                    if (!hiddenIndividual[hiddenPlayers[pl].cid]) {
-                                        dispatch.toClient('S_SPAWN_USER',9, hiddenPlayers[pl]);
+                                    if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
+                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
                                     }
                                 }
                                 laststate = 0;
@@ -112,8 +112,8 @@ module.exports = function FpsUtils(dispatch) {
                             if (state === 3) {
                                 // Display all hidden players. EXCEPT HIDDEN INDIVIDUALS
                                 for (let pl in hiddenPlayers) {
-                                    if (!hiddenIndividual[hiddenPlayers[pl].cid]) {
-                                        dispatch.toClient('S_SPAWN_USER',9, hiddenPlayers[pl]);
+                                    if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
+                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
                                     }
                                 }
                             }
@@ -130,8 +130,8 @@ module.exports = function FpsUtils(dispatch) {
                             // Spawn all players with disabled animations.
                             if (state === 3) {
                                 for (let pl in hiddenPlayers) {
-                                    if (!hiddenIndividual[hiddenPlayers[pl].cid]) {
-                                        dispatch.toClient('S_SPAWN_USER',9, hiddenPlayers[pl]);
+                                    if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
+                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
                                     }
                                 }
                             }
@@ -148,9 +148,9 @@ module.exports = function FpsUtils(dispatch) {
 
                             // Hide all players on screen and disable spawn.
                             for (let pl in hiddenPlayers) {
-                                if (!hiddenIndividual[hiddenPlayers[pl].cid]) {
+                                if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
                                     dispatch.toClient('S_DESPAWN_USER',3, {
-                                        gameId: hiddenPlayers[pl].guid,
+                                        gameId: hiddenPlayers[pl].gameId,
                                         type: 1
                                     });
                                 }
@@ -241,10 +241,10 @@ module.exports = function FpsUtils(dispatch) {
                     for (let pl in hiddenPlayers) {
                         if (hiddenPlayers[pl].name.toString().toLowerCase() === value.toLowerCase()) {
                             command.message(`player ${hiddenPlayers[pl].name} is added to the hiding list.`);
-                            hiddenIndividual[hiddenPlayers[pl].cid] = hiddenPlayers[pl];
+                            hiddenIndividual[hiddenPlayers[pl].gameId] = hiddenPlayers[pl];
                             db.hiddenPeople.push(hiddenPlayers[pl].name.toString());
                             dispatch.toClient('S_DESPAWN_USER',3, {
-                                gameId: hiddenPlayers[pl].guid,
+                                gameId: hiddenPlayers[pl].gameId,
                                 type: 1
                             });
                         }
@@ -271,9 +271,9 @@ module.exports = function FpsUtils(dispatch) {
                                 command.message(`All ${value}'s hidden`);
 
                                 for (let pl in hiddenPlayers) {
-                                    if (!hiddenIndividual[hiddenPlayers[pl].cid] && (classes[value].indexOf(getClass(hiddenPlayers[pl].model)) > -1)) {
+                                    if (!hiddenIndividual[hiddenPlayers[pl].gameId] && (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1)) {
                                         dispatch.toClient('S_DESPAWN_USER',3, {
-                                            gameId: hiddenPlayers[pl].guid,
+                                            gameId: hiddenPlayers[pl].gameId,
                                             type: 1
                                         });
                                     }
@@ -298,7 +298,7 @@ module.exports = function FpsUtils(dispatch) {
                         if (hiddenIndividual[pl].name.toString().toLowerCase() === value.toLowerCase()) {
                             command.message(`showing player ${hiddenIndividual[pl].name}.`);
                             db.hiddenPeople.splice(db.hiddenPeople.indexOf(hiddenPlayers[pl].name), 1);
-                            dispatch.toClient('S_SPAWN_USER',9, hiddenIndividual[pl]);
+                            dispatch.toClient('S_SPAWN_USER',11, hiddenIndividual[pl]);
                             delete hiddenIndividual[pl];
                         }
                     }
@@ -325,9 +325,9 @@ module.exports = function FpsUtils(dispatch) {
                                     log('fps-utils showing: ' + value);
                                     command.message(`showing ${value}`);
                                     for (let pl in hiddenPlayers) {
-                                        if (classes[value].indexOf(getClass(hiddenPlayers[pl].model)) > -1) {
-                                            if (!hiddenIndividual[hiddenPlayers[pl].cid])
-                                                dispatch.toClient('S_SPAWN_USER',9, hiddenPlayers[pl]);
+                                        if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1) {
+                                            if (!hiddenIndividual[hiddenPlayers[pl].gameId])
+                                                dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
                                         }
                                     }
                                 }
@@ -381,10 +381,10 @@ module.exports = function FpsUtils(dispatch) {
         hiddenPlayers = {};
     });
 
-    dispatch.hook('S_SPAWN_USER', 9, (event) => {
+    dispatch.hook('S_SPAWN_USER', 11, (event) => {
 
         // Add players in proximity of user to possible hide list.
-        hiddenPlayers[event.guid] = event;
+        hiddenPlayers[event.gameId] = event;
 
         // Check the state or if the individual is hidden.
         if (state === 3 || hiddenIndividual[event.guid]) {
@@ -392,22 +392,22 @@ module.exports = function FpsUtils(dispatch) {
         }
 
         // Hide dps enabled, remove dps characters;
-        if (flags.hide.dps && classes.dps.indexOf(getClass(event.model)) > -1) {
+        if (flags.hide.dps && classes.dps.indexOf(getClass(event.templateId)) > -1) {
             return false;
         }
 
         //hide ranged enabled, delet ranged characters;
-        if (flags.hide.ranged && classes.ranged.indexOf(getClass(event.model)) > -1) {
+        if (flags.hide.ranged && classes.ranged.indexOf(getClass(event.templateId)) > -1) {
             return false;
         }
 
         // Hide tanks enabled, remove tank characters;
-        if (flags.hide.tanks && classes.tanks.indexOf(getClass(event.model)) > -1) {
+        if (flags.hide.tanks && classes.tanks.indexOf(getClass(event.templateId)) > -1) {
             return false;
         }
 
         // Why would you want this on, seriously...
-        if (flags.hide.healers && classes.healers.indexOf(getClass(event.model)) > -1) {
+        if (flags.hide.healers && classes.healers.indexOf(getClass(event.templateId)) > -1) {
             return false;
         }
 
@@ -455,7 +455,7 @@ module.exports = function FpsUtils(dispatch) {
             }
         }
     });
-  dispatch.hook('S_SPAWN_USER',9, (event) => {
+  dispatch.hook('S_SPAWN_USER',11, (event) => {
        if (flags.logo) {
           event.guildEmblem = '';
             return true;
