@@ -1,7 +1,7 @@
-//  FpsUtils revision 1.5.5.5.5 - Hugedong Edition
+//  FpsUtils revision 1.5.6- Hugedong Edition
 //  Credits to Xiphon, TeraProxy Saegusa & Bernkastel for code and ideas
 // 
-// Fixed again... agian.
+// fixed error
 const Command = require('command');
 const fs = require('fs');
 
@@ -506,12 +506,13 @@ module.exports = function FpsUtils(dispatch) {
     });
 
     dispatch.hook('S_USER_LOCATION',1,(event) => {
+        
         // Update locations of every player in case we need to spawn them.
-        hiddenPlayers[event.target].x = event.x2;
-        hiddenPlayers[event.target].y = event.y2;
-        hiddenPlayers[event.target].z = event.z2;
-        hiddenPlayers[event.target].w = event.w;
-        if (state > 2 || hiddenIndividual[event.target]) {
+        hiddenPlayers[event.target.toString()].x = event.x2;
+        hiddenPlayers[event.target.toString()].y = event.y2;
+        hiddenPlayers[event.target.toString()].z = event.z2;
+        hiddenPlayers[event.target.toString()].w = event.w;
+        if (state > 2 || hiddenIndividual[event.target.toString()]) {
             return false;
         }
     });
