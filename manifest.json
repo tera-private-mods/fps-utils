@@ -1,0 +1,21 @@
+{
+    "files": {
+        "index.js": "323D973F14D78681E0AAE9DA25130CEC467FB66AF107922703D726E2124C32ED",
+        "module.json": "2949A93B5164DB396EAE0AE05F43D29A06F308E7111DA45B6AC7966039FE275E"
+    },
+    "defs": {
+        "S_SPAWN_USER": 11,
+        "S_DESPAWN_USER": 3,
+        "S_LOGIN": 2,
+        "S_LOAD_TOPO": 2,
+        "S_EACH_SKILL_RESULT": 4,
+        "S_ABNORMALITY_BEGIN": 2,
+        "S_PARTY_MEMBER_ABNORMAL_ADD": 3,
+        "S_ABNORMALITY_REFRESH": 1,
+        "S_USER_LOCATION": 1,
+        "S_ACTION_STAGE": 1,
+        "S_START_USER_PROJECTILE": 1,
+        "S_SPAWN_PROJECTILE": 1,
+        "S_SPAWN_NPC": 4
+    }
+}
