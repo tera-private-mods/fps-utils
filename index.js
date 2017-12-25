@@ -76,7 +76,7 @@ module.exports = function FpsUtils(dispatch) {
                     ' |fps fireworks| (Hides annoying fireworks e.g. "fps fireworks"),<br>'
                 );
                 break
-                // Set state to 0: Disabled.
+            // Set state to 0: Disabled.
             case "mode":
                 if (value === null || value === undefined || value === "") {
                     command.message(`Missing command arguments, "fps mode [0, 1, 2, 3]"`);
@@ -94,14 +94,14 @@ module.exports = function FpsUtils(dispatch) {
                             if (laststate === 3) {
                                 for (let pl in hiddenPlayers) {
                                     if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
+                                        dispatch.toClient('S_SPAWN_USER', 11, hiddenPlayers[pl]);
                                     }
                                 }
                                 laststate = 0;
                             }
                             break;
                             break;
-                            // Set state to 1: Only hide projectiles.
+                        // Set state to 1: Only hide projectiles.
                         case "1":
                             state = 1;
                             db.state = 1;
@@ -113,13 +113,13 @@ module.exports = function FpsUtils(dispatch) {
                                 // Display all hidden players. EXCEPT HIDDEN INDIVIDUALS
                                 for (let pl in hiddenPlayers) {
                                     if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
+                                        dispatch.toClient('S_SPAWN_USER', 11, hiddenPlayers[pl]);
                                     }
                                 }
                             }
 
                             break;
-                            // Set state to 2: Hide all skill animations.
+                        // Set state to 2: Hide all skill animations.
                         case "2":
                             state = 2;
                             flags.hit = true;
@@ -131,12 +131,12 @@ module.exports = function FpsUtils(dispatch) {
                             if (state === 3) {
                                 for (let pl in hiddenPlayers) {
                                     if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-                                        dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
+                                        dispatch.toClient('S_SPAWN_USER', 11, hiddenPlayers[pl]);
                                     }
                                 }
                             }
                             break;
-                            // Set state to 3: Hide all other players.
+                        // Set state to 3: Hide all other players.
                         case "3":
                             laststate = 3;
                             state = 3;
@@ -149,7 +149,7 @@ module.exports = function FpsUtils(dispatch) {
                             // Hide all players on screen and disable spawn.
                             for (let pl in hiddenPlayers) {
                                 if (!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-                                    dispatch.toClient('S_DESPAWN_USER',3, {
+                                    dispatch.toClient('S_DESPAWN_USER', 3, {
                                         gameId: hiddenPlayers[pl].gameId,
                                         type: 1
                                     });
@@ -159,17 +159,17 @@ module.exports = function FpsUtils(dispatch) {
                     }
                 }
                 break;
-                // Save dburation to file.
-                /* case "save":
-                     saveConfig();
-                     break;*/
-                // Disable fireworks.
+            // Save dburation to file.
+            /* case "save":
+                 saveConfig();
+                 break;*/
+            // Disable fireworks.
             case "fireworks":
                 flags.fireworks = !flags.fireworks;
                 log('fps-utils toggled fireworks: ' + flags.fireworks);
                 command.message(`Fireworks toggled off: ${flags.fireworks}`);
                 break;
-                //disable players attack markers
+            //disable players attack markers
             case "hit":
                 if (value === null || value === undefined || value === "") {
                     command.message(`Missing command arguments, "fps hit [on, me, damage]"`);
@@ -200,13 +200,13 @@ module.exports = function FpsUtils(dispatch) {
                     }
                 }
                 break;
-                //disable guild logos
+            //disable guild logos
             case "logo":
                 flags.logo = !flags.logo;
                 log('fps-utils toggled guild logos: ' + flags.logo);
                 command.message(`toggled guild logos off: ${flags.logo}`);
                 break;
-                //Hide TC abnormality spam
+            //Hide TC abnormality spam
             case "tc":
                 if (value === null || value === undefined || value === "") {
                     command.message(`Missing command arguments, "fps tc [remove,party,on]"`);
@@ -230,7 +230,7 @@ module.exports = function FpsUtils(dispatch) {
                     }
                 }
                 break;
-                // Toggle individual classes on and off
+            // Toggle individual classes on and off
             case "hide":
                 if (value === null || value === undefined || value === "") {
                     //console.log('fps-utils missing arguments for command "hide"');
@@ -243,50 +243,50 @@ module.exports = function FpsUtils(dispatch) {
                             command.message(`player ${hiddenPlayers[pl].name} is added to the hiding list.`);
                             hiddenIndividual[hiddenPlayers[pl].gameId] = hiddenPlayers[pl];
                             db.hiddenPeople.push(hiddenPlayers[pl].name.toString());
-                            dispatch.toClient('S_DESPAWN_USER',3, {
+                            dispatch.toClient('S_DESPAWN_USER', 3, {
                                 gameId: hiddenPlayers[pl].gameId,
                                 type: 1
                             });
                         }
                     }
-                } 
-                    if (state < 3)
-                        switch (value) {
-                            case "tanks":
-                            case "dps":
-                            case "healers":
-                            case "ranged":
-                            case "lancer":
-                            case "slayer":
-                            case "berserker":
-                            case "sorcerer":
-                            case "archer":
-                            case "priest":
-                            case "mystic":
-                            case "reaper":
-                            case "gunner":
-                            case "ninja":
-                            case "valkyrie":
-                                flags.hide[value] = true;
-                                command.message(`All ${value}'s hidden`);
+                }
+                if (state < 3)
+                    switch (value) {
+                        case "tanks":
+                        case "dps":
+                        case "healers":
+                        case "ranged":
+                        case "lancer":
+                        case "slayer":
+                        case "berserker":
+                        case "sorcerer":
+                        case "archer":
+                        case "priest":
+                        case "mystic":
+                        case "reaper":
+                        case "gunner":
+                        case "ninja":
+                        case "valkyrie":
+                            flags.hide[value] = true;
+                            command.message(`All ${value}'s hidden`);
 
-                                for (let pl in hiddenPlayers) {
-                                    if (!hiddenIndividual[hiddenPlayers[pl].gameId] && (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1)) {
-                                        dispatch.toClient('S_DESPAWN_USER',3, {
-                                            gameId: hiddenPlayers[pl].gameId,
-                                            type: 1
-                                        });
-                                    }
+                            for (let pl in hiddenPlayers) {
+                                if (!hiddenIndividual[hiddenPlayers[pl].gameId] && (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1)) {
+                                    dispatch.toClient('S_DESPAWN_USER', 3, {
+                                        gameId: hiddenPlayers[pl].gameId,
+                                        type: 1
+                                    });
                                 }
-                                break
-                                // Argument is an individual name or not recognized.   
+                            }
+                            break
+                            // Argument is an individual name or not recognized.   
 
-                                break;
-                        }
-                
+                            break;
+                    }
+
                 break;
 
-                // Try to respawn all hidden players included in show command.
+            // Try to respawn all hidden players included in show command.
             case "show":
                 if (value === null || value === undefined || value === "") {
                     log('fps-utils missing arguments for command "show"');
@@ -298,46 +298,46 @@ module.exports = function FpsUtils(dispatch) {
                         if (hiddenIndividual[pl].name.toString().toLowerCase() === value.toLowerCase()) {
                             command.message(`showing player ${hiddenIndividual[pl].name}.`);
                             db.hiddenPeople.splice(db.hiddenPeople.indexOf(hiddenPlayers[pl].name), 1);
-                            dispatch.toClient('S_SPAWN_USER',11, hiddenIndividual[pl]);
+                            dispatch.toClient('S_SPAWN_USER', 11, hiddenIndividual[pl]);
                             delete hiddenIndividual[pl];
                         }
                     }
-                }       if (state < 3) {
-                        switch (value) {
-                            case "dps":
-                            case "healers":
-                            case "tanks":
-                            case "ranged":
-                            case "warrior":
-                            case "lancer":
-                            case "slayer":
-                            case "berserker":
-                            case "sorcerer":
-                            case "archer":
-                            case "priest":
-                            case "mystic":
-                            case "reaper":
-                            case "gunner":
-                            case "ninja":
-                            case "valkyrie":
-                                if (flags.hide[value]) {
-                                    flags.hide[value] = false;
-                                    log('fps-utils showing: ' + value);
-                                    command.message(`showing ${value}`);
-                                    for (let pl in hiddenPlayers) {
-                                        if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1) {
-                                            if (!hiddenIndividual[hiddenPlayers[pl].gameId])
-                                                dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl]);
-                                        }
+                } if (state < 3) {
+                    switch (value) {
+                        case "dps":
+                        case "healers":
+                        case "tanks":
+                        case "ranged":
+                        case "warrior":
+                        case "lancer":
+                        case "slayer":
+                        case "berserker":
+                        case "sorcerer":
+                        case "archer":
+                        case "priest":
+                        case "mystic":
+                        case "reaper":
+                        case "gunner":
+                        case "ninja":
+                        case "valkyrie":
+                            if (flags.hide[value]) {
+                                flags.hide[value] = false;
+                                log('fps-utils showing: ' + value);
+                                command.message(`showing ${value}`);
+                                for (let pl in hiddenPlayers) {
+                                    if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1) {
+                                        if (!hiddenIndividual[hiddenPlayers[pl].gameId])
+                                            dispatch.toClient('S_SPAWN_USER', 11, hiddenPlayers[pl]);
                                     }
                                 }
-                                break;
-                        }
+                            }
+                            break;
                     }
-                
+                }
+
 
                 break;
-                // List the players in individuals list.
+            // List the players in individuals list.
             case "list":
                 let hiddenArray = [];
                 for (let pl in hiddenIndividual) {
@@ -345,7 +345,7 @@ module.exports = function FpsUtils(dispatch) {
                 }
                 command.message(`Manually hidden players: ${hiddenArray}`);
                 break;
-                // Command not recognized
+            // Command not recognized
             default:
                 command.message('Command not recognized. use [!fps help] for a list of available commands');
                 break;
@@ -376,7 +376,7 @@ module.exports = function FpsUtils(dispatch) {
         state = 0; //db.state || 0;
     });
 
-    dispatch.hook('S_LOAD_TOPO', 2,(event) => {
+    dispatch.hook('S_LOAD_TOPO', 2, (event) => {
         // Refresh the hide list upon teleport or zone change.
         hiddenPlayers = {};
     });
@@ -421,21 +421,21 @@ module.exports = function FpsUtils(dispatch) {
         }
     });
 
-    dispatch.hook('S_SPAWN_NPC',4, (event) => {
+    dispatch.hook('S_SPAWN_NPC', 4, (event) => {
         if (flags.fireworks) {
             if (event.huntingZoneId === 1023 && (event.templateId === 60016000 || event.templateId === 80037000))
                 return false;
         }
     });
-    dispatch.hook('S_EACH_SKILL_RESULT',4, {
+    dispatch.hook('S_EACH_SKILL_RESULT', 4, {
         order: 999
     }, (event) => {
-        if (flags.heal){
-        if (event.type === 2){
-        event.skill = '';
-        return true;
+        if (flags.heal) {
+            if (event.type === 2) {
+                event.skill = '';
+                return true;
+            }
         }
-    }
         if (event.source.equals(pcid) || event.owner.equals(pcid)) {
             if (flags.damage) {
                 event.damage = '';
@@ -455,17 +455,17 @@ module.exports = function FpsUtils(dispatch) {
             }
         }
     });
-  dispatch.hook('S_SPAWN_USER',11, (event) => {
-       if (flags.logo) {
-          event.guildEmblem = '';
+    dispatch.hook('S_SPAWN_USER', 11, (event) => {
+        if (flags.logo) {
+            event.guildEmblem = '';
             return true;
         }
     });
 
-    dispatch.hook('S_ABNORMALITY_BEGIN',2, {
+    dispatch.hook('S_ABNORMALITY_BEGIN', 2, {
         order: 999
     }, (event) => {
-        if (flags.heal && (event.id === 10154031 || event.id === 700409 || 701606 || 701607)){
+        if (flags.heal && (event.id === 10154031 || event.id === 700409 || 701606 || 701607)) {
             return false;
         }
         if (flags.tc) { //abnormality begin doesn't cause the lag but whatevs
@@ -476,17 +476,17 @@ module.exports = function FpsUtils(dispatch) {
         }
 
     });
-    dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD',3, {
+    dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD', 3, {
         order: 999
     }, (event) => {
         if (event.id === 101300 && flags.tcp) {
             return false;
         }
     });
-    dispatch.hook('S_ABNORMALITY_REFRESH',1, {
+    dispatch.hook('S_ABNORMALITY_REFRESH', 1, {
         order: 999
     }, (event) => {
-         if (flags.heal && (event.id === 10154031 || event.id === 700409 || 701606 || 701607)){
+        if (flags.heal && (event.id === 10154031 || event.id === 700409 || 701606 || 701607)) {
             return false;
         }
         if (event.id === 101300 && flags.tc) {
@@ -505,16 +505,19 @@ module.exports = function FpsUtils(dispatch) {
         }
     });
 
-    dispatch.hook('S_USER_LOCATION',1,(event) => {
-        
+    dispatch.hook('S_USER_LOCATION', 1, (event) => {
+
         // Update locations of every player in case we need to spawn them.
-        hiddenPlayers[event.target.toString()].x = event.x2;
-        hiddenPlayers[event.target.toString()].y = event.y2;
-        hiddenPlayers[event.target.toString()].z = event.z2;
-        hiddenPlayers[event.target.toString()].w = event.w;
+        if (hiddenPlayers[event.target.toString()]) {
+            hiddenPlayers[event.target.toString()].x = event.x2;
+            hiddenPlayers[event.target.toString()].y = event.y2;
+            hiddenPlayers[event.target.toString()].z = event.z2;
+            hiddenPlayers[event.target.toString()].w = event.w;
+        }
         if (state > 2 || hiddenIndividual[event.target.toString()]) {
             return false;
         }
+
     });
 
     dispatch.hook('S_ACTION_STAGE', 1, (event) => {
@@ -524,7 +527,7 @@ module.exports = function FpsUtils(dispatch) {
             return false;
         }
         if (state === 2 && (((event.x - locx[event.source]) > 15 || (locx[event.source] - event.x) > 15) || ((event.y - locy[event.source]) > 15 || (locy[event.source] - event.y) > 15)) && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
-            dispatch.toClient('S_USER_LOCATION', 1,{
+            dispatch.toClient('S_USER_LOCATION', 1, {
                 target: event.source,
                 x1: locx[event.source],
                 y1: locy[event.source],
@@ -549,13 +552,13 @@ module.exports = function FpsUtils(dispatch) {
     //      return false;
     //});
 
-    dispatch.hook('S_START_USER_PROJECTILE', 1,(event) => {
+    dispatch.hook('S_START_USER_PROJECTILE', 1, (event) => {
         // State 1 and higher ignores particles and projectiles so we're ignoring this.
         if (state > 0 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
             return false;
     });
 
-    dispatch.hook('S_SPAWN_PROJECTILE', 1,(event) => {
+    dispatch.hook('S_SPAWN_PROJECTILE', 1, (event) => {
         // Ignore the projectile spawn if enabled in state.
         if (state > 0 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
             return false;
