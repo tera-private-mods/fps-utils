@@ -25,7 +25,7 @@ Updated frequently, please redownload if something doesn't work before telling m
 
 Command | Argument(s) | Example | Description
 ---|---|---|---
-**fps mode** | 1, 2, 3, off | !fps [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
+**fps mode** | 1, 2, 3, off | !fps <mode> [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
 **!fps tc** | remove, party, on | !fps tc remove | Hides traverse cut spam, by default this is turned on. *Remove* stops the buff from being refreshed except for when it ends, *party*" turns the effect off/on on other players.
 **!fps hit** | me, damage, on | !fps hit damage | Enables/Disables hiding of hit effects for the player. *Damage* toggles damage numbers off. *Me* turns hit effects off for the player (disables damage numbers also unfortunately).
 **!fps hide** | playername> dps, healers, tanks, ranged, class | !fps hide [args] |hides dps, healers, tanks ranged any username or a class name , class names can be found in config.js.
