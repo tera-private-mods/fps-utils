@@ -25,14 +25,16 @@ Updated frequently, please redownload if something doesn't work before telling m
 
 Command | Argument(s) | Example | Description
 ---|---|---|---
-**fps mode** | 1, 2, 3, off | !fps <mode> [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
+**!fps mode** | 1, 2, 3, off | !fps <mode> [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
 **!fps tc** | remove, party, on | !fps tc remove | Hides traverse cut spam, by default this is turned on. *Remove* stops the buff from being refreshed except for when it ends, *party*" turns the effect off/on on other players.
 **!fps hit** | me, damage, on | !fps hit damage | Enables/Disables hiding of hit effects for the player. *Damage* toggles damage numbers off. *Me* turns hit effects off for the player (disables damage numbers also unfortunately).
 **!fps hide** | playername> dps, healers, tanks, ranged, class | !fps hide [args] |hides dps, healers, tanks ranged any username or a class name , class names can be found in config.js.
-**fps show** | playername, dps, healers, tanks, ranged, class| !fps show [args] | Again takes *healers*, *tanks*, *any username* or *class* as a sub argument, tries to show all hidden characters of said specifics on the screen.
+**!fps show** | playername, dps, healers, tanks, ranged, class| !fps show [args] | Again takes *healers*, *tanks*, *any username* or *class* as a sub argument, tries to show all hidden characters of said specifics on the screen.
 **!fps list** |  | !fps list |  Prints a list of characters currently hidden by *hide* command to chat.
 **!fps fireworks** |  | !fps fireworks | Enables/Disables hiding of firework entities in open world.
 **!fps logo** |  | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
+
+***Note:*** *When inputting commands directly from the **proxy channel**  the prefix `!` should be ignored.*
 
 ## Update Log:
 * All FPS modes now activate !fps hit as there's no reason for them not to
