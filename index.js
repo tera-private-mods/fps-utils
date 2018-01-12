@@ -64,35 +64,79 @@ const AUTO_SAVE = false		//True: Always save applied settings when using command
 //================================================== DO NOT MAKE CHANGES BELOW THIS LINE ===========================================================================================================
 const Command = require('command'),
 	fs = require('fs'),
-	path = require('path'),
-	db = require('./db.json')
+	path = require('path')
+	
 
 
 module.exports = function FpsUtils(dispatch) {
-    let DEBUG = false,
-		player,
-        pcid,
-		loginmsg,
-        clss,
-        tchits = 7, //Change this to fine tune TC spamage
-        counter = 0,
-        dur,
-        laststate,
-		summonid = [],
-        locx = [],
-        locy = [],
-        state = flags.state, 
-        hiddenPlayers = {},
-        hiddenIndividual = {}
-		
-    const command = Command(dispatch),
-		  classes = db.classes
-          
-          
-              try { //behold true cancer
-        flags = require('./config.json')
+     
+      try { //behold true cancer
+        db = require('./db.json')
     } catch (e) {
-        console.log('(FPS Utils) - No config file detected, creating...')
+        console.log('(FPS Utils) - No DB file detected, creating...');
+        db = {
+            "version": 1,
+            "classes":{
+                "ranged":[5,6,10],
+                "dps":[1,3,4,5,6,9,10,12,13],
+                "healers":[7,8],
+                "tanks":[2,11],
+                "warrior":[1],
+                "lancer":[2],
+                "slayer":[3],
+                "berserker":[4],
+                "sorcerer":[5],
+                "archer":[6],
+                "priest":[7],
+                "mystic":[8],
+                "reaper":[9],
+                "gunner":[10],
+                "brawler":[11],
+                "ninja":[12],
+                "valkyrie":[13]
+            },
+            "hiddenskill":[270900,21400,40330,40320,40300],
+            "hiddensummon":[12345,1024001,1023405,10238007],
+            "hiddeneffect":[10153040,10155130,31100],
+            "hiddenheal":[10154031,700409,701606,701607]
+        };
+        saveDb();
+    }
+    if (db.version !== 1){ // surely there is a less bad way to do this but whatever, this is just for future cases where I might need to shove something in config
+        console.log('(FPS Utils) - Outdated DB file detected, updating');
+             db = {
+                 "version": 1,
+                 "classes":{
+                     "ranged":[5,6,10],
+                     "dps":[1,3,4,5,6,9,10,12,13],
+                     "healers":[7,8],
+                     "tanks":[2,11],
+                     "warrior":[1],
+                     "lancer":[2],
+                     "slayer":[3],
+                     "berserker":[4],
+                     "sorcerer":[5],
+                     "archer":[6],
+                     "priest":[7],
+                     "mystic":[8],
+                     "reaper":[9],
+                     "gunner":[10],
+                     "brawler":[11],
+                     "ninja":[12],
+                     "valkyrie":[13]
+                 },
+                 "hiddenskill":[270900,21400,40330,40320,40300],
+                 "hiddensummon":[12345,1024001,1023405,10238007],
+                 "hiddeneffect":[10153040,10155130,31100],
+                 "hiddenheal":[10154031,700409,701606,701607]
+             };
+             saveDb();
+         }
+     //config
+              try { //behold true cancer
+        flags = require('./config.json');
+    } catch (e) {
+        console.log('(FPS Utils) - No config file detected, creating...');
         flags = {
 	"version": 1,
 	"state": 1,
@@ -171,7 +215,27 @@ module.exports = function FpsUtils(dispatch) {
 };
         saveConfig();
     }
-
+    
+    
+    // y did I do this
+  let DEBUG = false,
+		player,
+        pcid,
+		loginmsg,
+        clss,
+        tchits = 7, //Change this to fine tune TC spamage
+        counter = 0,
+        dur,
+        laststate,
+		summonid = [],
+        locx = [],
+        locy = [],
+        state = flags.state, 
+        hiddenPlayers = {},
+        hiddenIndividual = {}
+		
+    const command = Command(dispatch),
+		  classes = db.classes
 	
 	
 //////Commands:	
@@ -646,7 +710,14 @@ module.exports = function FpsUtils(dispatch) {
 		fs.writeFile(path.join(__dirname,'config.json'), JSON.stringify(flags, null, "\t"), err => {
 			if (err) console.log('(FPS Utils) Config file failed to overwrite. Use "fps save" command to save again.')
 			else
-				console.log('(FPS Utils) Config file saved') // I am too lazy to unfuck this at the present moment
+				console.log('(FPS Utils) Config file saved!') // I am too lazy to unfuck this at the present moment
+		})
+	}
+         function saveDb() {
+		fs.writeFile(path.join(__dirname,'db.json'), JSON.stringify(db), err => {
+			if (err) console.log('(FPS Utils) DB file failed to overwrite. Use "fps save" command to save again.')
+			else
+				console.log('(FPS Utils) DB file saved!') // I am too lazy to unfuck this at the present moment
 		})
 	}
 	
