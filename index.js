@@ -69,8 +69,7 @@ const Command = require('command'),
 
 
 module.exports = function FpsUtils(dispatch) {
-    let update = false
-	
+
 	try {db = require('./db.json')} 
 	catch (e) {
 		console.log('(FPS Utils) - No DB file detected, creating...')
@@ -100,14 +99,12 @@ module.exports = function FpsUtils(dispatch) {
             "hiddeneffect":[10153040,10155130,31100],
             "hiddenheal":[10154031,700409,701606,701607]
         }
-		update=true
 		saveDb()
     }
     if (db.version !== 1){ 		//Remember to change version number for updates
 		console.log('[FPS Utils] Outdated DB file detected, updating...')
         Object.assign(db,{})	//Replace {} with updating object.Eg {"version":1.1,"newKey":1,"newKey2":[1,2]}
 		db.hiddenskill.push()	//To Prevent replacing user customized array, Use pushes for array based Object values. This is just an example.
-		update=true
         saveDb()
     }
     //config
@@ -150,13 +147,11 @@ module.exports = function FpsUtils(dispatch) {
 			"blockEffect": true,
 			"hiddenPeople": []
 		}
-		update=true
         saveConfig()
     }
     if (flags.version !== 1){		//Remember to change version number for updates (if new version is 1.1, change to 1.1!)
         console.log('[FPS Utils] Outdated config file detected, updating...');
         Object.assign(flags,{})		//Replace {} with updating object.Eg {"version":1.1,"newKey":true,"newKey2":false,"tcp":false}
-		update=true
         saveConfig()
     }
     
@@ -244,6 +239,7 @@ module.exports = function FpsUtils(dispatch) {
 					default:
 						command.message('Missing command arguments, "fps mode [0, 1, 2, 3]"')
 				}
+				flags.state = state
                 break
 				
 			case "save":
@@ -650,9 +646,6 @@ module.exports = function FpsUtils(dispatch) {
 	function getClass(m) {return (m % 100)}
 	
     function saveConfig() {
-		if(!update) flags.state = state
-		else update = false
-		
 		fs.writeFile(path.join(__dirname,'config.json'), JSON.stringify(flags,null,"\t"), err => {
 			if (err) console.log('(FPS Utils) Config file failed to overwrite. Use "fps save" command to save again.')
 			else
