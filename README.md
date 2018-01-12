@@ -6,13 +6,12 @@
 
   **To support development Saegusae, who made this mod:** 
   throw money [here](https://www.patreon.com/saegusa) where you can show your support for him!
-  I don't have a patreon because I enjoy being poor, so send me memes on discord instead!
+  buy me a [covfefe](https://ko-fi.com/hugedong) (I can't actually drink coffee)
 
 ### Note
-**Updated for EU and NA when the patch hits.
-If you play NA do not update until the Elin Gunner patch hits.**
+This **huge** update was 100% all done by [SerenTera](https://github.com/SerenTera) please go check their stuff out because it's way better than anything I've ever done.
 
-Updated frequently, please redownload if something doesn't work before telling me about issues, thanks!
+Updated ~~frequently~~ sometimes, you can automatically recieve updates if you use [Caali's proxy!](https://discord.gg/maqBmJV)
 
 ## How to use:
 * Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
@@ -25,29 +24,33 @@ Updated frequently, please redownload if something doesn't work before telling m
 
 Command | Argument(s) | Example | Description
 ---|---|---|---
-**!fps mode** | 1, 2, 3, off | !fps <mode> [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
+**fps mode** | 1, 2, 3, off | !fps mode [state] | Sets the current fps-utils oprtimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. Also turns fps hit on.
 **!fps tc** | remove, party, on | !fps tc remove | Hides traverse cut spam, by default this is turned on. *Remove* stops the buff from being refreshed except for when it ends, *party*" turns the effect off/on on other players.
 **!fps hit** | me, damage, on | !fps hit damage | Enables/Disables hiding of hit effects for the player. *Damage* toggles damage numbers off. *Me* turns hit effects off for the player (disables damage numbers also unfortunately).
-**!fps hide** | playername> dps, healers, tanks, ranged, class | !fps hide [args] |hides dps, healers, tanks ranged any username or a class name , class names can be found in config.js.
-**!fps show** | playername, dps, healers, tanks, ranged, class| !fps show [args] | Again takes *healers*, *tanks*, *any username* or *class* as a sub argument, tries to show all hidden characters of said specifics on the screen.
+**!fps hide** | <playername>, dps, healers, tanks, ranged, class | !fps hide [args] |hides dps, healers, tanks ranged any username or a class name , class names can be found in config.js.
+**fps show** | playername, dps, healers, tanks, ranged, class| !fps show [args] | Again takes *healers*, *tanks*, *any username* or *class* as a sub argument, tries to show all hidden characters of said specifics on the screen.
 **!fps list** |  | !fps list |  Prints a list of characters currently hidden by *hide* command to chat.
 **!fps fireworks** |  | !fps fireworks | Enables/Disables hiding of firework entities in open world.
 **!fps logo** |  | !fps logo | Enables/Disables hiding of guild logos, will require players to be reloaded (enter/exit the area)
+**!fps block**|skill,skilluser,summon,summonuser,effect| !fps block skill| Toggle to hide specific skills,apply hidden skill to user as well, summons, apply hidden summon to user as well and abnormality respectively. This means if you activate summonuser and you are a mystic, you cannot see thrall of wrath and healing totem. Blocked skill list in changelog above or index.js
+
 
 ***Note:*** *When inputting commands directly from the **proxy channel**  the prefix `!` should be ignored.*
 
 ## Update Log:
-* All FPS modes now activate !fps hit as there's no reason for them not to
-* Fixed TC, now displays the buff without the spam, by default it refreshes every 7 hits
-* Now using Command instead of chathooks, some commands have also changed
-* Added class support to fps hide/show
-* Fixed player hiding and mode 3
-* Minor changes to various things
+1. Reworked various commands, shortened some stuffs.
+2. Added specific skill, summon and effect blacklist (db.json)
+3. Added config saving (config.json)
+4. Added automatic saving feature to config.json after every command use (set AUTO_SAVE to true)
+5. Neaten code, combined various code fragments where possible
+6. Correct Last state (Fixes respawning player bugs when going back to mode 1/2)
+### Additional commands:
+` fps block [skill,skilluser,summon,summonuser,effect]` - Hides specific skills,apply hidden skill to user as well,summons, apply hidden summon to user as well and abnormality respectively. This means if you activate summonuser and you are a mystic, you cannot see thrall of wrath and healing totem. Blocked skill list in changelog above or index.js.
 
 ## Work In Progress:
 * Overall improvements.
 * Adding aliasing for commands
-* Save configuration upon exit to remember last state.
+* ~~Save configuration upon exit to remember last state.~~
 * ~~Revive !fps 2 to it's full glory and screw this "2 IS A MEME" gaem.~~
 * ~~Add support for hiding ranged dps and certain classes~~
 * ~~Rewrite and command support~~
