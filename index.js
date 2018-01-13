@@ -103,8 +103,14 @@ module.exports = function FpsUtils(dispatch) {
     }
     if (db.version !== 1){ 		//Remember to change version number for updates
 		console.log('[FPS Utils] Outdated DB file detected, updating...')
-        Object.assign(db,{})	//Replace {} with updating object.Eg {"version":1.1,"newKey":1,"newKey2":[1,2]}
-		db.hiddenskill.push()	//To Prevent replacing user customized array, Use pushes for array based Object values. This is just an example.
+        Object.assign(db,{
+            "version": 1,
+            "hiddenskill":[270900,21400,40330,40320,40300],
+            "hiddensummon":[12345,1024001,1023405,10238007],
+            "hiddeneffect":[10153040,10155130,31100],
+            "hiddenheal":[10154031,700409,701606,701607]
+        })	//Replace {} with updating object.Eg {"version":1.1,"newKey":1,"newKey2":[1,2]}
+		//db.hiddenskill.push()	//To Prevent replacing user customized array, Use pushes for array based Object values. This is just an example.
         saveDb()
     }
     //config
