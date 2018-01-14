@@ -1,5 +1,5 @@
 {
-	"version": 1,
+	"version": 1.01,
 	"state": 1,
 	"hide": {
 		"tanks": false,
@@ -22,15 +22,15 @@
 	"hitme": false,
 	"damage": false,
 	"heal": false,
-	"hit": true,
+	"hit": false,
 	"logo": false,
 	"tcremove": false,
-	"tc": true,
-	"tcp": true,
-	"blockSkill": true,
+	"tc": false,
+	"tcp": false,
+	"blockSkill": false,
 	"blockUserSkill": false,
-	"blockSummon": true,
+	"blockSummon": false,
 	"blockUserSummon": false,
-	"blockEffect": true,
+	"blockEffect": false,
 	"hiddenPeople": []
 }
