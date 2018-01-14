@@ -118,7 +118,7 @@ module.exports = function FpsUtils(dispatch) {
 	catch(e) {
         console.log('(FPS Utils) - No config file detected, creating...')
         flags = {
-			"version": 1,
+			"version": 1.01,
 			"state": 1,
 			"hide": {
 				"tanks": false,
@@ -141,24 +141,31 @@ module.exports = function FpsUtils(dispatch) {
 			"hitme": false,
 			"damage": false,
 			"heal": false,
-			"hit": true,
+			"hit": false,
 			"logo": false,
 			"tcremove": false,
-			"tc": true,
-			"tcp": true,
-			"blockSkill": true,
+			"tc": false,
+			"tcp": false,
+			"blockSkill": false,
 			"blockUserSkill": false,
-			"blockSummon": true,
+			"blockSummon": false,
 			"blockUserSummon": false,
-			"blockEffect": true,
+			"blockEffect": false,
 			"hiddenPeople": []
-		}
-        saveConfig()
+		};
+        saveConfig();
     }
-    if (flags.version !== 1){		//Remember to change version number for updates (if new version is 1.1, change to 1.1!)
+    if (flags.version !== 1.01){		//Remember to change version number for updates (if new version is 1.1, change to 1.1!)
         console.log('[FPS Utils] Outdated config file detected, updating...');
-        Object.assign(flags,{})		//Replace {} with updating object.Eg {"version":1.1,"newKey":true,"newKey2":false,"tcp":false}
-        saveConfig()
+        Object.assign(flags,{
+            "version": 1.01,
+            "hit": false,
+            "tc": false,
+            "tcp": false,
+            "blockSkill": false,
+            "blockSummon": false,
+            "blockEffect": false});	//Replace {} with updating object.Eg {"version":1.1,"newKey":true,"newKey2":false,"tcp":false}
+        saveConfig();
     }
     
     
@@ -166,7 +173,6 @@ module.exports = function FpsUtils(dispatch) {
   let DEBUG = false,
 		player,
         pcid,
-		loginmsg,
         clss,
         tchits = 7, //Change this to fine tune TC spamage
         counter = 0,
@@ -177,10 +183,10 @@ module.exports = function FpsUtils(dispatch) {
         locy = [],
         state = flags.state, 
         hiddenPlayers = {},
-        hiddenIndividual = {}
+        hiddenIndividual = {};
 		
     const command = Command(dispatch),
-		  classes = db.classes
+		  classes = db.classes;
 	
 	
 //////Commands:	
@@ -435,7 +441,7 @@ module.exports = function FpsUtils(dispatch) {
         player = event.name
         clss = getClass(event.templateId)
         job = (event.templateId - 10101) % 100
-		console.log(`[FPS UTILS] Mode:${state} Hitme:${flags.hitme} Damage:${flags.damage} Hit:${flags.hit}`) 
+		log(`[FPS UTILS] Mode:${state} Hitme:${flags.hitme} Damage:${flags.damage} Hit:${flags.hit}`) 
     })
 	
 
