@@ -660,7 +660,7 @@ module.exports = function FpsUtils(dispatch) {
 		fs.writeFile(path.join(__dirname,'config.json'), JSON.stringify(flags,null,"\t"), err => {
 			if (err) console.log('(FPS Utils) Config file failed to overwrite. Use "fps save" command to save again.')
 			else
-				console.log('(FPS Utils) Config file saved!') // I am too lazy to unfuck this at the present moment
+				log('(FPS Utils) Config file saved!') // I am too lazy to unfuck this at the present moment
 		})
 	}
 	
