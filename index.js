@@ -57,7 +57,7 @@ Config.Json Options are listed below :
 	hiddenPeople:[],		//Default Hidden Character names. Remember to use " " to enclose the ign, in lower case.
 */
 
-const AUTO_SAVE = false		//True: Always save applied settings when using commands.
+const AUTO_SAVE = true		//True: Always save applied settings when using commands.
 	
 
 
@@ -519,6 +519,7 @@ module.exports = function FpsUtils(dispatch) {
 	})
 	
     dispatch.hook('S_EACH_SKILL_RESULT',4, {order: 999}, (event) => {
+        if(!event.target.equals(pcid)) {
 		if(flags.heal && event.type === 2) {
 			event.skill = ''
 			return true
@@ -538,12 +539,10 @@ module.exports = function FpsUtils(dispatch) {
         if(flags.hit) {
             if (hiddenPlayers[event.source] || hiddenPlayers[event.owner]) {
                 event.skill = ''
-                event.type = ''
-                event.type2 = ''
                 return true
             }
         }
-		
+    }	
     })
 	
 
