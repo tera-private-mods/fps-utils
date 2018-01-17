@@ -16,8 +16,11 @@ This **huge** update was 100% all done by [SerenTera](https://github.com/SerenTe
 Updated ~~frequently~~ sometimes, you can automatically recieve updates if you use [Caali's proxy!](https://discord.gg/maqBmJV)
 
 ## How to use:
-* Setup tera-proxy by meishuu (https://github.com/meishuu/tera-proxy)
-* put the script folder "fps-utils" into bin/node_modules
+* Setup tera-proxy from Caali's discord. This module is included by default, so you don't need to do anyhting else.
+
+
+* If you're not using Caali's proxy then: 
+* Put the script folder "fps-utils" into bin/node_modules
 * Log the game using the proxy.
 * Now you have access to fps-utils commands
 * Default commands can be found in index.js
@@ -58,4 +61,4 @@ Command | Argument(s) | Example | Description
 * ~~Rewrite and command support~~
 
 ## Suggestions:
-* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 on pinkies discord)
+* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 on pinkies/caali's discord)
