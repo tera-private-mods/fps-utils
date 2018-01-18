@@ -14,9 +14,9 @@
 This **huge** update was 100% all done by [SerenTera](https://github.com/SerenTera) please go check their stuff out because it's way better than anything I've ever done.
 
 ## How to use:
-* Setup tera-proxy pinkie just see [Caali's proxy!](https://discord.gg/maqBmJV)
+* Use [Caali's proxy!](https://discord.gg/maqBmJV)
 
-***Note***:If youre using caali's Proxy fps utils will be autoupdated
+***Note***:If youre using caali's Proxy fps utils will be autoupdated and already installed
 * put the script folder "fps-utils" into bin/node_modules
 * Log the game using the proxy.
 * Now you have access to fps-utils commands
