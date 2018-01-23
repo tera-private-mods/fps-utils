@@ -11,7 +11,7 @@
 This **huge** update was 100% all done by [SerenTera](https://github.com/SerenTera) please go check their stuff out because it's way better than anything I've ever done.
 
 ## How to use:
-***Note***: *If you're using[Caali's proxy](https://discord.gg/maqBmJV) fps-utils will be automatically updated and already installed so will not need to do the following.*
+***Note***: *If you're using [Caali's proxy](https://discord.gg/maqBmJV) fps-utils will be automatically updated and already installed so will not need to do the following.*
 * put the script folder "fps-utils" into bin/node_modules
 * Log the game using the proxy.
 * Now you have access to fps-utils commands
