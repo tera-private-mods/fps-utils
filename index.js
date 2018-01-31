@@ -599,7 +599,7 @@ module.exports = function FpsUtils(dispatch) {
 
     })
 
-    dispatch.hook('S_ACTION_STAGE', 1, (event) => {
+    dispatch.hook('S_ACTION_STAGE', 1, {order: 999}, (event) => {
         if(state === 2 && (Math.abs(event.x - locx[event.source.low]) > 15 || Math.abs(event.y - locy[event.source.low]) > 15) && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) {
             dispatch.toClient('S_USER_LOCATION', 1,{
                 target: event.source,
@@ -642,11 +642,17 @@ module.exports = function FpsUtils(dispatch) {
         if (state > 0 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
             return false
     })
-
     dispatch.hook('S_SPAWN_PROJECTILE', 1,(event) => {
         // Ignore the projectile spawn if enabled in state.
         if (state > 0 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
             return false
+    })
+    dispatch.hook('S_FEARMOVE_STAGE', 1,(event) => {
+        if( state > 2) return false // Prevent crashing on other players getting feared because this is a good game with good coding
+                    
+    })
+    dispatch.hook('S_FEARMOVE_END', 1,(event) => {
+        if( state > 2) return false // should really add users to hiddenIndividual instead of this
     })
 
 	
