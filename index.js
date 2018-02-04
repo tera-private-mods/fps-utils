@@ -16,7 +16,7 @@ Save config on logout too.
 
 Custom Hidden Objects, with the type of id to input in db.json:
 Hidden Skills (skill id-0x4000000 or dbid): Hailstorm, Regeneration Circle, Sundering Strike
-Hidden Summons (template id): Thrall of wrath, Healing totem, Ninja 'Decoy Jutsu' totem 
+Hidden Summons (template id): Thrall of wrath, Healing totem, Ninja 'Decoy Jutsu' totem
 Hidden Effect (abnormality id): Growing Fury, Ragnarok
 
 
@@ -44,7 +44,7 @@ Config.Json Options are listed below :
     hitme: false,			//True: Disable hit effects on you
     damage: false, 			//True: Disable damage numbers
     heal: false, 			//True: Disable heal effects
-    hit: true,				//True: Disable hit effects on others 
+    hit: true,				//True: Disable hit effects on others
     logo: false,			//True: Disable Guild logos
     tcremove: false, 		//True: Disable notifications of Traverse Cut (TC) buffs
     tc: true, 				//True: Shows TC refreshes at a reduced rate (once every 7 hits by default)
@@ -53,24 +53,24 @@ Config.Json Options are listed below :
 	blockUserSkill:false, 	//True: Blocks user skills as well
 	blockSummon:true, 		//True: Blocks laggy summons (Thralls etc...)
 	blockUserSummon:false, 	//True: Blocks user summon as well
-	blockEffect:true		//True: Blocks Growing Fury and Ragnarok effects on other users		
+	blockEffect:true		//True: Blocks Growing Fury and Ragnarok effects on other users
 	hiddenPeople:[],		//Default Hidden Character names. Remember to use " " to enclose the ign, in lower case.
 */
 
 const AUTO_SAVE = true		//True: Always save applied settings when using commands.
-	
+
 
 
 //================================================== DO NOT MAKE CHANGES BELOW THIS LINE ===========================================================================================================
 const Command = require('command'),
 	fs = require('fs'),
 	path = require('path')
-	
+
 
 
 module.exports = function FpsUtils(dispatch) {
 
-	try {db = require('./db.json')} 
+	try {db = require('./db.json')}
 	catch (e) {
 		console.log('(FPS Utils) - No DB file detected, creating...')
         db = {
@@ -167,8 +167,8 @@ module.exports = function FpsUtils(dispatch) {
             "blockEffect": false});	//Replace {} with updating object.Eg {"version":1.1,"newKey":true,"newKey2":false,"tcp":false}
         saveConfig();
     }
-    
-    
+
+
 
   let DEBUG = false,
 		player,
@@ -181,19 +181,20 @@ module.exports = function FpsUtils(dispatch) {
 		summonid = [],
         locx = [],
         locy = [],
-        state = flags.state, 
+        state = flags.state,
         hiddenPlayers = {},
+        peopleThatAreActuallyHidden = {}, // Store IDs for people hidden with `fps hide class/role`
         hiddenIndividual = {};
-		
+
     const command = Command(dispatch),
 		  classes = db.classes;
-	
-	
-//////Commands:	
+
+
+//////Commands:
     command.add('fps', (setting, value) => {
         switch (setting) {
-			
-            case "help": 
+
+            case "help":
 				command.message('Commands:\n' +
                     ' |fps mode| [1, 2, 3, off]" (Sets the FPS mode, 1 = hides skill particles, 2 = hides animations, 3 = hides players. Also turns fps hit on. e.g. "fps mode 1"),\n' +
                     ' |fps hit| [on, me, damage](Hides hit effects, on = hides other players hit effects, me = hides your own, damage = hides damage numbers e.g. "fps hit damage"),\n' +
@@ -206,7 +207,7 @@ module.exports = function FpsUtils(dispatch) {
 					' |fps block| [skill,skilluser,summon,summonuser,effect] (Hides specific skills/summons/abnormality)'
                 )
                 break
-				
+
             case "mode":
 				switch(value) {
 					// State 0: Turns off fps-utils
@@ -217,7 +218,7 @@ module.exports = function FpsUtils(dispatch) {
 						if (laststate === 3) redisplay()
 						laststate = state
                         break
-							
+
                     // State 1: Only hide projectiles.
 					case "1":
 						state = 1
@@ -227,7 +228,7 @@ module.exports = function FpsUtils(dispatch) {
 						if (laststate === 3) redisplay()
 						laststate = state
 						break
-				
+
                     // State 2: Hide all skill animations.
 					case "2":
 						state = 2
@@ -237,7 +238,7 @@ module.exports = function FpsUtils(dispatch) {
 						if (laststate === 3) redisplay()
 						laststate = state
 						break
-							
+
                    // State 3: Hide all other players.
                     case "3":
 						state = 3
@@ -247,17 +248,17 @@ module.exports = function FpsUtils(dispatch) {
 						laststate = state
                         for(let pl in hiddenPlayers) despawnUser(pl) //Despawn all players
                         break
-						
+
 					default:
 						command.message('Missing command arguments, "fps mode [0, 1, 2, 3]"')
 				}
 				flags.state = state
                 break
-				
+
 			case "save":
 				saveConfig()
                 break
-				
+
             case "fireworks":	// Disable fireworks.
                 flags.fireworks = !flags.fireworks
                 log('fps-utils toggled fireworks: ' + flags.fireworks)
@@ -277,31 +278,31 @@ module.exports = function FpsUtils(dispatch) {
 						log('fps-utils toggled hit effects on others: ' + flags.hit)
 						command.message(`Player hit effects on others turned off: ${flags.hit}`)
 						break
-						
+
 					case "damage":
 						flags.damage = !flags.damage
 						log('fps-utils toggled player damage numbers: ' + flags.damage)
 						command.message(`Player damage numbers toggled off: ${flags.damage}`)
 						break
-						
+
 					case "heal":
 						flags.heal = !flags.heal
 						log('fps-utils toggled player damage numbers: ' + flags.heal)
 						command.message(`Player damage numbers toggled off: ${flags.heal}`)
 						break
-						
+
 					default:
 						command.message(`Missing command arguments, "fps hit [on, me, damage]"`)
-				}	
+				}
                 break
-				
+
             case "logo":  // Disable guild logos
                 flags.logo = !flags.logo
                 log('fps-utils toggled guild logos: ' + flags.logo)
                 command.message(`toggled guild logos off: ${flags.logo}`)
                 break
-				
-               
+
+
             case "tc":  // Hide TC abnormality spam
 				switch (value) {
 					case "remove":
@@ -309,30 +310,30 @@ module.exports = function FpsUtils(dispatch) {
 						command.message('TC buff will not refresh:' + flags.tcremove)
 						log('fps-utils toggled showing TC refreshes: ' + flags.tcremove)
 						break
-						
+
 					case "party":
 						command.message('TC buff will not be shown on party members:' + flags.tcp)
 						log('fps-utils toggled showing TC refreshes: ' + flags.tcp)
 						break
-						
+
 					case "on":
 						flags.tc = !flags.tc
 						log('Smart TC fix enabled ' + flags.tc)
 						command.message(`toggled toggled smart TC fix: ${flags.tc}`)
 						break
-						
+
 					default:
 						command.message(`Missing command arguments, "fps tc [remove,party,on]"`)
 				}
                 break
-				
+
             case "hide":  // Toggle individual classes on and off
                 if (value === null || value === undefined || value === "") {
                     command.message(`Missing arguments for command "hide" [dps, healers, tanks], [username] or [class]`)
                     break
                 }
-				
-                else 
+
+                else
                     for (let pl in hiddenPlayers) {
                         if (hiddenPlayers[pl].name.toLowerCase() === value.toLowerCase()) {
                             command.message(`Player ${hiddenPlayers[pl].name} is added to the hiding list.`)
@@ -342,16 +343,19 @@ module.exports = function FpsUtils(dispatch) {
 							return
                         }
                     }
-					
+
 				if (state < 3 && flags.hide[value.toLowerCase()] === false) { //Cannot use ! else outputs true.
 					flags.hide[value.toLowerCase()] = true
 					command.message(`All ${value}'s hidden`)
-						
+
                     for (let pl in hiddenPlayers) {
-						if (!hiddenIndividual[hiddenPlayers[pl].gameId] && (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1)) despawnUser(pl)
+						if (!hiddenIndividual[hiddenPlayers[pl].gameId] && (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1)) {
+                            peopleThatAreActuallyHidden[hiddenPlayers[pl].gameId] = true
+                            despawnUser(pl)
+                        }
 					}
 				}
-				
+
 				else
 					command.message('Invalid argument for command "hide" [dps, healers, tanks], [username] or [class] ')
                 break
@@ -363,8 +367,8 @@ module.exports = function FpsUtils(dispatch) {
                     command.message(`Missing arguments for command "show" [dps, ranged, healers, tanks] or [username]`)
                     break
                 }
-				
-                else                               
+
+                else
                     for (let pl in hiddenIndividual) {
                         if (hiddenIndividual[pl].name.toLowerCase() === value.toLowerCase()) {
                             command.message(`Showing player ${hiddenIndividual[pl].name}.`)
@@ -374,28 +378,29 @@ module.exports = function FpsUtils(dispatch) {
                         }
 						return
                     }
-					
+
                 if (state < 3 && flags.hide[value.toLowerCase()]) {
 					flags.hide[value] = false
 					log('fps-utils showing: ' + value)
 					command.message(`Showing ${value}`)
                     for (let pl in hiddenPlayers) {
 						if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1 && !hiddenIndividual[hiddenPlayers[pl].gameId]) {
-							dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl])
+                            delete peopleThatAreActuallyHidden[hiddenPlayers[pl].gameId]
+                            dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl])
                         }
 					}
                 }
-				
+
 				else
 					command.message('Invalid arguments for command "show" [dps, healers, tanks], [username] or [class] ')
                 break
-				
+
             case "list":  // List the players in individuals list.
                 let hiddenArray = []
                 for (let pl in hiddenIndividual) hiddenArray.push(hiddenIndividual[pl].name)
                 command.message(`Manually hidden players: ${hiddenArray}`)
                 break
-				
+
 			case "block":
 				switch(value) {
 					case "skill":
@@ -416,13 +421,13 @@ module.exports = function FpsUtils(dispatch) {
 						break
 					case "effect":
 						flags.blockEffect=!flags.blockEffect
-						command.message(`Hiding blacklisted effects:${flags.blockEffect}`)	
-						break	
+						command.message(`Hiding blacklisted effects:${flags.blockEffect}`)
+						break
 					default:
 						command.message('Command not recognised. Only use "fps block [skill,skilluser,summon,summonuser,effect]"')
 				}
 				break
-						
+
             default:
                 command.message('Command not recognized. Use [fps help] for a list of available commands')
                 break
@@ -430,25 +435,26 @@ module.exports = function FpsUtils(dispatch) {
 
         if(AUTO_SAVE) saveConfig()
     })
-	
+
 	/*command.add('fpsdebug', (string, add) => {  //DO NOT USE unless for debugging!
 		console.log(JSON.stringify(eval(string)))
-	})*/
-	
+    })*/
+
 /////Dispatches
     dispatch.hook('S_LOGIN', 9, (event) => {
         pcid = event.gameId
         player = event.name
         clss = getClass(event.templateId)
         job = (event.templateId - 10101) % 100
-		log(`[FPS UTILS] Mode:${state} Hitme:${flags.hitme} Damage:${flags.damage} Hit:${flags.hit}`) 
+		log(`[FPS UTILS] Mode:${state} Hitme:${flags.hitme} Damage:${flags.damage} Hit:${flags.hit}`)
     })
-	
+
 
     dispatch.hook('S_LOAD_TOPO', 'raw', () => {
         // Refresh the hide list upon teleport or zone change.
         hiddenPlayers = {}
-		summonid = []
+        summonid = []
+        peopleThatAreActuallyHidden = {}
     })
 
     dispatch.hook('S_SPAWN_USER', 11, (event) => {
@@ -463,24 +469,28 @@ module.exports = function FpsUtils(dispatch) {
 
         // Hide dps enabled, remove dps characters;
         if (flags.hide.dps && classes.dps.indexOf(getClass(event.templateId)) > -1) {
+            peopleThatAreActuallyHidden[event.gameId] = true
             return false
         }
 
         //hide ranged enabled, delet ranged characters;
         if (flags.hide.ranged && classes.ranged.indexOf(getClass(event.templateId)) > -1) {
+            peopleThatAreActuallyHidden[event.gameId] = true
             return false
         }
 
         // Hide tanks enabled, remove tank characters;
         if (flags.hide.tanks && classes.tanks.indexOf(getClass(event.templateId)) > -1) {
+            peopleThatAreActuallyHidden[event.gameId] = true
             return false
         }
 
         // Why would you want this on, seriously...
         if (flags.hide.healers && classes.healers.indexOf(getClass(event.templateId)) > -1) {
+            peopleThatAreActuallyHidden[event.gameId] = true
             return false
         }
-		
+
 		if (flags.logo) {
           event.guildEmblem = ''
             return true
@@ -489,8 +499,8 @@ module.exports = function FpsUtils(dispatch) {
 
     dispatch.hook('S_DESPAWN_USER', 3, (event) => {
         delete hiddenPlayers[event.gameId]
-		
-		
+        delete peopleThatAreActuallyHidden[event.gameId]
+
         if (state === 3 || hiddenIndividual[event.gameId]) {
             return false
         }
@@ -498,33 +508,33 @@ module.exports = function FpsUtils(dispatch) {
 
     dispatch.hook('S_SPAWN_NPC',4, (event) => {
 		if(event.huntingZoneId !== 1023) return		//huntingZoneId=1023 for all Players summons
-		
+
         if(flags.fireworks) {
             if(event.templateId === 60016000 || event.templateId === 80037000) return false
 		}
-		
+
 		if(db.hiddensummon.includes(event.templateId)) {
 			if(flags.blockSummon && (flags.blockUserSummon || !event.owner.equals(pcid))) {
 				summonid.push(event.id.low)
 				return false
-			}	
+			}
 		}
-		
+
     })
-	
+
 	dispatch.hook('S_DESPAWN_NPC', 1, event => {
 		if(summonid.includes(event.target.low)) {
 			summonid.splice(summonid.indexOf(event.target.low),1)
 		}
 	})
-	
+
     dispatch.hook('S_EACH_SKILL_RESULT',4, {order: 999}, (event) => {
         if(!event.target.equals(pcid)) {
 		if(flags.heal && event.type === 2) {
 			event.skill = ''
 			return true
         }
-		
+
         if(event.source.equals(pcid) || event.owner.equals(pcid)) {
             if (flags.damage) {
                 event.damage = ''
@@ -535,16 +545,16 @@ module.exports = function FpsUtils(dispatch) {
                 return true
             }
         }
-		
+
         if(flags.hit) {
             if (hiddenPlayers[event.source] || hiddenPlayers[event.owner]) {
                 event.skill = ''
                 return true
             }
         }
-    }	
+    }
     })
-	
+
 
     dispatch.hook('S_ABNORMALITY_BEGIN', 2, {order: 999}, event => {
         if (flags.heal)	{ //??
@@ -561,16 +571,16 @@ module.exports = function FpsUtils(dispatch) {
 		}
 
     })
-	
+
     dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD',3, {order: 999}, (event) => {
         if (event.id === 101300 && flags.tcp) return false
     })
-	
+
     dispatch.hook('S_ABNORMALITY_REFRESH',1, {order: 999}, (event) => {
         if (flags.heal) {
 			if(db.hiddenheal.includes(event.id)) return false
 		}
-		 
+
         if (event.id === 101300 && flags.tc) {
             dur = event.duration
             counter = counter + 1
@@ -578,12 +588,12 @@ module.exports = function FpsUtils(dispatch) {
                 counter = 0
                 event.duration = dur
                 return true
-            } 
-			
+            }
+
 			else
                 return false
         }
-		
+
         if (event.id === 101300 && flags.tcremove) return false
 
     })
@@ -616,22 +626,22 @@ module.exports = function FpsUtils(dispatch) {
                 unk: 0
             })
             locx[event.source.low] = event.x //.low should be enough
-            locy[event.source.low] = event.y 
+            locy[event.source.low] = event.y
 			return false
         }
-		
-		// If state is higher than state1 remove all skill animations.    
+
+		// If state is higher than state1 remove all skill animations.
         else if(state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source])) return false
 
-		
+
 		if(flags.blockSkill && db.hiddenskill.includes(event.skill-0x4000000)) {  //Check skill first
 			if(flags.blockUserSkill || !event.source.equals(pcid)) return false
 		}
-		
+
 		if(summonid.includes(event.source.low)) return false
     })
 
-    /*dispatch.hook('S_ACTION_END', 1, (event) => { 
+    /*dispatch.hook('S_ACTION_END', 1, (event) => {
         // If we're removing skill animations we should ignore the end packet too. // wrong
         if (state > 1 && (hiddenPlayers[event.source] || hiddenIndividual[event.source]))
           return false;
@@ -648,20 +658,20 @@ module.exports = function FpsUtils(dispatch) {
             return false
     })
     dispatch.hook('S_FEARMOVE_STAGE', 1,(event) => {
-        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2)) return false // Prevent crashing on other players getting feared because this is a good game with good coding
-                    
+        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
+
     })
     dispatch.hook('S_FEARMOVE_END', 1,(event) => {
-        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2)) return false // should really add users to hiddenIndividual instead of this
+        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
     })
 
-	
-	
-//////Functions	
+
+
+//////Functions
     function log(msg) {if(DEBUG) console.log('[fps-utils] ' + msg)}
 
 	function getClass(m) {return (m % 100)}
-	
+
     function saveConfig() {
 		fs.writeFile(path.join(__dirname,'config.json'), JSON.stringify(flags,null,"\t"), err => {
 			if (err) console.log('(FPS Utils) Config file failed to overwrite. Use "fps save" command to save again.')
@@ -669,25 +679,25 @@ module.exports = function FpsUtils(dispatch) {
 				log('(FPS Utils) Config file saved!') // I am too lazy to unfuck this at the present moment
 		})
 	}
-	
-    function saveDb() { //Idk how else you can simplify this formatting method 
-		fs.writeFile(path.join(__dirname,'db.json'), JSON.stringify(db, (k,v)=> {if(v instanceof Array) return JSON.stringify(v);return v} , "\t").replace(/\"\[/g, '[').replace(/\]\"/g,']'), err => { 
+
+    function saveDb() { //Idk how else you can simplify this formatting method
+		fs.writeFile(path.join(__dirname,'db.json'), JSON.stringify(db, (k,v)=> {if(v instanceof Array) return JSON.stringify(v);return v} , "\t").replace(/\"\[/g, '[').replace(/\]\"/g,']'), err => {
 			if (err) console.log('(FPS Utils) DB file failed to overwrite. Use "fps save" command to save again.')
 			else
 				console.log('(FPS Utils) DB file saved!') // I am too lazy to unfuck this at the present moment
 		})
 	}
-	
-	
+
+
 	function redisplay() {
 		for (let pl in hiddenPlayers) {
 			if(!hiddenIndividual[hiddenPlayers[pl].gameId]) {
 				dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl])
 			}
 		}
-     
+
 	}
-	
+
 	function despawnUser(pl) {
 		dispatch.toClient('S_DESPAWN_USER',3, {
 			gameId: hiddenPlayers[pl].gameId,
