@@ -658,11 +658,11 @@ module.exports = function FpsUtils(dispatch) {
             return false
     })
     dispatch.hook('S_FEARMOVE_STAGE', 1,(event) => {
-        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
+        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target] || hiddenIndividual[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
 
     })
     dispatch.hook('S_FEARMOVE_END', 1,(event) => {
-        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
+        if(!event.target.equals(pcid) && (state > 2 || flags.state > 2 || peopleThatAreActuallyHidden[event.target] || hiddenIndividual[event.target])) return false // Prevent crashing on other players getting feared because this is a good game with good coding
     })
 
 
