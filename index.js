@@ -569,10 +569,6 @@ module.exports = function FpsUtils(dispatch) {
 		if (flags.blockEffect) {
 			if (!event.source.equals(pcid) && db.hiddeneffect.includes(event.id)) return false
 		}
-                 if(!event.target.equals(pcid) && db.buyPR[event.id]){ 
-                     return false;
-                     console.log(event.id)
-                 }
     })
 
     dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD',3, {order: 999}, (event) => {
@@ -598,10 +594,7 @@ module.exports = function FpsUtils(dispatch) {
         }
 
         if (event.id === 101300 && flags.tcremove) return false
-if(!event.target.equals(pcid) && db.buyPR[event.id]){ 
-                     return false;
-                     console.log(event.id)
-                 }
+
     })
 
     dispatch.hook('S_USER_LOCATION',1,(event) => {
