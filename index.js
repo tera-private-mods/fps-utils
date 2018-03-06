@@ -70,6 +70,7 @@ const Command = require('command'),
 
 module.exports = function FpsUtils(dispatch) {
 
+        
 	try {db = require('./db.json')}
 	catch (e) {
 		console.log('(FPS Utils) - No DB file detected, creating...')
@@ -182,6 +183,7 @@ module.exports = function FpsUtils(dispatch) {
         summonid = [],
         locx = [],
         locy = [],
+        packetHooks = [],
         state = flags.state,
         hiddenPlayers = {},
         peopleThatAreActuallyHidden = {}, // Store IDs for people hidden with `fps hide class/role`
@@ -442,6 +444,13 @@ module.exports = function FpsUtils(dispatch) {
     })*/
 
 /////Dispatches
+    dispatch.hook('C_CHECK_VERSION', 1, (event) => {
+        enable()
+    })
+function addHook(packetName, packetVersion, func) {
+        dispatch.hook(packetName, packetVersion, func)
+}
+
     dispatch.hook('S_LOGIN', 9, (event) => {
         pcid = event.gameId
         player = event.name
@@ -458,7 +467,8 @@ module.exports = function FpsUtils(dispatch) {
         peopleThatAreActuallyHidden = {}
     })
 
-    dispatch.hook('S_SPAWN_USER', [328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, (event) => {
+    function enable(){
+    addHook('S_SPAWN_USER', [328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, (event) => {
         // Add players in proximity of user to possible hide list.
         hiddenPlayers[event.gameId] = event
 
@@ -496,7 +506,7 @@ module.exports = function FpsUtils(dispatch) {
             return true
         }
     })
-
+}
     dispatch.hook('S_DESPAWN_USER', 3, (event) => {
         delete hiddenPlayers[event.gameId]
         delete peopleThatAreActuallyHidden[event.gameId]
