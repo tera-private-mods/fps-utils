@@ -118,8 +118,8 @@ module.exports = function FpsUtils(dispatch) {
 	catch(e) {
         console.log('(FPS Utils) - No config file detected, creating...')
         flags = {
-			"version": 1.01,
-			"state": 1,
+			"version": 1.02,
+			"state": 0,
 			"hide": {
 				"tanks": false,
 				"dps": false,
@@ -155,10 +155,11 @@ module.exports = function FpsUtils(dispatch) {
 		};
         saveConfig();
     }
-    if (flags.version !== 1.01){		//Remember to change version number for updates (if new version is 1.1, change to 1.1!)
+    if (flags.version !== 1.02){		//Remember to change version number for updates (if new version is 1.1, change to 1.1!)
         console.log('[FPS Utils] Outdated config file detected, updating...');
         Object.assign(flags,{
-            "version": 1.01,
+            "version": 1.02,
+            "state": 0,
             "hit": false,
             "tc": false,
             "tcp": false,
@@ -178,7 +179,7 @@ module.exports = function FpsUtils(dispatch) {
         counter = 0,
         dur,
         laststate,
-		summonid = [],
+        summonid = [],
         locx = [],
         locy = [],
         state = flags.state,
@@ -373,7 +374,7 @@ module.exports = function FpsUtils(dispatch) {
                         if (hiddenIndividual[pl].name.toLowerCase() === value.toLowerCase()) {
                             command.message(`Showing player ${hiddenIndividual[pl].name}.`)
                             flags.hiddenPeople.splice(flags.hiddenPeople.indexOf(hiddenPlayers[pl].name), 1)
-                            dispatch.toClient('S_SPAWN_USER',11, hiddenIndividual[pl])
+                            dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenIndividual[pl])
                             delete hiddenIndividual[pl]
                         }
 						return
@@ -386,7 +387,7 @@ module.exports = function FpsUtils(dispatch) {
                     for (let pl in hiddenPlayers) {
 						if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1 && !hiddenIndividual[hiddenPlayers[pl].gameId]) {
                             delete peopleThatAreActuallyHidden[hiddenPlayers[pl].gameId]
-                            dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl])
+                            dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenPlayers[pl])
                         }
 					}
                 }
@@ -457,8 +458,7 @@ module.exports = function FpsUtils(dispatch) {
         peopleThatAreActuallyHidden = {}
     })
 
-    dispatch.hook('S_SPAWN_USER', 11, (event) => {
-
+    dispatch.hook('S_SPAWN_USER', [328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, (event) => {
         // Add players in proximity of user to possible hide list.
         hiddenPlayers[event.gameId] = event
 
@@ -569,7 +569,10 @@ module.exports = function FpsUtils(dispatch) {
 		if (flags.blockEffect) {
 			if (!event.source.equals(pcid) && db.hiddeneffect.includes(event.id)) return false
 		}
-
+                 if(!event.target.equals(pcid) && db.buyPR[event.id]){ 
+                     return false;
+                     console.log(event.id)
+                 }
     })
 
     dispatch.hook('S_PARTY_MEMBER_ABNORMAL_ADD',3, {order: 999}, (event) => {
@@ -595,16 +598,22 @@ module.exports = function FpsUtils(dispatch) {
         }
 
         if (event.id === 101300 && flags.tcremove) return false
-
+if(!event.target.equals(pcid) && db.buyPR[event.id]){ 
+                     return false;
+                     console.log(event.id)
+                 }
     })
 
     dispatch.hook('S_USER_LOCATION',1,(event) => {
         if(hiddenPlayers[event.target] === undefined) return
         // Update locations of every player in case we need to spawn them.
+        if (dispatch.base.protocolVersion === 328305 ||dispatch.base.protocolVersion === 328427){
+        hiddenPlayers[event.target].loc.x = event.x2
+        hiddenPlayers[event.target].loc.y = event.y2} else
+    {
         hiddenPlayers[event.target].x = event.x2
         hiddenPlayers[event.target].y = event.y2
-        hiddenPlayers[event.target].z = event.z2
-        hiddenPlayers[event.target].w = event.w
+    }
         if (state > 2 || hiddenIndividual[event.target]) return false
 
     })
@@ -691,7 +700,7 @@ module.exports = function FpsUtils(dispatch) {
 	function redisplay() {
 		for (let pl in hiddenPlayers) {
 			if(!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-				dispatch.toClient('S_SPAWN_USER',11, hiddenPlayers[pl])
+				dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenPlayers[pl])
 			}
 		}
 
