@@ -376,7 +376,7 @@ module.exports = function FpsUtils(dispatch) {
                         if (hiddenIndividual[pl].name.toLowerCase() === value.toLowerCase()) {
                             command.message(`Showing player ${hiddenIndividual[pl].name}.`)
                             flags.hiddenPeople.splice(flags.hiddenPeople.indexOf(hiddenPlayers[pl].name), 1)
-                            dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenIndividual[pl])
+                            dispatch.toClient('S_SPAWN_USER',(dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenIndividual[pl])
                             delete hiddenIndividual[pl]
                         }
 						return
@@ -389,7 +389,7 @@ module.exports = function FpsUtils(dispatch) {
                     for (let pl in hiddenPlayers) {
 						if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1 && !hiddenIndividual[hiddenPlayers[pl].gameId]) {
                             delete peopleThatAreActuallyHidden[hiddenPlayers[pl].gameId]
-                            dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenPlayers[pl])
+                            dispatch.toClient('S_SPAWN_USER',(dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenPlayers[pl])
                         }
 					}
                 }
@@ -468,7 +468,7 @@ function addHook(packetName, packetVersion, func) {
     })
 
     function enable(){
-    addHook('S_SPAWN_USER', [328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, (event) => {
+    addHook('S_SPAWN_USER', (dispatch.base.majorPatchVersion >= 66) ? 12 : 11, (event) => {
         // Add players in proximity of user to possible hide list.
         hiddenPlayers[event.gameId] = event
 
@@ -703,7 +703,7 @@ function addHook(packetName, packetVersion, func) {
 	function redisplay() {
 		for (let pl in hiddenPlayers) {
 			if(!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-				dispatch.toClient('S_SPAWN_USER',[328427, 328305].includes(dispatch.base.protocolVersion) ? 12 : 11, hiddenPlayers[pl])
+				dispatch.toClient('S_SPAWN_USER', (dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenPlayers[pl])
 			}
 		}
 
