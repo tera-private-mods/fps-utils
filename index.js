@@ -376,7 +376,7 @@ module.exports = function FpsUtils(dispatch) {
                         if (hiddenIndividual[pl].name.toLowerCase() === value.toLowerCase()) {
                             command.message(`Showing player ${hiddenIndividual[pl].name}.`)
                             flags.hiddenPeople.splice(flags.hiddenPeople.indexOf(hiddenPlayers[pl].name), 1)
-                            dispatch.toClient('S_SPAWN_USER',(dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenIndividual[pl])
+                            dispatch.toClient('S_SPAWN_USER', 12, hiddenIndividual[pl])
                             delete hiddenIndividual[pl]
                         }
 						return
@@ -389,7 +389,7 @@ module.exports = function FpsUtils(dispatch) {
                     for (let pl in hiddenPlayers) {
 						if (classes[value].indexOf(getClass(hiddenPlayers[pl].templateId)) > -1 && !hiddenIndividual[hiddenPlayers[pl].gameId]) {
                             delete peopleThatAreActuallyHidden[hiddenPlayers[pl].gameId]
-                            dispatch.toClient('S_SPAWN_USER',(dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenPlayers[pl])
+                            dispatch.toClient('S_SPAWN_USER', 12, hiddenPlayers[pl])
                         }
 					}
                 }
@@ -468,7 +468,7 @@ function addHook(packetName, packetVersion, func) {
     })
 
     function enable(){
-    addHook('S_SPAWN_USER', (dispatch.base.majorPatchVersion >= 66) ? 12 : 11, (event) => {
+    addHook('S_SPAWN_USER', 12, (event) => {
         // Add players in proximity of user to possible hide list.
         hiddenPlayers[event.gameId] = event
 
@@ -538,7 +538,7 @@ function addHook(packetName, packetVersion, func) {
 		}
 	})
 
-    dispatch.hook('S_EACH_SKILL_RESULT',4, {order: 999}, (event) => {
+    dispatch.hook('S_EACH_SKILL_RESULT',5, {order: 999}, (event) => {
         if(!event.target.equals(pcid)) {
 		if(flags.heal && event.type === 2) {
 			event.skill = ''
@@ -610,14 +610,10 @@ function addHook(packetName, packetVersion, func) {
     dispatch.hook('S_USER_LOCATION',1,(event) => {
         if(hiddenPlayers[event.target] === undefined) return
         // Update locations of every player in case we need to spawn them.
-        if (dispatch.base.protocolVersion === 328305 ||dispatch.base.protocolVersion === 328427){
         hiddenPlayers[event.target].loc.x = event.x2
-        hiddenPlayers[event.target].loc.y = event.y2} else
-    {
-        hiddenPlayers[event.target].x = event.x2
-        hiddenPlayers[event.target].y = event.y2
-    }
-        if (state > 2 || hiddenIndividual[event.target]) return false
+        hiddenPlayers[event.target].loc.y = event.y2
+    
+        if (state > 2 || hiddenIndividual[event.target]) return false;
 
     })
 
@@ -703,7 +699,7 @@ function addHook(packetName, packetVersion, func) {
 	function redisplay() {
 		for (let pl in hiddenPlayers) {
 			if(!hiddenIndividual[hiddenPlayers[pl].gameId]) {
-				dispatch.toClient('S_SPAWN_USER', (dispatch.base.majorPatchVersion >= 66) ? 12 : 11, hiddenPlayers[pl])
+				dispatch.toClient('S_SPAWN_USER', 12, hiddenPlayers[pl]);
 			}
 		}
 
