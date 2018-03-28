@@ -8,7 +8,7 @@
   
   Throw money [here](https://www.patreon.com/saegusa) to show support for Saegusa, the original developer of this mod.
   
-  Buy me a [covfefe](https://ko-fi.com/hugedong) (I can't actually drink coffee)
+  Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee)
   ****
 
 ### Note:
