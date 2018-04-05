@@ -7,7 +7,7 @@
   "defs": {
     "S_SPAWN_USER": 12,
     "S_DESPAWN_USER": 3,
-    "S_LOGIN": 9,
+    "S_LOGIN": [9, 10],
     "S_LOAD_TOPO": 2,
     "S_EACH_SKILL_RESULT": 5,
     "S_ABNORMALITY_BEGIN": 2,
