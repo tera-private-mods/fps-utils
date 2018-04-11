@@ -460,7 +460,7 @@ module.exports = function FpsUtils(dispatch) {
 
     function enable() {
         
-        addHook('S_LOGIN', (dispatch.majorPatchVersion >= 67) ? 10 : 9, (event) => {
+        addHook('S_LOGIN', (dispatch.base.majorPatchVersion >= 67) ? 10 : 9, (event) => {
             pcid = event.gameId
             player = event.name
             clss = getClass(event.templateId)
