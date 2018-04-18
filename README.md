@@ -10,7 +10,16 @@
   
   Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)
   ****
-[[toc]]
+- [FPS-UTILS](#fps-utils)
+  - [Big Note](#big-note)
+  - [Installation](#installation)
+  - [Commands](#commands)
+    - [Additional command info](#additional-command-info)
+  - [Update Log](#update-log)
+  - [Work In Progress:](#work-in-progress)
+  - [Suggestions](#suggestions)
+  - [Credits](#credits)
+
 ## Big Note
 FPS-Utils has received a facelift, several features have changed, fixed or removed entirely, so please read the readme!
 
