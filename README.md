@@ -2,6 +2,7 @@
 
   Written for TERA-Proxy, a free script filled with features dedicated to improving your FPS.
   
+  ****
 
   **To support development of this mod**:
   
