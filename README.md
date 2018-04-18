@@ -45,6 +45,7 @@ Command | Argument(s) | Example | Description
 **!fps npc** | None | !fps npc | Enables/Disables hiding of ALL NPCs within the npc blacklist
 **!fps effects** | all, blacklist | !fps effects blacklist | Toggles showing of either blacklisted abnormality effects or all abnormality effects (your own ones still display normally in all mode, however not in blacklist mode).
 **!fps style** | None | !fps style | Enables/Disables showing of all spawned players as wearing the same outfit. Requires leaving and re-entering the area or re-logging to take effect.
+**!fps proj** | None | !fps proj | Enables/Disables showing of all projectiles, eg hailstorm.
 
 ### Additional command info
 *  A full list of skill IDs can be found [here.](https://github.com/pinkipi/skill-prediction/blob/master/config/skills.js)
