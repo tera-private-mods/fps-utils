@@ -7,14 +7,15 @@ const fs = require('fs');
 
 module.exports = function FpsUtils2(dispatch) {
     //
-    let firstRun = false
+    let firstRun = false;
     const command = Command(dispatch);
     try { //generate config
         config = require('./config.json');
     } catch (e) {
         log("CONFIG FILE NOT FOUND, GENERATING ONE NOW");
+        firstRun = true;
         config = {
-            "version": 1,
+            "version": "1.01",
             "mode": "0",
             "hideFirewworks": false,
             "hideAllAbnormies": false,
@@ -22,6 +23,7 @@ module.exports = function FpsUtils2(dispatch) {
             "blacklistNpcs": false,
             "blacklistSkills": false,
             "blacklistAbnormies": false,
+            "hideProjectiles": false,
             "hiddenAbnormies": [],
             "hitMe": false,
             "hitOther": false,
@@ -154,7 +156,7 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
     //FORGIVE ME FATHER FOR I HAVE SINNED AND I KNOW NOT HOW TO DO THIS ANOTHER WAY
-    if (config.version !== 1) {
+    if (config.version !== "1.01") {
         firstRun = true;
         log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');// DO YOU SEE ME YET
         log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
@@ -165,7 +167,7 @@ module.exports = function FpsUtils2(dispatch) {
         log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
         log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
         config = {
-            "version": 1,
+            "version": "1.01",
             "mode": "0",
             "hideFirewworks": false,
             "hideAllAbnormies": false,
@@ -173,6 +175,7 @@ module.exports = function FpsUtils2(dispatch) {
             "blacklistNpcs": false,
             "blacklistSkills": false,
             "blacklistAbnormies": false,
+            "hideProjectiles": false,
             "hiddenAbnormies": [],
             "hitMe": false,
             "hitOther": false,
@@ -510,6 +513,11 @@ module.exports = function FpsUtils2(dispatch) {
                 config.showStyle = !config.showStyle;
                 message(`Displaying of all players as wearing default costumes ${config.showStyle ? 'en' : 'dis'}abled, you will have to leave and re-enter the zone for this to take effect`);
                 break
+            case "proj":
+            case "projectile":
+                config.hideProjectiles = !config.hideProjectiles;
+                message(`Hiding of ALL projectile effects ${config.hideProjectiles ? 'en' : 'dis'}abled`);
+                break
             default:
                 message(`Unknown command! Please refer to the readme for more information`);
                 break
@@ -736,12 +744,12 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_START_USER_PROJECTILE', 5, (event) => {
-        if (!event.gameId.equals(myId) && (hiddenUsers[event.gameId] || mode > 0))
+        if (!event.gameId.equals(myId) && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles))
             return false;
     });
 
     dispatch.hook('S_SPAWN_PROJECTILE', 3, (event) => {
-        if (!event.id.equals(myId) && (hiddenUsers[event.id] || mode > 0))
+        if (!event.id.equals(myId) && (hiddenUsers[event.id] || mode > 0 || config.hideProjectiles))
             return false;
     });
 
