@@ -7,14 +7,7 @@ const fs = require('fs');
 
 module.exports = function FpsUtils2(dispatch) {
     //
-    let firstRun = false,
-            spawnedPlayers = {},
-            blacklisted = config.blacklistedNames,
-            mode = config.mode,
-            myId,
-            hiddenNpcs = {},
-            hiddenUsers = {};
-
+    let firstRun = false
     const command = Command(dispatch);
     try { //generate config
         config = require('./config.json');
@@ -312,6 +305,12 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
 
+    let spawnedPlayers = {},
+            blacklisted = config.blacklistedNames,
+            mode = config.mode,
+            myId,
+            hiddenNpcs = {},
+            hiddenUsers = {};
 // ~~~ * Commands * ~~~
 
     command.add('fps', (cmd, arg, arg2) => {
