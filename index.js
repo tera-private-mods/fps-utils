@@ -717,7 +717,7 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_ACTION_STAGE', 4, (event) => {
-        if (event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
+        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
                 return false;
