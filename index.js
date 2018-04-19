@@ -324,7 +324,7 @@ module.exports = function FpsUtils2(dispatch) {
 // ~~~ * Commands * ~~~
 
     command.add('fps', (cmd, a, arg2) => {
-        if (typeof a !== "undefined") {
+        if (typeof a !== "undefined") { //wrong arg idiot
             arg = a.toLowerCase();
         }
         //easier than replacing everything else
@@ -345,7 +345,8 @@ module.exports = function FpsUtils2(dispatch) {
                             showAll();
                         }
                         mode = 1;
-                        config.hideAllAbnormies = true;
+                        //config.hideAllAbnormies = true;
+                        config.hitOther = true;
                         message(`FPS mode set to 1, projectiles hidden and abnormalities disabled`);
                         break
                     case "2":
@@ -353,7 +354,7 @@ module.exports = function FpsUtils2(dispatch) {
                             showAll();
                         }
                         mode = 2;
-                        config.hideAllAbnormies = true;
+                        // config.hideAllAbnormies = true;
                         config.hitOther = true;
                         message(`FPS mode set to 2, all skill effects disabled`);
                         break
@@ -805,7 +806,7 @@ module.exports = function FpsUtils2(dispatch) {
         if (config.blacklistAbnormies && config.hiddenAbnormies.includes(event.id)) {
             return false;
         }
-        if (config.hideAllAbnormies && !event.target.equals(myId) && spawnedPlayers[event.target]) {
+        if (config.hideAllAbnormies && !event.target.equals(myId) && spawnedPlayers[event.source]) {
             return false;
         }
     });
