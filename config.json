@@ -9,7 +9,7 @@
     "blacklistAbnormies": false,
     "hideProjectiles": false,
     "hiddenAbnormies": [],
-    "blacklistProjectiles": true,
+    "blacklistProjectiles": false,
     "hiddenProjectiles": [
         67379784
     ],
