@@ -15,7 +15,7 @@ module.exports = function FpsUtils2(dispatch) {
         log("CONFIG FILE NOT FOUND, GENERATING ONE NOW");
         firstRun = true;
         config = {
-            "version": "1.01",
+            "version": "1.011",
             "mode": "0",
             "hideFirewworks": false,
             "hideAllAbnormies": false,
@@ -25,6 +25,8 @@ module.exports = function FpsUtils2(dispatch) {
             "blacklistAbnormies": false,
             "hideProjectiles": false,
             "hiddenAbnormies": [],
+            "blacklistProjectiles": false,
+            "hiddenProjectiles": [67379784],
             "hitMe": false,
             "hitOther": false,
             "hitDamage": false,
@@ -156,11 +158,18 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
     //FORGIVE ME FATHER FOR I HAVE SINNED AND I KNOW NOT HOW TO DO THIS ANOTHER WAY
-    if (config.version !== "1.01") {
+    if (config.version !== "1.01" && config.version !== "1.011") {
         firstRun = true;
-        log('FPS-Utils has undergone major changes, and your configuration had to be reset. Please read https://github.com/codeagon/fps-utils/ for further information!');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');// DO YOU SEE ME YET
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
         config = {
-            "version": "1.01",
+            "version": "1.011",
             "mode": "0",
             "hideFirewworks": false,
             "hideAllAbnormies": false,
@@ -170,6 +179,8 @@ module.exports = function FpsUtils2(dispatch) {
             "blacklistAbnormies": false,
             "hideProjectiles": false,
             "hiddenAbnormies": [],
+            "blacklistProjectiles": false,
+            "hiddenProjectiles": [67379784],
             "hitMe": false,
             "hitOther": false,
             "hitDamage": false,
@@ -301,6 +312,17 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
 
+    if (config.version === "1.01") {
+        log('FPS-UTILS updated.');
+        Object.assign(config, {
+            "version": "1.011",
+            "blacklistProjectiles": false,
+            "hiddenProjectiles": [67379784]
+        });
+        saveConfig();
+    }
+
+
     let spawnedPlayers = {},
             blacklisted = config.blacklistedNames,
             mode = config.mode,
@@ -323,11 +345,17 @@ module.exports = function FpsUtils2(dispatch) {
                         message(`All FPS improvements disabled`);
                         break
                     case "1":
+                        if (mode === 3) {
+                            showAll();
+                        }
                         mode = 1;
                         config.hideAllAbnormies = true;
                         message(`FPS mode set to 1, projectiles hidden and abnormalities disabled`);
                         break
                     case "2":
+                        if (mode === 3) {
+                            showAll();
+                        }
                         mode = 2;
                         config.hideAllAbnormies = true;
                         config.hitOther = true;
@@ -508,8 +536,16 @@ module.exports = function FpsUtils2(dispatch) {
                 break
             case "proj":
             case "projectile":
-                config.hideProjectiles = !config.hideProjectiles;
-                message(`Hiding of ALL projectile effects ${config.hideProjectiles ? 'en' : 'dis'}abled`);
+                switch (arg) {
+                    case "all":
+                        config.hideProjectiles = !config.hideProjectiles;
+                        message(`Hiding of ALL projectile effects ${config.hideProjectiles ? 'en' : 'dis'}abled`);
+                        break
+                    case "blacklist":
+                        config.blacklistProjectiles = !config.blacklistProjectiles;
+                        message(`Hiding of ALL projectile effects ${config.blacklistProjectiles ? 'en' : 'dis'}abled`);
+                        break
+                }
                 break
             default:
                 message(`Unknown command! Please refer to the readme for more information`);
@@ -657,7 +693,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_DESPAWN_USER', 3, {order: -901}, (event) => {
+    dispatch.hook('S_DESPAWN_USER', 3, {order: 999}, (event) => {
         delete hiddenUsers[event.gameId];
         delete spawnedPlayers[event.gameId];
     });
@@ -717,7 +753,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_ACTION_STAGE', 4, (event) => {
+    dispatch.hook('S_ACTION_STAGE', 4, {order: 999}, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
@@ -736,14 +772,22 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_START_USER_PROJECTILE', 5, (event) => {
-        if (!event.gameId.equals(myId) && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles))
+    dispatch.hook('S_START_USER_PROJECTILE', 5, {order: 999}, (event) => {
+        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles)) {
             return false;
+        }
+        if (config.blacklistProjectiles && config.hiddenProjectiles.includes(event.skill)) {
+            return false;
+        }
     });
 
-    dispatch.hook('S_SPAWN_PROJECTILE', 3, (event) => {
-        if (!event.id.equals(myId) && (hiddenUsers[event.id] || mode > 0 || config.hideProjectiles))
+    dispatch.hook('S_SPAWN_PROJECTILE', 3, {order: 999}, (event) => {
+        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles)) {
             return false;
+        }
+        if (config.blacklistProjectiles && config.hiddenProjectiles.includes(event.skill)) {
+            return false;
+        }
     });
 
     dispatch.hook('S_FEARMOVE_STAGE', 1, (event) => {
@@ -762,7 +806,7 @@ module.exports = function FpsUtils2(dispatch) {
         if (config.blacklistAbnormies && config.hiddenAbnormies.includes(event.id)) {
             return false;
         }
-        if (config.hideAllAbnormies && !event.target.equals(myId)) {
+        if (config.hideAllAbnormies && !event.target.equals(myId) && spawnedPlayers[event.target]) {
             return false;
         }
     });
