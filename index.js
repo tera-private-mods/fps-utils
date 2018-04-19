@@ -324,7 +324,10 @@ module.exports = function FpsUtils2(dispatch) {
 // ~~~ * Commands * ~~~
 
     command.add('fps', (cmd, a, arg2) => {
-        arg = a.toLowerCase();//easier than replacing everything else
+        if (typeof a !== "undefined") {
+            arg = a.toLowerCase();
+        }
+        //easier than replacing everything else
         switch (cmd) {
             case "mode":
             case "state":
@@ -498,7 +501,7 @@ module.exports = function FpsUtils2(dispatch) {
                         break
                     case "damage":
                         config.hitDamage = !config.hitDamage;
-                        message(`Hiding of the players skill damagen numbers ${config.hitDamage ? 'en' : 'dis'}abled`);
+                        message(`Hiding of the players skill damage numbers ${config.hitDamage ? 'en' : 'dis'}abled`);
                         break
                     default:
                         message(`Unrecognized sub-command "${arg}"!`);
