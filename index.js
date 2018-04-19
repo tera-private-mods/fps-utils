@@ -317,14 +317,14 @@ module.exports = function FpsUtils2(dispatch) {
 
 
     let spawnedPlayers = {},
-            blacklisted = config.blacklistedNames,
             mode = config.mode,
             myId,
             hiddenNpcs = {},
             hiddenUsers = {};
 // ~~~ * Commands * ~~~
 
-    command.add('fps', (cmd, arg, arg2) => {
+    command.add('fps', (cmd, a, arg2) => {
+        arg = a.toLowerCase();//easier than replacing everything else
         switch (cmd) {
             case "mode":
             case "state":
@@ -367,7 +367,7 @@ module.exports = function FpsUtils2(dispatch) {
                 break
             case "hide":
                 if (typeof arg === "string" && arg !== null) {
-                    if (blacklisted.includes(arg)) {
+                    if (config.blacklistedNames.includes(arg)) {
                         message(`Player "${arg}" already hidden!`);
                         return;
                     } else
@@ -396,12 +396,12 @@ module.exports = function FpsUtils2(dispatch) {
                         message(`Class/Role "${arg}" already hidden!`);
                         return;
                     }
-                    if (!spawnedPlayers[arg]) {
-                        message(`Player ${arg} not spawned in, hiding anyway!`);
-                    } else {
-                        message(`Player "${arg}" hidden!`);
-                    }
-                    blacklisted.push(arg);
+                    // if (!spawnedPlayers[arg]) {
+                    //   message(`Player ${arg} not spawned in, hiding anyway!`);
+                    // } else {
+                    message(`Player "${arg}" hidden!`);
+                    // }
+                    config.blacklistedNames.push(arg);
                     hidePlayer(arg);
                     return;
                 } else
@@ -409,6 +409,13 @@ module.exports = function FpsUtils2(dispatch) {
                 break
             case "show":
                 if (typeof arg === "string" && arg !== null) {
+                    if (config.blacklistedNames.includes(arg)) {
+                        showPlayer(arg);
+                        removeName(config.blacklistedNames, arg);
+                        message(`Player "${arg}" shown!`);
+                        saveConfig();
+                        return;
+                    }
                     if ((config.classNames.includes(arg) && config.hiddenClasses.includes(arg)) || (config.hiddenRoles.includes(arg) && config.roleNames.includes(arg))) {
                         for (let i in config.classes) {
                             if (config.classes[i].name === arg || config.classes[i].role.includes(arg)) {//loops are fun, right?
@@ -434,19 +441,15 @@ module.exports = function FpsUtils2(dispatch) {
                     } else if (!config.hiddenClasses.includes(arg) || !config.hiddenRoles.includes(arg)) {
                         message(`Class/Role "${arg}" already displayed!!`);
                         return;
-                    }
-                    if (!blacklisted.includes(arg)) {
+                    } else
+                    if (!config.blacklistedNames.includes(arg)) {
                         message(`Player "${arg}" is not hidden!`);
                         return;
                     }
-                    showPlayer(arg);
-                    removeName(blacklisted, arg);
-                    message(`Player "${arg}" shown!`);
-                    saveConfig();
                 }
                 break
             case "list":
-                message(`Hidden players: ${blacklisted}`);
+                message(`Hidden players: ${config.blacklistedNames}`);
                 message(`Hidden classes: ${config.hiddenClasses}`);
                 message(`Hidden roles: ${config.hiddenRoles}`);
                 break
@@ -720,7 +723,7 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_EACH_SKILL_RESULT', 6, (event) => {
-        if (event.target.equals(myId) || event.owner.equals(myId)) {
+        if (event.source.equals(myId) || event.owner.equals(myId)) {
             if (config.hitMe) {
                 event.skill = '';
                 return true;
