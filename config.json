@@ -1,5 +1,5 @@
 {
-    "version": 1,
+    "version": "1.011",
     "mode": "0",
     "hideFirewworks": false,
     "hideAllAbnormies": false,
@@ -7,7 +7,12 @@
     "blacklistNpcs": false,
     "blacklistSkills": false,
     "blacklistAbnormies": false,
+    "hideProjectiles": false,
     "hiddenAbnormies": [],
+    "blacklistProjectiles": true,
+    "hiddenProjectiles": [
+        67379784
+    ],
     "hitMe": false,
     "hitOther": false,
     "hitDamage": false,
