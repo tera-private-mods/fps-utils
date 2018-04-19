@@ -160,14 +160,7 @@ module.exports = function FpsUtils2(dispatch) {
     //FORGIVE ME FATHER FOR I HAVE SINNED AND I KNOW NOT HOW TO DO THIS ANOTHER WAY
     if (config.version !== "1.01" && config.version !== "1.011") {
         firstRun = true;
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');// DO YOU SEE ME YET
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
-        log('OUTDATED FPS UTILS CONFIG DETECTED, PLEASE SEE THE README FOR INFORMATION');
+        log('FPS-Utils has undergone major changes, and your configuration had to be reset. Please read https://github.com/codeagon/fps-utils/ for further information!');
         config = {
             "version": "1.011",
             "mode": "0",
