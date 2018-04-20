@@ -804,7 +804,7 @@ module.exports = function FpsUtils2(dispatch) {
         if (config.blacklistAbnormies && config.hiddenAbnormies.includes(event.id)) {
             return false;
         }
-        if (config.hideAllAbnormies && !event.target.equals(myId) && (spawnedPlayers[event.target] && event.source)) {
+        if (config.hideAllAbnormies && !event.target.equals(myId) && (spawnedPlayers[event.target] && spawnedPlayers[event.source])) {
             return false;
         }
     });
