@@ -790,12 +790,12 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_FEARMOVE_STAGE', 1, (event) => {
-        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target]) {
+        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target] || hiddenNpcs[event.target]) {
             return false;
         }
     });
     dispatch.hook('S_FEARMOVE_END', 1, (event) => {
-        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target]) {
+        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target] || hiddenNpcs[event.target]) {
             return false;
         }
     });
