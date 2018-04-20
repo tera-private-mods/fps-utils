@@ -317,7 +317,6 @@ module.exports = function FpsUtils2(dispatch) {
 
 
     let spawnedPlayers = {},
-            mode = config.mode,
             myId,
             hiddenNpcs = {},
             hiddenUsers = {};
@@ -334,33 +333,33 @@ module.exports = function FpsUtils2(dispatch) {
                 switch (arg) {
                     case "0":
                     case "off":
-                        if (mode === 3) {
+                        if (config.mode === 3) {
                             showAll();
                         }
-                        mode = 0;
+                        config.mode = 0;
                         message(`All FPS improvements disabled`);
                         break
                     case "1":
-                        if (mode === 3) {
+                        if (config.mode === 3) {
                             showAll();
                         }
-                        mode = 1;
+                        config.mode = 1;
                         //config.hideAllAbnormies = true;
                         config.hitOther = true;
                         message(`FPS mode set to 1, projectiles hidden and abnormalities disabled`);
                         break
                     case "2":
-                        if (mode === 3) {
+                        if (config.mode === 3) {
                             showAll();
                         }
-                        mode = 2;
+                        config.mode = 2;
                         // config.hideAllAbnormies = true;
                         config.hitOther = true;
                         message(`FPS mode set to 2, all skill effects disabled`);
                         break
                     case "3":
                         hideAll();
-                        mode = 3;
+                        config.mode = 3;
                         config.hideAllAbnormies = true;
                         config.hitOther = true;
                         message(`FPS mode set to 3, hiding all players, their effects and their hit effects.`);
@@ -645,7 +644,7 @@ module.exports = function FpsUtils2(dispatch) {
             firstRun = false;
         }
         spawnedPlayers[event.gameId] = event;
-        if (mode === 3 || config.blacklistedNames.includes(event.name.toString().toLowerCase()) || config.classes[getClass(event.templateId)].isHidden === true) { //includes should work!!
+        if (config.mode === 3 || config.blacklistedNames.includes(event.name.toString().toLowerCase()) || config.classes[getClass(event.templateId)].isHidden === true) { //includes should work!!
             hiddenUsers[event.gameId] = event;
             return false;
         }
@@ -755,7 +754,7 @@ module.exports = function FpsUtils2(dispatch) {
 
     dispatch.hook('S_ACTION_STAGE', 4, {order: 999}, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
-            if (!event.target.equals(myId) && (mode === 2 || hiddenUsers[event.gameId])) {
+            if (!event.target.equals(myId) && (config.mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
                 return false;
             }
@@ -773,7 +772,7 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_START_USER_PROJECTILE', 5, {order: 999}, (event) => {
-        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles)) {
+        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || config.mode > 0 || config.hideProjectiles)) {
             return false;
         }
         if (config.blacklistProjectiles && config.hiddenProjectiles.includes(event.skill)) {
@@ -782,7 +781,7 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_SPAWN_PROJECTILE', 3, {order: 999}, (event) => {
-        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mode > 0 || config.hideProjectiles)) {
+        if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || config.mode > 0 || config.hideProjectiles)) {
             return false;
         }
         if (config.blacklistProjectiles && config.hiddenProjectiles.includes(event.skill)) {
@@ -791,13 +790,12 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_FEARMOVE_STAGE', 1, (event) => {
-        if (!event.target.equals(myId) && (mode === 3 || hiddenUsers[event.target] || hiddenNpcs[event.target])) {
+        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target]) {
             return false;
         }
     });
-
     dispatch.hook('S_FEARMOVE_END', 1, (event) => {
-        if (!event.target.equals(myId) && (mode === 3 || hiddenUsers[event.target] || hiddenNpcs[event.target])) {
+        if ((!event.target.equals(myId) && config.mode === 3) || hiddenUsers[event.target]) {
             return false;
         }
     });
