@@ -519,7 +519,7 @@ module.exports = function FpsUtils2(dispatch) {
                 switch (arg) {
                     case "all":
                         config.hideAllAbnormies = !config.hideAllAbnormies;
-                        message(`Hiding of ALL abnormality effects ${config.hideAllAbnormies ? 'en' : 'dis'}abled`);
+                        message(`Hiding of ALL abnormality effects on players ${config.hideAllAbnormies ? 'en' : 'dis'}abled`);
                         break
                     case "blacklist":
                     case "black":
@@ -635,9 +635,11 @@ module.exports = function FpsUtils2(dispatch) {
 
 // ~~~* Hooks * ~~~
 // note: for skills, do if classes[event.templateId].blockedSkills !== 
+
     dispatch.hook('S_LOGIN', 10, (event) => {
         myId = event.gameId;
     });
+
     dispatch.hook('S_SPAWN_USER', 13, {order: 9999}, (event) => {
         if (firstRun !== false) {
             message(`FPS-UTILS has been updated! Please read the readme for more information!`);
@@ -752,6 +754,8 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
+
+
     dispatch.hook('S_ACTION_STAGE', 4, {order: 999}, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (config.mode === 2 || hiddenUsers[event.gameId])) {
@@ -800,7 +804,20 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
+    dispatch.hook('S_USER_MOVETYPE', 'raw', (event) => { //this little boi crashes us, raw due to def missing from caali
+        return false;
+    });
+
+    dispatch.hook('S_ABNORMALITY_REFRESH', 1, (event) => {
+        if (hiddenUsers[event.target]) {
+            return false;
+        }
+    });
+
     dispatch.hook('S_ABNORMALITY_BEGIN', 2, {order: 999}, (event) => {
+        if (hiddenUsers[event.target]) {
+            return false;
+        }
         if (config.blacklistAbnormies && config.hiddenAbnormies.includes(event.id)) {
             return false;
         }
