@@ -322,10 +322,7 @@ module.exports = function FpsUtils2(dispatch) {
             hiddenUsers = {};
 // ~~~ * Commands * ~~~
 
-    command.add('fps', (cmd, a, arg2) => {
-        if (typeof a !== "undefined") { //wrong arg idiot
-            arg = a.toLowerCase();
-        }
+    command.add('fps', (cmd, arg, arg2) => {
         //easier than replacing everything else
         switch (cmd) {
             case "mode":
@@ -738,7 +735,7 @@ module.exports = function FpsUtils2(dispatch) {
                 return true;
             }
         }
-        if (config.hitOther && (spawnedPlayers[event.owner] || spawnedPlayers[event.source])) {
+        if (config.hitOther && (spawnedPlayers[event.owner] || spawnedPlayers[event.source]) && !event.target.equals(myId)) {
             event.skill = '';
             return true;
         }
