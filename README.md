@@ -34,7 +34,6 @@ FPS-Utils has received a facelift, several features have changed, fixed or remov
 Command | Argument(s) | Example | Description
 ---|---|---|---
 **!fps mode** | 1, 2, 3, off | !fps mode 1| Sets the current fps-utils optimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. All modes toggle`fps hit on`
-**!fps tc** | remove, party, on | !fps tc remove | Hides traverse cut spam.`Remove`stops the buff from being refreshed except for when it ends,`party`stops you from being spammed with party members getting the buff
 **!fps hit** | me, damage, other | !fps hit other | Enables/Disables hiding of hit effects for the player.`Damage`toggles damage numbers off.`Me` turns hit effects off for **you** (disables damage numbers also unfortunately), other disables effects for other users (recommended).
 **!fps hide** | playername, dps, healers, tanks, ranged, classname | !fps hide Spacecats, !fps hide valkyrie |hides dps, healers, tanks or ranged classes, any username or a class, class names can be found in`config.json`.
 **!fps show** | playername, dps, healers, tanks, ranged, classname| !fps show Memeboy | Takes the same arguments as above and instead unhides them.
