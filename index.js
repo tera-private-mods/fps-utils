@@ -504,7 +504,7 @@ module.exports = function FpsUtils2(dispatch) {
     });
 
     dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, {order: 9999}, (event) => {
-        if (config.showStyle) {
+        if (config.showStyle && event.gameId !== myId) {
             event.weaponEnchant = 0;
             event.body = 0;
             event.hand = 0;
