@@ -544,7 +544,7 @@ module.exports = function FpsUtils2(dispatch) {
         hiddenNpcs = {};
     });
 
-    dispatch.hook('S_SPAWN_NPC', 6, (event) => {
+    dispatch.hook('S_SPAWN_NPC', 8, (event) => {
         if (config.hideAllSummons && event.huntingZoneId === 1023) {
             hiddenNpcs[event.gameId] = event; // apparently NPCs get feared and crash the client too
             return false;
