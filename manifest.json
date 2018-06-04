@@ -17,7 +17,7 @@
       "S_SPAWN_PROJECTILE":3,
       "S_FEARMOVE_STAGE":1,
       "S_FEARMOVE_END":1,
-      "S_SPAWN_NPC":6,
+      "S_SPAWN_NPC":8,
       "S_DESPAWN_NPC":3
    }
 }
