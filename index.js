@@ -161,10 +161,6 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
 
-    let spawnedPlayers = {},
-            myId,
-            hiddenNpcs = {},
-            hiddenUsers = {};
 // ~~~ * Commands * ~~~
 
     command.add('fps', (cmd, arg, arg2) => {
