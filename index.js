@@ -6,15 +6,18 @@ const fs = require('fs');
 
 
 module.exports = function FpsUtils2(dispatch) {
-    //
-    let firstRun = false;
+    let firstRun = false,
+            myId,
+            spawnedPlayers = {},
+            hiddenUsers = {},
+            hiddenNpcs = {};
     const command = Command(dispatch);
     try { //generate config
-        config = require('./config.json');
+        var config = require('./config.json');
     } catch (e) {
         log("CONFIG FILE NOT FOUND, GENERATING ONE NOW");
         firstRun = true;
-        config = {
+        var config = {
             "version": "1.011",
             "mode": "0",
             "hideFirewworks": false,
