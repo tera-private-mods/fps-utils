@@ -7,17 +7,18 @@ const fs = require('fs');
 
 module.exports = function FpsUtils2(dispatch) {
     let firstRun = false,
-            myId,
-            spawnedPlayers = {},
-            hiddenUsers = {},
-            hiddenNpcs = {};
+        myId,
+        config,
+        spawnedPlayers = {},
+        hiddenUsers = {},
+        hiddenNpcs = {};
     const command = Command(dispatch);
     try { //generate config
-        var config = require('./config.json');
+        config = require('./config.json');
     } catch (e) {
         log("CONFIG FILE NOT FOUND, GENERATING ONE NOW");
         firstRun = true;
-        var config = {
+        config = {
             "version": "1.011",
             "mode": "0",
             "hideFirewworks": false,
@@ -161,7 +162,7 @@ module.exports = function FpsUtils2(dispatch) {
         saveConfig();
     }
 
-// ~~~ * Commands * ~~~
+    // ~~~ * Commands * ~~~
 
     command.add('fps', (cmd, arg, arg2) => {
         //easier than replacing everything else
@@ -212,31 +213,31 @@ module.exports = function FpsUtils2(dispatch) {
                         message(`Player "${arg}" already hidden!`);
                         return;
                     } else
-                    if ((config.classNames.includes(arg) && !config.hiddenClasses.includes(arg)) || (config.roleNames.includes(arg) && !config.hiddenRoles.includes(arg))) {
-                        for (let i in config.classes) {
-                            if ((config.classes[i].name === arg || config.classes[i].role.includes(arg)) && config.classes[i].isHidden !== true) { //loops are fun, right?
-                                config.classes[i].isHidden = true;
-                                if (config.classes[i].name === arg) {
-                                    config.hiddenClasses.push(arg);
-                                }
-                                if (config.classes[i].role.includes(arg)) {
-                                    config.hiddenRoles.push(arg);
-                                }
-                                let classtohide = config.classes[i].model;
-                                for (let i in spawnedPlayers) {
-                                    if (getClass(spawnedPlayers[i].templateId) === classtohide) {
-                                        hidePlayer(spawnedPlayers[i].name);
+                        if ((config.classNames.includes(arg) && !config.hiddenClasses.includes(arg)) || (config.roleNames.includes(arg) && !config.hiddenRoles.includes(arg))) {
+                            for (let i in config.classes) {
+                                if ((config.classes[i].name === arg || config.classes[i].role.includes(arg)) && config.classes[i].isHidden !== true) { //loops are fun, right?
+                                    config.classes[i].isHidden = true;
+                                    if (config.classes[i].name === arg) {
+                                        config.hiddenClasses.push(arg);
+                                    }
+                                    if (config.classes[i].role.includes(arg)) {
+                                        config.hiddenRoles.push(arg);
+                                    }
+                                    let classtohide = config.classes[i].model;
+                                    for (let i in spawnedPlayers) {
+                                        if (getClass(spawnedPlayers[i].templateId) === classtohide) {
+                                            hidePlayer(spawnedPlayers[i].name);
+                                        }
                                     }
                                 }
                             }
+                            saveConfig();
+                            message(`Class/Role ${arg} hidden`);
+                            return;
+                        } else if (config.hiddenClasses.includes(arg) || config.hiddenRoles.includes(arg)) {
+                            message(`Class/Role "${arg}" already hidden!`);
+                            return;
                         }
-                        saveConfig();
-                        message(`Class/Role ${arg} hidden`);
-                        return;
-                    } else if (config.hiddenClasses.includes(arg) || config.hiddenRoles.includes(arg)) {
-                        message(`Class/Role "${arg}" already hidden!`);
-                        return;
-                    }
                     // if (!spawnedPlayers[arg]) {
                     //   message(`Player ${arg} not spawned in, hiding anyway!`);
                     // } else {
@@ -283,10 +284,10 @@ module.exports = function FpsUtils2(dispatch) {
                         message(`Class/Role "${arg}" already displayed!!`);
                         return;
                     } else
-                    if (!config.blacklistedNames.includes(arg)) {
-                        message(`Player "${arg}" is not hidden!`);
-                        return;
-                    }
+                        if (!config.blacklistedNames.includes(arg)) {
+                            message(`Player "${arg}" is not hidden!`);
+                            return;
+                        }
                 }
                 break
             case "list":
@@ -314,12 +315,12 @@ module.exports = function FpsUtils2(dispatch) {
                                     message(`Hidding ALL skills  for the class ${arg2} ${config.classes[i].blockingSkills ? 'en' : 'dis'}abled`);
                                     saveConfig();
                                     return;
-                                    break
                                 }
                             }
 
                         } else
                             message(`Class ${arg2} not found!`);
+                        break
                 }
                 break
             case "npcs":
@@ -390,7 +391,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
         saveConfig();
     });
-// ~~~ * Functions * ~~~
+    // ~~~ * Functions * ~~~
     function message(msg) {
         command.message(`<font color="#ccb7ef">  [FPS-UTILS] - </font> <font color="#e0d3f5">${msg}`);
     }
@@ -401,8 +402,8 @@ module.exports = function FpsUtils2(dispatch) {
 
     function saveConfig() {
         fs.writeFile(path.join(__dirname, 'config.json'), JSON.stringify(
-                config, null, 4), err => {
-        });
+            config, null, 4), err => {
+            });
     }
 
     function hidePlayer(name) {
@@ -471,14 +472,14 @@ module.exports = function FpsUtils2(dispatch) {
         console.log(`[FPS-UTILS] - ${msg}`);
     }
 
-// ~~~* Hooks * ~~~
-// note: for skills, do if classes[event.templateId].blockedSkills !== 
+    // ~~~* Hooks * ~~~
+    // note: for skills, do if classes[event.templateId].blockedSkills !== 
 
     dispatch.hook('S_LOGIN', 10, (event) => {
         myId = event.gameId;
     });
 
-    dispatch.hook('S_SPAWN_USER', 13, {order: 9999}, (event) => {
+    dispatch.hook('S_SPAWN_USER', 13, { order: 9999 }, (event) => {
         if (firstRun !== false) {
             message(`FPS-UTILS has been updated! Please read the readme for more information!`);
             firstRun = false;
@@ -502,7 +503,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, {order: 9999}, (event) => {
+    dispatch.hook('S_USER_EXTERNAL_CHANGE', 6, { order: 9999 }, (event) => {
         if (config.showStyle && !event.gameId.equals(myId)) {
             event.weaponEnchant = 0;
             event.body = 0;
@@ -517,7 +518,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_SPAWN_USER', 13, {order: 99999, filter: {fake: null}}, (event) => {
+    dispatch.hook('S_SPAWN_USER', 13, { order: 99999, filter: { fake: null } }, (event) => {
         if (config.showStyle) {
             event.weaponEnchant = 0;
             event.body = 0;
@@ -532,7 +533,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_DESPAWN_USER', 3, {order: 999}, (event) => {
+    dispatch.hook('S_DESPAWN_USER', 3, { order: 999 }, (event) => {
         delete hiddenUsers[event.gameId];
         delete spawnedPlayers[event.gameId];
     });
@@ -565,10 +566,10 @@ module.exports = function FpsUtils2(dispatch) {
         delete hiddenNpcs[event.gameId];
     });
 
-    dispatch.hook('S_EACH_SKILL_RESULT', 6, (event) => {
+    dispatch.hook('S_EACH_SKILL_RESULT', dispatch.base.majorPatchVersion < 74 ? 10 : 12, { order: 200 }, (event) => {
         if (event.source.equals(myId) || event.owner.equals(myId)) {
             if (config.hitMe) {
-                event.skill = '';
+                event.skill.id = '';
                 return true;
             }
             if (config.hitDamage) {
@@ -577,7 +578,7 @@ module.exports = function FpsUtils2(dispatch) {
             }
         }
         if (config.hitOther && (spawnedPlayers[event.owner] || spawnedPlayers[event.source]) && !event.target.equals(myId)) {
-            event.skill = '';
+            event.skill.id = '';
             return true;
         }
     });
@@ -594,7 +595,7 @@ module.exports = function FpsUtils2(dispatch) {
 
 
 
-    dispatch.hook('S_ACTION_STAGE', 4, {order: 999}, (event) => {
+    dispatch.hook('S_ACTION_STAGE', 4, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (config.mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
@@ -613,7 +614,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_START_USER_PROJECTILE', 5, {order: 999}, (event) => {
+    dispatch.hook('S_START_USER_PROJECTILE', 5, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || config.mode > 0 || config.hideProjectiles)) {
             return false;
         }
@@ -622,7 +623,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_SPAWN_PROJECTILE', 3, {order: 999}, (event) => {
+    dispatch.hook('S_SPAWN_PROJECTILE', 3, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || config.mode > 0 || config.hideProjectiles)) {
             return false;
         }
@@ -642,7 +643,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_USER_MOVETYPE', 'raw', (event) => { //this little boi crashes us, raw due to def missing from caali
+    dispatch.hook('S_USER_MOVETYPE', 'raw', () => { //this little boi crashes us, raw due to def missing from caali
         return false;
     });
 
@@ -652,7 +653,7 @@ module.exports = function FpsUtils2(dispatch) {
         }
     });
 
-    dispatch.hook('S_ABNORMALITY_BEGIN', 2, {order: 999}, (event) => {
+    dispatch.hook('S_ABNORMALITY_BEGIN', 2, { order: 999 }, (event) => {
         if (hiddenUsers[event.target]) {
             return false;
         }
