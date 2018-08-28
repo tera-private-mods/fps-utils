@@ -1,17 +1,19 @@
+
+
 # FPS-UTILS
 
   Written for TERA-Proxy, a free script filled with features dedicated to improving your FPS.
   
+  ![](https://i.imgur.com/mEYwWxN.png)
   ****
 
   **To support development of this mod**:
-  
-  Throw money [here](https://www.patreon.com/saegusa) to show support for Saegusa, the original developer of this mod.
-  
-  Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)
+    Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)
+    
+   Throw money [here](https://www.patreon.com/saegusa) to show support for Saegusa, the original developer of this mod.
   ****
 - [FPS-UTILS](#fps-utils)
-  - [Big Note](#big-note)
+  - [BIG Note](#big-note)
   - [Installation](#installation)
   - [Commands](#commands)
     - [Additional command info](#additional-command-info)
@@ -20,11 +22,12 @@
   - [Suggestions](#suggestions)
   - [Credits](#credits)
 
-## Big Note
-FPS-Utils has received a facelift, several features have changed, fixed or removed entirely, so please read the readme!
+
+## BIG Note
+FPS-Utils now comes with [badGUI support](https://github.com/codeagon/badGui), I highly recommend downloading it for additional functionality and ease of use. This update also adds a few new commands as well as fixing a couple of bugs.
 
 ## Installation 
-***Note***: *If you're using [Caali's proxy](https://discord.gg/maqBmJV) fps-utils will be automatically updated and already installed so will not need to do the following.*
+***Note***: *If you're using [Caali's proxy](https://discord.gg/maqBmJV) fps-utils will be automatically updated and already installed so you will not need to do the following.*
 * put the script folder "fps-utils" into bin/node_modules
 * Log the game using the proxy.
 
@@ -33,6 +36,9 @@ FPS-Utils has received a facelift, several features have changed, fixed or remov
 
 Command | Argument(s) | Example | Description
 ---|---|---|---
+**!fps gui** |  | !fps gui| Opens up the GUI. granting access to all of these commands.
+**!fps party** |  | !fps party| Hides all other players except those in your party
+**!fps gui npcsearch** |  | !fps npcsearch vergos| Opens up a list of NPCs with names matching your search query 
 **!fps mode** | 1, 2, 3, off | !fps mode 1| Sets the current fps-utils optimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. All modes toggle`fps hit on`
 **!fps hit** | me, damage, other | !fps hit other | Enables/Disables hiding of hit effects for the player.`Damage`toggles damage numbers off.`Me` turns hit effects off for **you** (disables damage numbers also unfortunately), other disables effects for other users (recommended).
 **!fps hide** | playername, dps, healers, tanks, ranged, classname | !fps hide Spacecats, !fps hide valkyrie |hides dps, healers, tanks or ranged classes, any username or a class, class names can be found in`config.json`.
@@ -52,12 +58,13 @@ Command | Argument(s) | Example | Description
 *  To get projectile skill IDs you will have to log them yourself, I will add something that does this for you in a later update
   
 ## Update Log
-* Rewrote the entire mod.
+* Rewrote the entire mod, again.
+* 
 ## Work In Progress:
-
+Various GUI improvements, fix for mount stuff, projectile and effect lists, fix formatting.
 
 ## Suggestions
-* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 on pinkies discord)
+* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 in pinkies/caali's discord)
 
 ## Credits
 The following people have helped in making FPS-Utils:

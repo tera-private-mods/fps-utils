@@ -1,4 +1,11 @@
 {
+    "disableAutoUpdate": false,
+	"options": {
+        "niceName": "FPS-UTILS",
+        "settingsVersion": 1,
+        "settingsFile": "config.json",
+        "settingsMigrator": "setting_migration.js"
+    },
     "servers": ["https://raw.githubusercontent.com/codeagon/fps-utils/master/"],
     "supportUrl": "https://discord.gg/maqBmJV"
 }
