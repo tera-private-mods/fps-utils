@@ -3,7 +3,7 @@
 const DefaultSettings = {
         "mode": 0,
 		"party": false,
-        "hideFirewworks": false,
+        "hideFireworks": false,
         "hideAllAbnormies": true,
         "hideAllSummons": false,
         "blacklistNpcs": false,

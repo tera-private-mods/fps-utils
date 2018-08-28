@@ -702,7 +702,7 @@ module.exports = function FpsUtils2(mod) {
                 }
             }
         }
-        if (mod.settings.fireworks && event.huntingZoneId === 1023 && (event.templateId === 60016000 || event.templateId === 80037000)) {
+        if (mod.settings.hideFireworks && event.huntingZoneId === 1023 && (event.templateId === 60016000 || event.templateId === 80037000)) {
             return false;
         }
     });
