@@ -759,12 +759,18 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_START_USER_PROJECTILE', 5, { order: 999 }, (event) => {
+    mod.hook('S_START_USER_PROJECTILE', mod.base.majorPatchVersion >= 75 ? 9 : mod.base.majorPatchVersion >= 74 ? 8 : 5, { order: 999 }, (event) => { // end my life
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
-        if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill)) {
-            return false;
+        if (mod.base.majorPatchVersion >= 74) {
+            if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill.id)) {
+                return false;
+            }
+        } else {
+            if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill - 0x4000000)) {
+                return false;
+            }
         }
     });
 
