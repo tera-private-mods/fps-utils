@@ -774,7 +774,7 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_SPAWN_PROJECTILE', 3, { order: 999 }, (event) => {
+    mod.hook('S_SPAWN_PROJECTILE', mod.base.majorPatchVersion >= 74 ? 5 : 4, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
