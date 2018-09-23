@@ -740,7 +740,7 @@ module.exports = function FpsUtils2(mod) {
 
 
 
-    mod.hook('S_ACTION_STAGE', mod.base.majorPatchVersion >= 74 ? 8 : 7, { order: 999 }, (event) => {
+    mod.hook('S_ACTION_STAGE', mod.base.majorPatchVersion >= 75 ? 8 : 7, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (mod.settings.mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
@@ -759,7 +759,7 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_START_USER_PROJECTILE', mod.base.majorPatchVersion >= 74 ? 9 : 8, { order: 999 }, (event) => { // end my life
+    mod.hook('S_START_USER_PROJECTILE', mod.base.majorPatchVersion >= 75 ? 9 : 8, { order: 999 }, (event) => { // end my life
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
