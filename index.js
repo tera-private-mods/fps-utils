@@ -601,7 +601,7 @@ module.exports = function FpsUtils2(mod) {
     }
 
     function updateLoc(event) {
-        mod.send('S_USER_LOCATION', 3, {
+        mod.send('S_USER_LOCATION', 5, {
             gameId: event.gameId,
             loc: event.loc,
             dest: event.loc,
@@ -711,7 +711,7 @@ module.exports = function FpsUtils2(mod) {
         delete hiddenNpcs[event.gameId];
     });
 
-    mod.hook('S_EACH_SKILL_RESULT', mod.base.majorPatchVersion < 74 ? 10 : 12, { order: 200 }, (event) => {
+    mod.hook('S_EACH_SKILL_RESULT', 12, { order: 200 }, (event) => {
         if (event.source.equals(myId) || event.owner.equals(myId)) {
             if (mod.settings.hitMe) {
                 event.skill.id = '';
@@ -728,7 +728,7 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_USER_LOCATION', 3, (event) => {
+    mod.hook('S_USER_LOCATION', 5, (event) => {
         if (hiddenUsers[event.gameId] === undefined) {
             return;
         }
@@ -740,7 +740,7 @@ module.exports = function FpsUtils2(mod) {
 
 
 
-    mod.hook('S_ACTION_STAGE', mod.base.majorPatchVersion >= 74 ? 7 : 6, { order: 999 }, (event) => {
+    mod.hook('S_ACTION_STAGE', mod.base.majorPatchVersion >= 74 ? 8 : 7, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId]) {
             if (!event.target.equals(myId) && (mod.settings.mode === 2 || hiddenUsers[event.gameId])) {
                 updateLoc(event);
@@ -759,22 +759,16 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_START_USER_PROJECTILE', mod.base.majorPatchVersion >= 75 ? 9 : mod.base.majorPatchVersion >= 74 ? 8 : 5, { order: 999 }, (event) => { // end my life
+    mod.hook('S_START_USER_PROJECTILE', mod.base.majorPatchVersion >= 74 ? 9 : 8, { order: 999 }, (event) => { // end my life
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
-        if (mod.base.majorPatchVersion >= 74) {
-            if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill.id)) {
-                return false;
-            }
-        } else {
-            if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill - 0x4000000)) {
-                return false;
-            }
+        if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill.id)) {
+            return false;
         }
     });
 
-    mod.hook('S_SPAWN_PROJECTILE', mod.base.majorPatchVersion >= 74 ? 5 : 4, { order: 999 }, (event) => {
+    mod.hook('S_SPAWN_PROJECTILE', 5, { order: 999 }, (event) => {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
