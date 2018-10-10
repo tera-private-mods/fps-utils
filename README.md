@@ -6,6 +6,7 @@
   
   ![](https://i.imgur.com/mEYwWxN.png)
   ****
+#  **Please do not use this script on the En Masse Entertainment of TERA, thanks.** 
 
   **To support development of this mod**:
     Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)
@@ -45,7 +46,7 @@ Command | Argument(s) | Example | Description
 **!fps show** | playername, dps, healers, tanks, ranged, classname| !fps show Memeboy | Takes the same arguments as above and instead unhides them.
 **!fps list** |  | !fps list |  Prints a list of characters/classes/roles currently hidden by *hide* command to chat.
 **!fps fireworks** | None | !fps fireworks | Enables/Disables hiding of firework entities in open world.
-**!fps summons** | None | !fps summons | Enables/Disables hiding of ALL summoned entities(gunner turrets, mystic thralls, etc);
+**!fps summons** | empty, mine | !fps summons | Enables/Disables hiding of  summoned entities(gunner turrets, mystic thralls, etc) fps summons mine hides your own summons
 **!fps skill** | blacklist, class <classname>  | !fps skill class lancer | `black` toggles the skill blacklist feature, `class <classname>`toggles displaying of ALL skills for that class
 **!fps npc** | None | !fps npc | Enables/Disables hiding of ALL NPCs within the npc blacklist
 **!fps effects** | all, blacklist | !fps effects blacklist | Toggles showing of either blacklisted abnormality effects or all abnormality effects (your own ones still display normally in all mode, however not in blacklist mode).

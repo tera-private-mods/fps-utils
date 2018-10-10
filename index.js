@@ -233,6 +233,7 @@ module.exports = function FpsUtils2(mod) {
                     { text: `&#09;<font color="${mod.settings.hitDamage ? green : red}"> [Hide damage numbers] </font><br><br>`, command: `fps hit other;fps gui` },
                     { text: `<font color="${mod.settings.party ? green : red}"> [Hide players not in your party] </font><br>`, command: `fps party;fps gui` },
                     { text: `<font color="${mod.settings.hideAllSummons ? green : red}"> [Hide Summons] </font><br>`, command: `fps summons;fps gui` },
+                    { text: `<font color="${mod.settings.keepMySummons ? green : red}"> [Hide your own summons] </font><br>`, command: `fps summons mine;fps gui` },
                     { text: `<font color="${mod.settings.hideFireworks ? green : red}"> [Hide Fireworks] </font><br>`, command: `fps fireworks;fps gui` },
                     { text: `<font color="${mod.settings.showStyle ? green : red}"> [Hide other players costumes- requires a loading screen] </font><br><br>`, command: `fps style;fps gui` },
                     { text: `Hide Classes/Roles (click here for more options)<br><br>`, command: `fps gui role` },
@@ -400,8 +401,16 @@ module.exports = function FpsUtils2(mod) {
                 message(`Hidden roles: ${mod.settings.hiddenRoles}`);
                 break
             case "summons":
-                mod.settings.hideAllSummons = !mod.settings.hideAllSummons;
-                message(`Hiding of summoned NPCs ${mod.settings.hideAllSummons ? 'en' : 'dis'}abled`);
+                switch (arg) {
+                    case undefined:
+                        mod.settings.hideAllSummons = !mod.settings.hideAllSummons;
+                        message(`Hiding of summoned NPCs ${mod.settings.hideAllSummons ? 'en' : 'dis'}abled`);
+                        break;
+                    case "mine":
+                        mod.settings.keepMySummons = !mod.settings.keepMySummons;
+                        message(`Hiding of owned summoned NPCs ${mod.settings.keepMySummons ? 'dis' : 'en'}abled`);
+                        break;
+                }
                 break
             case "skills":
             case "skill":
@@ -615,6 +624,9 @@ module.exports = function FpsUtils2(mod) {
     // note: for skills, do if classes[event.templateId].blockedSkills !== 
 
     mod.hook('S_LOGIN', 10, (event) => {
+        if ([4107, 4105].includes(event.serverId)) { //someone is totally not going to just delete this line
+            setInterval(message(`Hi, you seem to be using my mod on the NA region of the game, if you could please move to EU, that'd be swell, thanks!`), 180000)
+        }
         myId = event.gameId;
     });
 
@@ -691,6 +703,7 @@ module.exports = function FpsUtils2(mod) {
 
     mod.hook('S_SPAWN_NPC', 9, (event) => {
         if (mod.settings.hideAllSummons && event.huntingZoneId === 1023) {
+            if (mod.settings.keepMySummons && mod.game.me.is(event.owner)) return true;
             hiddenNpcs[event.gameId] = event; // apparently NPCs get feared and crash the client too
             return false;
         }
