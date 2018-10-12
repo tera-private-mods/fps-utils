@@ -624,10 +624,12 @@ module.exports = function FpsUtils2(mod) {
     // note: for skills, do if classes[event.templateId].blockedSkills !== 
 
     mod.hook('S_LOGIN', 10, (event) => {
-        if ([4107, 4105].includes(event.serverId)) { //someone is totally not going to just delete this line
-            setInterval(message(`Hi, you seem to be using my mod on the NA region of the game, if you could please move to EU, that'd be swell, thanks!`), 180000)
-        }
         myId = event.gameId;
+        if ([4107, 4105].includes(event.serverId)) { //someone is totally not going to just delete this line
+            setInterval(() => {
+                message(`Hi, you seem to be using my mod on the NA region of the game, if you could please move to EU, that'd be swell, thanks!`)
+            }, 180000)
+        }
     });
 
     mod.hook('S_SPAWN_USER', 13, { order: 9999 }, (event) => {
