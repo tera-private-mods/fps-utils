@@ -787,7 +787,7 @@ module.exports = function FpsUtils2(mod) {
         if (!event.gameId.equals(myId) && spawnedPlayers[event.gameId] && (hiddenUsers[event.gameId] || mod.settings.mode > 0 || mod.settings.hideProjectiles)) {
             return false;
         }
-        if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill)) {
+        if (mod.settings.blacklistProjectiles && mod.settings.hiddenProjectiles.includes(event.skill.id)) {
             return false;
         }
     });
