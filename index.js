@@ -630,6 +630,7 @@ module.exports = function FpsUtils2(mod) {
                 message(`Hi, you seem to be using my mod on the NA region of the game, if you could please move to EU, that'd be swell, thanks!`)
             }, 180000)
         }
+        console.log('Hi, this mod will no longer be updated due to NA players being NA players. Sorry! Please see the readme for more information about this')
     });
 
     mod.hook('S_SPAWN_USER', 13, { order: 9999 }, (event) => {
@@ -802,6 +803,12 @@ module.exports = function FpsUtils2(mod) {
             return false;
         }
     });
+
+    mod.hook('S_UNICAST_TRANSFORM_DATA', 3, { order: 99999 }, (event) => { //Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+        if (mod.settings.showStyle && !event.gameId.equals(myId)) { //Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+            return false;//Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+        }//Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+    });//Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
     mod.hook('S_USER_MOVETYPE', 'raw', () => { //this little boi crashes us, raw due to def missing from caali
         return false;
