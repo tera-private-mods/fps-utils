@@ -16,6 +16,7 @@ module.exports = function FpsUtils2(mod) {
     const skills = require(`./skillString.json`)
     let data = [],
         gui,
+        NASux,
         useGui = false,
         red = `#e3d6d9`,
         green = `#204ed3`,
@@ -626,13 +627,16 @@ module.exports = function FpsUtils2(mod) {
     mod.hook('S_LOGIN', 10, (event) => {
         myId = event.gameId;
         if ([4107, 4105].includes(event.serverId)) { //someone is totally not going to just delete this line
-            setInterval(() => {
-                message(`Hi, you seem to be using my mod on the NA region of the game, if you could please move to EU, that'd be swell, thanks!`)
+            NASux = setInterval(() => {
+                message(`Hi, you seem to be using my mod on the NA region of the game. As a result of this, I have dropped support for the mod all together and it will be recieving no more updates from me.`)
             }, 180000)
         }
-        console.log('Hi, this mod will no longer be updated due to NA players being NA players. Sorry! Please see the readme for more information about this')
+        //Caali bulli me into delet dis 😢 😢😢😢//console.log('[FPS-UTILS] - Hi, this mod will no longer be updated due to NA players being NA players. Sorry! Please see the readme for more information about this.') 
     });
 
+    mod.game.on('leave_game', () => {
+        clearInterval(NASux)
+    })
     mod.hook('S_SPAWN_USER', 13, { order: 9999 }, (event) => {
         spawnedPlayers[event.gameId] = event;
         if (mod.settings.mode === 3 || mod.settings.blacklistedNames.includes(event.name.toString().toLowerCase()) || mod.settings.classes[getClass(event.templateId)].isHidden === true || (mod.settings.party && !partyMembers.includes(event.name))) { //includes should work!!
