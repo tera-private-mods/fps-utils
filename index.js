@@ -170,7 +170,7 @@ module.exports = function FpsUtils2(mod) {
                     { text: `Sorcerer<br>`, command: `fps gui class sorcerer` },
                     { text: `Archer<br>`, command: `fps gui class archer` },
                     { text: `Priest<br>`, command: `fps gui class priest` },
-                    { text: `Mystic<br>`, command: `fps gui class sorcerer` },
+                    { text: `Mystic<br>`, command: `fps gui class mystic` },
                     { text: `Reaper<br>`, command: `fps gui class reaper` },
                     { text: `Gunner<br>`, command: `fps gui class gunner` },
                     { text: `Brawler<br>`, command: `fps gui class brawler` },
