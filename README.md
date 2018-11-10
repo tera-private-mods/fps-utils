@@ -1,11 +1,4 @@
-
-
 # FPS-UTILS
-
-#  This mod will no longer be updated or maintained due to recent drama surrounding the NA version of the game. I no longer want to provide mods of any kind to a community that doesn't respect the people that provide content for it for free, so I wont. 
-
-# As before, please don't use my mod on TERA NA, even though I know you wont respect my wishes.
-
 
   **To support development of this mod**:
     Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)

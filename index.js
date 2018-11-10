@@ -626,12 +626,6 @@ module.exports = function FpsUtils2(mod) {
 
     mod.hook('S_LOGIN', 10, (event) => {
         myId = event.gameId;
-        if ([4107, 4105].includes(event.serverId)) { //someone is totally not going to just delete this line
-            NASux = setInterval(() => {
-                message(`Hi, you seem to be using my mod on the NA region of the game. As a result of this, I have dropped support for the mod all together and it will be recieving no more updates from me.`)
-            }, 180000)
-        }
-        //Caali bulli me into delet dis 😢 😢😢😢//console.log('[FPS-UTILS] - Hi, this mod will no longer be updated due to NA players being NA players. Sorry! Please see the readme for more information about this.') 
     });
 
     mod.game.on('leave_game', () => {
@@ -824,7 +818,7 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
-    mod.hook('S_ABNORMALITY_BEGIN', 2, { order: 999 }, (event) => {
+    mod.hook('S_ABNORMALITY_BEGIN', 3, { order: 999 }, (event) => {
         if (hiddenUsers[event.target]) {
             return false;
         }
