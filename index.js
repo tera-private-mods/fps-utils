@@ -802,6 +802,18 @@ module.exports = function FpsUtils2(mod) {
         }
     });
 
+    mod.hook('S_MOUNT_VEHICLE', 2, (event) => {
+        if (hiddenUsers[event.gameId]) {
+            hiddenUsers[event.gameId].mount = event.id
+        }
+    });
+
+    mod.hook('S_UNMOUNT_VEHICLE', 2, (event) => {
+        if (hiddenUsers[event.gameId]) {
+            hiddenUsers[event.gameId].mount = 0
+        }
+    });
+
     mod.hook('S_UNICAST_TRANSFORM_DATA', 3, { order: 99999 }, (event) => { //Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
         if (mod.settings.showStyle && !event.gameId.equals(myId)) { //Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
             return false;//Thanks Trance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
