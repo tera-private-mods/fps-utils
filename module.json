@@ -1,11 +1,10 @@
 {
     "disableAutoUpdate": false,
-	"options": {
-        "niceName": "FPS-UTILS",
-        "settingsVersion": 1,
+    "options": {
+        "niceName": "fps-utils",
+        "settingsVersion": 2,
         "settingsFile": "config.json",
-        "settingsMigrator": "setting_migration.js"
+        "settingsMigrator": "./lib/setting_migration.js"
     },
-    "servers": ["https://raw.githubusercontent.com/codeagon/fps-utils/master/"],
-    "supportUrl": "https://discord.gg/maqBmJV"
+    "servers": ["https://raw.githubusercontent.com/Risenio/fps-utils/master/"]
 }

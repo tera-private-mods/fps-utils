@@ -1,71 +1,67 @@
-# FPS-UTILS
+# Fps Utils
+Written for tera-proxy, a free script filled with features dedicated to improve your fps, in the open world, in dungeons and in battlegrounds.
 
-  **To support development of this mod**:
-    Buy me a [covfefe](https://ko-fi.com/codeagon) (I can't actually drink coffee but I will eat your money)
-    
-   Throw money [here](https://www.patreon.com/saegusa) to show support for Saegusa, the original developer of this mod.
-  ****
-- [FPS-UTILS](#fps-utils)
-  - [BIG Note](#big-note)
-  - [Installation](#installation)
-  - [Commands](#commands)
-    - [Additional command info](#additional-command-info)
-  - [Update Log](#update-log)
-  - [Work In Progress:](#work-in-progress)
-  - [Suggestions](#suggestions)
-  - [Credits](#credits)
-
-
-## BIG Note
-FPS-Utils now comes with [badGUI support](https://github.com/codeagon/badGui), I highly recommend downloading it for additional functionality and ease of use. This update also adds a few new commands as well as fixing a couple of bugs.
-
-## Installation 
-***Note***: *If you're using [Caali's proxy](https://discord.gg/maqBmJV) fps-utils will be automatically updated and already installed so you will not need to do the following.*
-* put the script folder "fps-utils" into bin/node_modules
+## How to use
+* Put the script folder "fps-utils" into bin/node_modules.
 * Log the game using the proxy.
 
 ## Commands
-***Note:*** *When inputting commands directly from the **proxy channel**  the prefix `!` should be ignored.*
+***Note:*** *To start the command, you can either start it in any channel by adding `!` prefix, or `/!`, or just going to proxy channel **proxy channel** where it doesn't need any prefix.*
 
-Command | Argument(s) | Example | Description
----|---|---|---
-**!fps gui** |  | !fps gui| Opens up the GUI. granting access to all of these commands.
-**!fps party** |  | !fps party| Hides all other players except those in your party
-**!fps gui npcsearch** |  | !fps npcsearch vergos| Opens up a list of NPCs with names matching your search query 
-**!fps mode** | 1, 2, 3, off | !fps mode 1| Sets the current fps-utils optimization state. 0 disables, 1 hides particles, 2 hides skill animations, 3 hides all players. All modes toggle`fps hit on`
-**!fps hit** | me, damage, other | !fps hit other | Enables/Disables hiding of hit effects for the player.`Damage`toggles damage numbers off.`Me` turns hit effects off for **you** (disables damage numbers also unfortunately), other disables effects for other users (recommended).
-**!fps hide** | playername, dps, healers, tanks, ranged, classname | !fps hide Spacecats, !fps hide valkyrie |hides dps, healers, tanks or ranged classes, any username or a class, class names can be found in`config.json`.
-**!fps show** | playername, dps, healers, tanks, ranged, classname| !fps show Memeboy | Takes the same arguments as above and instead unhides them.
-**!fps list** |  | !fps list |  Prints a list of characters/classes/roles currently hidden by *hide* command to chat.
-**!fps fireworks** | None | !fps fireworks | Enables/Disables hiding of firework entities in open world.
-**!fps summons** | empty, mine | !fps summons | Enables/Disables hiding of  summoned entities(gunner turrets, mystic thralls, etc) fps summons mine hides your own summons
-**!fps skill** | blacklist, class <classname>  | !fps skill class lancer | `black` toggles the skill blacklist feature, `class <classname>`toggles displaying of ALL skills for that class
-**!fps npc** | None | !fps npc | Enables/Disables hiding of ALL NPCs within the npc blacklist
-**!fps effects** | all, blacklist | !fps effects blacklist | Toggles showing of either blacklisted abnormality effects or all abnormality effects (your own ones still display normally in all mode, however not in blacklist mode).
-**!fps style** | None | !fps style | Enables/Disables showing of all spawned players as wearing the same outfit. Requires leaving and re-entering the area or re-logging to take effect.
-**!fps proj** | all, blacklist | !fps proj all| Enables/Disables showing of all projectiles, or blacklisted one. By default hailstorm is included.
 
-### Additional command info
-*  A full list of skill IDs can be found [here.](https://github.com/pinkipi/skill-prediction/blob/master/config/skills.js)
-*  A full list of NPCs and Abnormalities will be posted later.
-*  To get projectile skill IDs you will have to log them yourself, I will add something that does this for you in a later update
-  
-## Update Log
-* Rewrote the entire mod, again.
-* 
-## Work In Progress:
-Various GUI improvements, fix for mount stuff, projectile and effect lists, fix formatting.
+|    Command(s)    |         Argument(s)        |      Example         |             Details              |
+|      :---        |            :---:           |        :---:         |                ---:              |
+|   `gui` \| `g`   |             N/A            |`!fps gui`            |          Opens GUI.              |
+|       N/A        |             N/A            |`!fps-util`           |          Opens Help.             |
+|  `0`\|`1`\|`2`\|`3` |             N/A            |`!0`\|`!1`\|`!2` \|`!3`  |          Changes Mode.           |
+| `mode` \| `state` |    `0` \| `1` \| `2` \| `3`   |`!fps mode 2`         |          Changes Mode.           |
+| `hide` \| `show`  |      Player\|Class\|Role     |`!fps hide mie`       |  Hides/shows Player\|Class\|Role.  |
+|     `party`      |             N/A            |`!fps party`          |     Hides all but your party.    |
+|      `raid`      |             N/A            |`!fps raid`           |Auto `mode 2` when raid has 18 or more ppls.|
+|      `list`      |             N/A            |`!fps list`           | Prints list of hidden things.    |
+|`summons` \| `sums`|      `other`\| `me`        |`!fps sums me`        |`other` hide other sums; `me` yours.|
+|`skill` \| `skills`|`blacklist` \| Class \<arg3\>|`!fps skill blacklist`|Blacklist on/off; arg3 = classname|
+|  `npc` \| `npcs`  |             N/A            |`!fps npc`            |Hides/shows blacklisted npcs.     |
+|      `hit`       |   `me` \| `other` \| `damage`|`!fps hit me`         |Hides/shows skill results for each|
+|    `firework`    |             N/A            |`!fps firework`       |Hides/shows Dragon fireworks.     |
+|   `abn`\|`all`    |`blacklist` \<add\|remv num\>|`!fps abn blacklist`  |Hides/shows effects.              |
+|  `proj`\|`all`    |`blacklist` \<add\|remv num\>|`!fps proj all`       |Hides/shows projectiles.          |
+|   `guildlogo`    |             N/A            |`!fps guildlogo`      |Hides/shows guild logos           |
+| `style`\|`costume`|             N/A            |`!fps style`          |Hides/shows style for ppl\|npc     |
+|  `gui npcsearch` |           \<arg1\>         |`!fps gui npcsearch E`|Opens list of npcs matching arg1. |
+|    `npczoom`     |             N/A            |`!fps npczoom`        |If enabled, prevent zoom on npcs. |
+|    `dropitem`    |             N/A            |`!fps dropitem`       |Hides/shows blacklisted drops.    |
+
+
+### Additional explaination for some of the commands *in-case not clear*
+- Modes: Sets the current presets optimization to \<num\>; \<num\> can be:
+  -  `0`, `off`: Turns off preset optimization.
+  - `1`, `one`: Activates hiding all effects
+  - `2`, `two`: Activates hiding players' skills, their effects, projectiles, damage numbers
+  - `3`, `three`: Activates hiding all players & their skills, effects, projectiles, damage numbers.
+- Raid auto state: if enabled, Automatically change mode to 2 as soon as your party gets 18 memebers or above, and auto revert back(if you didn't change it manually) to last mode when it drops below 18.
+- Others Summons: if enabled, Prevent showing any summon for npcs(Thralls, Healbot, Turrets etc.) from other players.
+- Own summons: if enabled, Prevent showing any summon for npcs from you.
+- Style: if enabled, Removes all costumes including gear shapes on players & Removes the icons above npcs heads.
+- Npc zoom-ins: if enabled, Prevent the annoying auto camera zoom-in on npcs.
+- Drops: if enabled, Prevent the blacklisted drops of other players from showing, the default list has mystic motes of all levels.
 
 ## Suggestions
-* If you have suggestions, need help, or want to comment on my shitty coding, leave an issue report or message me (Hugedong69 in pinkies/caali's discord)
+* If you have suggestions, need help, or want to comment on my coding, leave an issue report.
 
 ## Credits
-The following people have helped in making FPS-Utils:
-- [Saegusae](https://github.com/Saegusae/) - Original developer
-- [Bernkastel](https://github.com/Bernkastel-0/) - Whos code I stole and then rewrote because it was also broken
-- [SerenTera](https://github.com/SerenTera) - God coder who added a lot of features and cleaned a lot of things up
-- [Caali](https://github.com/hackerman-caali/) - Provided update functionality to proxy so that I can yell at less users
-- [Kasea](https://github.com/Kaseaa/) - Let me steal code (I hope :eyes: )
-- [Kyoukaya](https://github.com/kyoukaya) - Fixed my grabo code
-- [SaltyMonkey](https://github.com/SaltyMonkey) - Yelled at me a bunch
-- [Pinkie](https://github.com/pinkipi/) - Told me dumb js things that I should know but don't because I'm dumb
+Contributers in this module:
+- [HugeDong69](https://github.com/codeagon) - Super-Cozy developer. [Donation link](https://ko-fi.com/codeagon)
+- [Saegusae](https://github.com/Saegusae) - Original developer. [Donation link](https://www.patreon.com/saegusa)
+- [SerenTera](https://github.com/SerenTera)
+- [Kyoukaya](https://github.com/kyoukaya)
+- [SaltyMonkey](https://github.com/SaltyMonkey) - [Donation link](https://www.patreon.com/SaltyMonkey)
+- [Leyki](https://github.com/Leyki)
+
+---
+
+Special thanks to these people:
+- [Pinkie Pie](https://github.com/pinkipi) Donation link: [![Donate](https://img.shields.io/badge/Donate-PayPal-ff69b4.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5MTKARBK2CNG8&lc=US&item_name=Pinkie%27s%20TERA%20Mods&currency_code=USD)
+- [Caali](https://github.com/hackerman-caali) 
+- [Bernkastel](https://github.com/Bernkastel-0)
+- [Kasea](https://github.com/Kaseaa)
