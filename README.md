@@ -21,7 +21,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 |      `list`      |             N/A            |`!fps list`           | Prints list of hidden things.    |
 |`summons` \| `sums`|      `other`\| `me`        |`!fps sums me`        |`other` hide other sums; `me` yours.|
 |`skill` \| `skills`|`blacklist` \| Class \<arg3\>|`!fps skill blacklist`|Blacklist on/off; arg3 = classname|
-|  `npc` \| `npcs`  |             N/A            |`!fps npc`            |Hides/shows blacklisted npcs.     |
+|  `npc` \| `npcs`  |   N/A \| `hide` \<num\>       |`!fps npc`            |N/A blacklist npcs on/off; `hide` to add \<num\> to blacklist. |
 |      `hit`       |   `me` \| `other` \| `damage`|`!fps hit me`         |Hides/shows skill results for each|
 |    `firework`    |             N/A            |`!fps firework`       |Hides/shows Dragon fireworks.     |
 |   `abn`\|`all`    |`blacklist` \<add\|remv num\>|`!fps abn blacklist`  |Hides/shows effects.              |
@@ -30,12 +30,12 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 | `style`\|`costume`|             N/A            |`!fps style`          |Hides/shows style for ppl\|npc     |
 |  `gui npcsearch` |           \<arg1\>         |`!fps gui npcsearch E`|Opens list of npcs matching arg1. |
 |    `npczoom`     |             N/A            |`!fps npczoom`        |If enabled, prevent zoom on npcs. |
-|    `dropitem`    |             N/A            |`!fps dropitem`       |Hides/shows blacklisted drops.    |
+|    `dropitem`    |   N/A \| `hide` \<num\>       |`!fps dropitem hide 300`|N/A blacklist drops on/off; `hide` to add \<num\> to blacklist. |
 
 
 ### Additional explaination for some of the commands *in-case not clear*
 - Modes: Sets the current presets optimization to \<num\>; \<num\> can be:
-  -  `0`, `off`: Turns off preset optimization.
+  - `0`, `off`: Turns off preset optimization.
   - `1`, `one`: Activates hiding all effects
   - `2`, `two`: Activates hiding players' skills, their effects, projectiles, damage numbers
   - `3`, `three`: Activates hiding all players & their skills, effects, projectiles, damage numbers.
