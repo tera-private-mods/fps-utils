@@ -31,7 +31,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 |  `gui npcsearch` |           \<arg1\>         |`!fps gui npcsearch E`|Opens list of npcs matching arg1. |
 |    `npczoom`     |             N/A            |`!fps npczoom`        |If enabled, prevent zoom on npcs. |
 |    `dropitem`    |   N/A \| `hide` \<num\>       |`!fps dropitem hide 300`|N/A blacklist drops on/off; `hide` to add \<num\> to blacklist. |
-
+|    `bossdeath`   |             N/A            |`!fps bossdeath`      |If enabled, prevent boss death animation from appearing.|
 
 ### Additional explaination for some of the commands *in-case not clear*
 - Modes: Sets the current presets optimization to \<num\>; \<num\> can be:
@@ -43,7 +43,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 - Others Summons: if enabled, Prevent showing any summon for npcs(Thralls, Healbot, Turrets etc.) from other players.
 - Own summons: if enabled, Prevent showing any summon for npcs from you.
 - Style: if enabled, Removes all costumes including gear shapes on players & Removes the icons above npcs heads.
-- Npc zoom-ins: if enabled, Prevent the annoying auto camera zoom-in on npcs.
+- Npc zoom-ins: if enabled, Prevent the annoying auto camera zoom-in on npcs, in others words, it blocks the ActionScripts for all npcs except teleportal ones.
 - Drops: if enabled, Prevent the blacklisted drops of other players from showing, the default list has mystic motes of all levels.
 
 ## Suggestions

@@ -2,7 +2,7 @@
     "disableAutoUpdate": false,
     "options": {
         "niceName": "fps-utils",
-        "settingsVersion": 3,
+        "settingsVersion": 4,
         "settingsFile": "config.json",
         "settingsMigrator": "./lib/setting_migration.js"
     },
