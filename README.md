@@ -31,7 +31,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 |  `gui npcsearch` |           \<arg1\>         |`!fps gui npcsearch E`|Opens list of npcs matching arg1. |
 |    `npczoom`     |             N/A            |`!fps npczoom`        |If enabled, prevent zoom on npcs. |
 |    `dropitem`    |   N/A \| `hide` \<num\>       |`!fps dropitem hide 300`|N/A blacklist drops on/off; `hide` to add \<num\> to blacklist. |
-|    `bossdeath`   |             N/A            |`!fps bossdeath`      |If enabled, prevent boss death animation from appearing.|
+| `monsterdeathani`|             N/A            |`!fps monsterdeathani`|If enabled, prevent monsters death animation from appearing.|
 
 ### Additional explaination for some of the commands *in-case not clear*
 - Modes: Sets the current presets optimization to \<num\>; \<num\> can be:
