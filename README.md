@@ -6,7 +6,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 * Log the game using the proxy.
 
 ## Commands
-***Note:*** *To start the command, you can either start it in any channel by adding `!` prefix, or `/!`, or just going to proxy channel `/*`.*
+***Note:*** *To start the command, you can either start it in any channel by adding `!` prefix, or `/!`, or just going to proxy channel `/8`.*
 
 
 |    Command(s)    |         Argument(s)        |      Example         |   Details   |
