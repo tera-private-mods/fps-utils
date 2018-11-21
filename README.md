@@ -6,7 +6,7 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 * Log the game using the proxy.
 
 ## Commands
-***Note:*** *To start the command, you can either start it in any channel by adding `!` prefix, or `/!`, or just going to proxy channel **proxy channel** where it doesn't need any prefix.*
+***Note:*** *To start the command, you can either start it in any channel by adding `!` prefix, or `/!`, or just going to proxy channel `/*`.*
 
 
 |    Command(s)    |         Argument(s)        |      Example         |   Details   |
@@ -28,13 +28,13 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 |       `proj`     |`all`\|`blacklist arg arg2` |`!fps proj all`       | - |
 |    `guildlogo`   |             N/A            |`!fps guildlogo`      | - |
 |`style`\|`costume`|             N/A            |`!fps style`          | - |
-|  `gui npcsearch` |           \<arg1\>         |`!fps gui npcsearch E`| - |
+|  `gui npcsearch` |             arg            |`!fps gui npcsearch E`| - |
 |    `npczoom`     |             N/A            |`!fps npczoom`        | - |
 |    `dropitem`    |       N/A \| `hide arg`    |`!fps dropitem`       | - |
 | `monsterdeathani`|             N/A            |`!fps monsterdeathani`| - |
 |   `screenabns`   |       N/A \| `hide arg`    |`!fps screenabns`     | - |
 
-#### Additional explaination commands.*
+#### Additional commands explaination
 - Modes: Sets the current presets optimization to \<num\>; \<num\> can be:
   - `0`, `off`: Turns off preset optimization.
   - `1`, `one`: Activates hiding all effects
