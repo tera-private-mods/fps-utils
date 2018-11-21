@@ -1,11 +1,11 @@
 {
 	"files": {
-		"README.md": "07c6a6bd7a34de9264fcf71e540f892c0f615a2fba0dd8c11810bcfaad99879a",
+		"README.md": "f14ba4bdf387bfeb80884158de8d6a09f536c46f8ea803750935fea10931ea55",
 		"lib/data/npcData.json": "9949d5b7d18e347c29c46adf44e4ad8a519fc2e87166b0c402860ebaa082fb35",
 		"lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-		"lib/index.js": "8b2044182f16c3e23506d06ce031c1371bdf897bd69214c456839bcf609e24e2",
-		"lib/setting_migration.js": "0d47586bebc36a52d0402bdb04f871f9ae70fb4adce82f13ba6123daa5532a17",
-		"module.json": "1f294963a9862681497417daf8d7573b938064b7322603739d9a302a64d22502",
+		"lib/index.js": "f98f449190e19b044e06cfbada40f14d161f45027a5d986948ef93cc26c5a97f",
+		"lib/setting_migration.js": "9ed0101fe937b0e4a9169f88820b6b0fce28b3cbb4b0a61605fc6bf9fdf00578",
+		"module.json": "ebf8f0e58e4a0b681adbacf7922cdfd1f8a59780174894db6c8cec2126307968",
 		"node_modules/Gui/LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
 		"node_modules/Gui/README.md": "3f8afb8758597d32d5075a0664b3b9acdce7193ad43b54ee1d83daa9e0647db0",
 		"node_modules/Gui/index.js": "b13b4ebf8620c1e550965a39ac692063a59b5b2c628458cd160024e69b65474e",
