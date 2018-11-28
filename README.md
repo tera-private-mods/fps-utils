@@ -89,7 +89,7 @@ Contributers in this module:
 ---
 
 Special thanks to these people:
-- [Pinkie Pie](https://github.com/pinkipi) Donation link: [![Donate](https://img.shields.io/badge/Donate-PayPal-ff69b4.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5MTKARBK2CNG8&lc=US&item_name=Pinkie%27s%20TERA%20Mods&currency_code=USD)
+- [Pinkie Pie](https://github.com/pinkipi) - Donation link: [![Donate](https://img.shields.io/badge/Donate-PayPal-ff69b4.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5MTKARBK2CNG8&lc=US&item_name=Pinkie%27s%20TERA%20Mods&currency_code=USD)
 - [Caali](https://github.com/hackerman-caali) 
 - [Bernkastel](https://github.com/Bernkastel-0)
 - [Kasea](https://github.com/Kaseaa)

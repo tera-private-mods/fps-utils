@@ -1,9 +1,9 @@
 {
 	"files": {
-		"README.md": "d96790645df3984bdb593c90848d7fa5e04840a60741f7612676a4720ddde1a6",
+		"README.md": "af938aff5f1baf9ea7920e9e5b96b6e11b48e5b584dbb7561d19c533c7ac7397",
 		"lib/data/npcData.json": "9949d5b7d18e347c29c46adf44e4ad8a519fc2e87166b0c402860ebaa082fb35",
 		"lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-		"lib/index.js": "f98f449190e19b044e06cfbada40f14d161f45027a5d986948ef93cc26c5a97f",
+		"lib/index.js": "806b64c2ae0a1e258739e77e832ae5e52b050d33d64a12d3282b31b4b2a8c6b2",
 		"lib/setting_migration.js": "b536ca71f44e065c61eb9816758c596d2ad81caabb7fe5bfcaa1191d6a79fe30",
 		"module.json": "00741bd3c50a9764e437f53028fcfc7dd53cda091dd9221718ef6f1b40a20d2f",
 		"node_modules/Gui/LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
@@ -47,7 +47,7 @@
 		"S_REQUEST_CONTRACT": 1,
 		"S_SHOW_AWESOMIUMWEB_SHOP": 1,
 		"S_SPAWN_DROPITEM": 6,
-		"S_SPAWN_NPC": 9,
+		"S_SPAWN_NPC": 10,
 		"S_SPAWN_PROJECTILE": 5,
 		"S_SPAWN_USER": 13,
 		"S_START_ACTION_SCRIPT": 3,
