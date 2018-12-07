@@ -1,0 +1,7 @@
+{
+    "name": "Fps Utils",
+    "author": "Risenio",
+    "namespace": "fps_utils",
+    "main": "lib",
+    "update": "github:Risenio/fps-utils"
+}

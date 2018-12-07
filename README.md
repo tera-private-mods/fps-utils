@@ -57,25 +57,25 @@ Written for tera-proxy, a free script filled with features dedicated to improve 
 - Own summons: if enabled, Prevent showing any summon for npcs from you.
 - Skill: if enabled, Prevent showing any blacklisted skills.
   - `blacklist`: triggers on/off for hiding backlisted skills.
-  - `class \<cls\>`: if \<cls\> is a valid class name, it turns on/off showing any skill for that class.
+  - `class <cla>`: if \<cla\> is a valid class name, it turns on/off showing any skill for that class.
 - Npc: if enabled, Prevent showing any blacklisted npc.
-  - `hide \<hz\> \<ti\>`: adds or removes to the npcs blacklist. \<hz\> is the hunting zone and \<ti\> is the template id.
+  - `hide <hz> <ti>`: adds or removes to the npcs blacklist. \<hz\> is the hunting zone and \<ti\> is the template id.
 - Abnormal: if `all` enabled, Prevent showing other peoples effects.
-  - `blacklist`: if you type `\!fps abn blacklist` it will trigger on/off blacklist hidden/shown.
-  - `blacklist \<x\> \<xx\>`: \<x\> can be 'add' to add or 'remv' to remove from the blacklist, \<xx\> is the abnomral id.
+  - `blacklist`: if you type `/!fps abn blacklist` it will trigger on/off blacklist hidden/shown.
+  - `blacklist <x> <xx>`: \<x\> can be 'add' to add or 'remv' to remove from the blacklist, \<xx\> is the abnomral id.
 - Proj: if `all` enabled, Prevent showing any projectiles.
-  - `blacklist`: if you type `\!fps proj blacklist` it will trigger on/off blacklist hidden/shown.
-  - `blacklist \<z\> \<zz\>`: \<z\> can be 'add' to add or 'remv' to remove from the blacklist, \<zz\> is the projectile id.
+  - `blacklist`: if you type `/!fps proj blacklist` it will trigger on/off blacklist hidden/shown.
+  - `blacklist <z> <zz>`: \<z\> can be 'add' to add or 'remv' to remove from the blacklist, \<zz\> is the projectile id.
 - Drops: if enabled, Prevent the blacklisted drops of other players from showing, the default list has mystic motes of all levels.
-  - `hide \<v\>`: adds or removes to the drops blacklist. \<v\> is the item id.
+  - `hide <v>`: adds or removes to the drops blacklist. \<v\> is the item id.
 - ScreenAbns: if enabled, Prevent the blacklisted annoying blur screen effects of your character from showing, the default list has couple of ids I picked 'em by hand, additional explaination about them can be found in `settings_migration`.
-  - `hide \<b\>`: adds or removes to the ScreenAbns blacklist. \<v\> is the item id.
+  - `hide <b>`: adds or removes to the ScreenAbns blacklist. \<v\> is the item id.
 - GUI: It has these & much more, not need to bother with details, these are important ones you should know:
-  - `gui npcsearch \<name\>`: if \<name\> exist, it will show a list of available npcs with that name, be aware, names are case-sensitive due to that huge amount of npcs.
-  - `gui npc \<letters\>`: if \<letters\> exist, it will show a list of available npcs with names that starts with that letters, letters are case-sensitive, you know why.
+  - `gui npcsearch <name>`: if \<name\> exist, it will show a list of available npcs with that name, be aware, names are case-sensitive due to that huge amount of npcs.
+  - `gui npc <letters>`: if \<letters\> exist, it will show a list of available npcs with names that starts with that letters, letters are case-sensitive, you know why.
 
 ## Suggestions
-* If you have suggestions, need help, or want to comment on my coding, leave an issue report.
+* If you have suggestions, need help, or want to comment on my coding, leave an issue report or dm me on discord `@Risenio#1785`.
 
 ## Credits
 Contributers in this module:
@@ -89,7 +89,8 @@ Contributers in this module:
 ---
 
 Special thanks to these people:
-- [Pinkie Pie](https://github.com/pinkipi) - Donation link: [![Donate](https://img.shields.io/badge/Donate-PayPal-ff69b4.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5MTKARBK2CNG8&lc=US&item_name=Pinkie%27s%20TERA%20Mods&currency_code=USD)
+- [Pinkie Pie](https://github.com/pinkipi) - [Donation link](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5MTKARBK2CNG8&lc=US&item_name=Pinkie%27s%20TERA%20Mods&currency_code=USD)
 - [Caali](https://github.com/hackerman-caali) 
 - [Bernkastel](https://github.com/Bernkastel-0)
 - [Kasea](https://github.com/Kaseaa)
+

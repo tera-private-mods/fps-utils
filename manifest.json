@@ -1,14 +1,15 @@
 {
 	"files": {
-		"README.md": "af938aff5f1baf9ea7920e9e5b96b6e11b48e5b584dbb7561d19c533c7ac7397",
-		"lib/data/npcData.json": "9949d5b7d18e347c29c46adf44e4ad8a519fc2e87166b0c402860ebaa082fb35",
+		"README.md": "64e744609702579b229ff04683dc9827c9791e4f1491d2b531f98f2e680ca3ef",
+		"lib/data/npcData.json": "5d924897021af232e676e5ea56d9cdcbfca813edb0a23d8481a61b6eb7077a78",
 		"lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-		"lib/index.js": "ad738b294ab712fb9bdb6077665454fa217492437eaf7383e7f3b2a2c13e99d9",
-		"lib/setting_migration.js": "b536ca71f44e065c61eb9816758c596d2ad81caabb7fe5bfcaa1191d6a79fe30",
-		"module.json": "00741bd3c50a9764e437f53028fcfc7dd53cda091dd9221718ef6f1b40a20d2f",
+		"lib/index.js": "37b4caad528317d443eb7269b6d10c89081d05767b85290ae1fce2d661b671f8",
+		"lib/setting_migration.js": "1c890dc0ea2c211b3d7cdda70d2ed9d6b1c80056eeff6a0dae0d30a9b9b28efe",
+		"mod.json": "ee2a821c9fc48b60933d3e17ca7819cddd7674b68d0e7a7d2e8e35eaedea9295",
+		"module.json": "deb3746661ed1e8e39feaf638a6f200ffb166143508d8dc86f45eb638b766a12",
 		"node_modules/Gui/LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
-		"node_modules/Gui/README.md": "3f8afb8758597d32d5075a0664b3b9acdce7193ad43b54ee1d83daa9e0647db0",
-		"node_modules/Gui/index.js": "b13b4ebf8620c1e550965a39ac692063a59b5b2c628458cd160024e69b65474e",
+		"node_modules/Gui/README.md": "5ce236283acd2bf5c617866e714b53f15cf4b665dce51ae2418587f9c6bfc28b",
+		"node_modules/Gui/index.js": "7595b2d8617c00e1f4de976d14e96bbb0903783c93c746999f447b5eb9cfb7a3",
 		"package.json": "e4f97b0f2f8234a68ca2c9831eb50c8aabfe979f348700fd01ce8dab1c75242a"
 	},
 	"defs": {
@@ -43,7 +44,6 @@
 		"S_NPC_MENU_SELECT": 1,
 		"S_PARTY_MEMBER_LIST": 7,
 		"S_PCBANGINVENTORY_DATALIST": 1,
-		"S_REQUEST_CITY_WAR_MAP_INFO_DETAIL": 1,
 		"S_SHOW_AWESOMIUMWEB_SHOP": 1,
 		"S_SPAWN_DROPITEM": 6,
 		"S_SPAWN_NPC": 10,
