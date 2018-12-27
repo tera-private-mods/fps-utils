@@ -6,7 +6,7 @@
   * Log the game using the proxy.
 
 ## Capability
-  * Works on both (Caali's & Pony's) proxies.
+  * Should work on both (Caali's & Pony's) proxies.
   * No dependencies.
 
 ## Commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).

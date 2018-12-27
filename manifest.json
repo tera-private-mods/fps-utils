@@ -1,9 +1,9 @@
 {
     "files": {
-        "README.md": "b9cbe53c8ea61dbb4b8cf889842f5344bf5b1fed0c12edc3c6004bede865ae00",
+        "README.md": "1bbec68e94e3785f8856329e44158f45978844f3ae6ae6f255157cea2eb7ea9f",
         "lib/data/npcData.json": "737fd1ff6b53121fc2fa716bc7f1c5688a4db2353dedf9c024bb879cd0cfa5a0",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "6c8239334d8c3ac1cb0018a24eff4a1a0e0f7a3d9b109e8142a516355736baba",
+        "lib/index.js": "4be09ff8c5770bf693c79b69643c07faf63d1a2c13260594b88c0d92dcb2fb46",
         "lib/setting_migration.js": "df03f5c08e98f82275038b76b240f605d3a1ed29c831190e51f4e0cc4a9e1a4c",
         "module.json": "817f90bb235687a40044b2875128ae848928efc62b3d3ecbde72d528e1fc033d",
         "package.json": "c6c696814caec5c2994c9bf6c75f52ac65b6199e0f61b246da2ad73d406ce877"
