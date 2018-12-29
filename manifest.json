@@ -1,9 +1,9 @@
 {
     "files": {
-        "README.md": "07bbfc71ac79f9154e3c6d121c21adcb91fa16a56aff9e50f49f791482fd1442",
+        "README.md": "c60e209ff27cf5363b147186c20ccac2fcdc339d12af40f201a7dd9151c33d41",
         "lib/data/npcData.json": "737fd1ff6b53121fc2fa716bc7f1c5688a4db2353dedf9c024bb879cd0cfa5a0",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "95fe20bef5dfef2833c94ce04168f876408931553b6a03245dc8662f9dd562dd",
+        "lib/index.js": "013958429435386ab1b63e8d86169390db11c63fb97bf1396e770098a42b7129",
         "lib/setting_migration.js": "ceab7591a1d4cfbc16f43019a78c515f1b8d9ef7d834ad5722e19a65b80ceef9",
         "module.json": "817f90bb235687a40044b2875128ae848928efc62b3d3ecbde72d528e1fc033d",
         "package.json": "c6c696814caec5c2994c9bf6c75f52ac65b6199e0f61b246da2ad73d406ce877"
@@ -24,7 +24,6 @@
         "S_ACTION_STAGE": 9,
         "S_ANNOUNCE_UPDATE_NOTIFICATION": 1,
         "S_APPLY_TITLE": 2,
-        "S_CHANGE_RELATION": 1,
         "S_CREATURE_ROTATE": 2,
         "S_CURRENT_CHANNEL": 2,
         "S_DEAD_LOCATION": 2,

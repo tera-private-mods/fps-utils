@@ -1,11 +1,11 @@
 # Fps Utils
   Written for tera-proxy, a free script filled with features dedicated to improve your fps, in the open world, in dungeons and in battlegrounds.
 
-## How to use
-  * Put the script folder "fps-utils" into `mods`.
+## How to use.
+  * Put the script folder "fps-utils" into the `mods` folder.
   * Log the game using the proxy.
 
-## Capability
+## Capability.
   * Should work on both (Caali's & Pony's) proxies.
   * No dependencies.
 
