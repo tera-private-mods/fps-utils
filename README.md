@@ -4,12 +4,13 @@
 ## How to use.
   * Put the script folder "fps-utils" into the `mods` folder.
   * Log the game using the proxy.
+  * To get access to the built-in GUI type `!fps g` into the chat.
 
 ## Capability.
   * Should work on both (Caali's & Pony's) proxies.
   * No dependencies.
 
-## Commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
+## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
 
 ## Suggestions/Issues/Reports of all kinds are welcome.
   * If you have suggestions, need help, or want to comment on my coding, dm me on discord `@Risenio#1785` or leave an issue report.
@@ -25,7 +26,7 @@ Contributers:
 
 ---
 
-Thanks to the following people in helping me maintaining this module.
+Thanks to the following people for helping in maintaining this module.
   - [Caali](https://github.com/hackerman-caali)
   - [Pinkie Pie](https://github.com/pinkipi)
   - [Bernkastel](https://github.com/Bernkastel-0)

@@ -3,7 +3,7 @@
 	"name": "fps-utils",
 	"author": "Risenio",
 	"description": "A free script filled with features dedicated to improve your fps.",
-	"version": "9",
+	"version": "10",
 	"homepage": "https://github.com/Risenio/fps-utils/wiki",
 	"keywords": [ "fps", "tera", "tera-proxy", "tera-fps" ],
     "contributors": ["codeagon", "Saegusae", "SerenTera", "Kyoukaya", "SaltyMonkey", "Leyki"],
