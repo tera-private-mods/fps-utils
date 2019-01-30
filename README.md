@@ -7,7 +7,7 @@
   * To get access to the built-in GUI type `!fps g` into the chat.
 
 ## Capability.
-  * Should work on both (Caali's & Pony's) proxies.
+  * Should work on any proxy.
   * No dependencies.
 
 ## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
