@@ -1,6 +1,10 @@
 # Fps Utils
   Written for tera-proxy, a free script filled with features dedicated to improve your fps, in the open world, in dungeons and in battlegrounds.
 
+## NOTE FOR CLASSIC SERVER.
+  - The module should function just fine, however the GUI that the module uses (welcome window) doesn't support clicking, so this been said. You've to write the commands by hand, You may still can open the GUI however it will be just a visual, nothing can be clicked inside.
+  - I've tested all it's functionality, All went good. If you found any bug/error/issue, please inform me, thank you.
+
 ## How to use.
   * Put the script folder "fps-utils" into the `mods` folder.
   * Log the game using the proxy.
