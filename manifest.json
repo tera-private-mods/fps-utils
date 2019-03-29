@@ -1,9 +1,9 @@
 {
     "files": {
-        "README.md": "5265e5d92a17de8f85a3a0638258fb6623ab895f1aec59704171abfd3e12677f",
-        "lib/data/npcData.json": "d3e7b59617ef841447567d69b074aa2dd6958eabb1a231c5821ffa7165daeac6",
+        "README.md": "d460498a2503b6857f0faed356b8f06cf4108ae863d022e361f6762877966837",
+        "lib/data/npcData.json": "913aace2b007dc2c04cfcb4b96bd8fea4abbc4a149df8a901c7382797b25f23b",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "bbf1472a4513167fbd53a16a3fa85f6aa099edfe39d4e4c386a0c5059bfdf867",
+        "lib/index.js": "ad8bcc96675eb29b5b9f5b88dd11360bbe40fd7b1efd5d816edb9f20700f8f8f",
         "lib/setting_migration.js": "868abf1f54c8e91df415e19220a2046021fa67a905dcff6a799b01a83488f6a8",
         "module.json": "edcfd2361bc0f72ed7b3838f9f07ad3647738ed2564e230e7da8f7b4a08db715",
         "package.json": "f3e3cf2c845e54b6503108b6bef7f8f5bf33654f6ae1664c75bedbf7f6aa83c1"
@@ -29,7 +29,7 @@
         "S_DEAD_LOCATION": 2,
         "S_DESPAWN_NPC": 3,
         "S_DESPAWN_USER": 3,
-        "S_EACH_SKILL_RESULT": [12,13],
+        "S_EACH_SKILL_RESULT": 13,
         "S_EXIT": 3,
         "S_FEARMOVE_END": 1,
         "S_FEARMOVE_STAGE": 1,
@@ -48,7 +48,7 @@
         "S_PCBANGINVENTORY_DATALIST": 1,
         "S_PLAYER_CHANGE_MP": 1,
         "S_SHOW_AWESOMIUMWEB_SHOP": 1,
-        "S_SPAWN_DROPITEM": 6,
+        "S_SPAWN_DROPITEM": [6,7],
         "S_SPAWN_NPC": 11,
         "S_SPAWN_PROJECTILE": 5,
         "S_SPAWN_USER": 14,
