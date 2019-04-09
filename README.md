@@ -26,7 +26,7 @@ Contributers:
 
 ---
 
-Thanks to the following people for helping in maintaining this module.
+Thanks to the following people for their help in maintaining this module.
   - [Caali](https://github.com/hackerman-caali)
   - [Pinkie Pie](https://github.com/pinkipi)
   - [Bernkastel](https://github.com/Bernkastel-0)
