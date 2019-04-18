@@ -3,10 +3,10 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "913aace2b007dc2c04cfcb4b96bd8fea4abbc4a149df8a901c7382797b25f23b",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "9a71c57489e75b5ba59d6fced49e8ea64dc21e4c690ea7871b6ae1392163697b",
-        "lib/setting_migration.js": "868abf1f54c8e91df415e19220a2046021fa67a905dcff6a799b01a83488f6a8",
-        "module.json": "edcfd2361bc0f72ed7b3838f9f07ad3647738ed2564e230e7da8f7b4a08db715",
-        "package.json": "f3e3cf2c845e54b6503108b6bef7f8f5bf33654f6ae1664c75bedbf7f6aa83c1"
+        "lib/index.js": "19d6c28dc23bfe0aeab45eebf72cdde159c937b275877cfd574e7e5b430fb831",
+        "lib/setting_migration.js": "2bdf6d385b5f26f554ea8d637c32f8dad206bee780380b9c38ea9401f3a40e53",
+        "module.json": "26f8779bfc921a6ddfb5a9f7a2b00902970793fafd902c1936312b2d17a1ebb5",
+        "package.json": "3e2c514e5ae6cce460ccff60cbd95c14d8a62cf6c051899bfa1095c2b2de450c"
     },
     "defs": {
         "C_ADMIN": 1,
@@ -40,7 +40,7 @@
         "S_LEAVE_PARTY": "raw",
         "S_LOADING_SCREEN_CONTROL_INFO": "raw",
         "S_LOAD_TOPO": "raw",
-        "S_LOGIN": 12,
+        "S_LOGIN": [12,13],
         "S_MOUNT_VEHICLE": 2,
         "S_NPC_LOCATION": 3,
         "S_NPC_MENU_SELECT": 1,
