@@ -1,7 +1,7 @@
 {
     "files": {
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
-        "lib/data/npcData.json": "913aace2b007dc2c04cfcb4b96bd8fea4abbc4a149df8a901c7382797b25f23b",
+        "lib/data/npcData.json": "a49e0212694a473d384784475ff960fa762210c42158dce0579e6f41f1deb996",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
         "lib/index.js": "19d6c28dc23bfe0aeab45eebf72cdde159c937b275877cfd574e7e5b430fb831",
         "lib/setting_migration.js": "2bdf6d385b5f26f554ea8d637c32f8dad206bee780380b9c38ea9401f3a40e53",
