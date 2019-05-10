@@ -3,7 +3,7 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "a49e0212694a473d384784475ff960fa762210c42158dce0579e6f41f1deb996",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "19d6c28dc23bfe0aeab45eebf72cdde159c937b275877cfd574e7e5b430fb831",
+        "lib/index.js": "bd4acc5d679a865a7974f65a2c15ff9d32f7f610fca5a40cdb4b0165251462e1",
         "lib/setting_migration.js": "2bdf6d385b5f26f554ea8d637c32f8dad206bee780380b9c38ea9401f3a40e53",
         "module.json": "26f8779bfc921a6ddfb5a9f7a2b00902970793fafd902c1936312b2d17a1ebb5",
         "package.json": "3e2c514e5ae6cce460ccff60cbd95c14d8a62cf6c051899bfa1095c2b2de450c"
@@ -40,7 +40,7 @@
         "S_LEAVE_PARTY": "raw",
         "S_LOADING_SCREEN_CONTROL_INFO": "raw",
         "S_LOAD_TOPO": "raw",
-        "S_LOGIN": [12,13],
+        "S_LOGIN": 13,
         "S_MOUNT_VEHICLE": 2,
         "S_NPC_LOCATION": 3,
         "S_NPC_MENU_SELECT": 1,
