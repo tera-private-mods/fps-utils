@@ -3,10 +3,10 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "a49e0212694a473d384784475ff960fa762210c42158dce0579e6f41f1deb996",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "c2a3dac9ac80fcbb0f592c934ceecafedb511c92360abfa87b919f7576a17fbd",
-        "lib/setting_migration.js": "2bdf6d385b5f26f554ea8d637c32f8dad206bee780380b9c38ea9401f3a40e53",
-        "module.json": "26f8779bfc921a6ddfb5a9f7a2b00902970793fafd902c1936312b2d17a1ebb5",
-        "package.json": "3e2c514e5ae6cce460ccff60cbd95c14d8a62cf6c051899bfa1095c2b2de450c"
+        "lib/index.js": "fd30971a0c05c3fba14b9ef10ea031673a617a9090a228673170f204c2d20926",
+        "lib/setting_migration.js": "4410872e3bba42dfeb1c9d08145037c6316488f87be58b2dae4cc7d79d4b3f59",
+        "module.json": "187d8e09b1f4a01e472fb878e550ce1ffc1e6385cc9ea22b46fca8231aefb51b",
+        "package.json": "cf91ada5d7459e143e90045442fa04e8985292c1a84944112b6f413559490460"
     },
     "defs": {
         "C_ADMIN": 1,
@@ -45,8 +45,9 @@
         "S_NPC_LOCATION": 3,
         "S_NPC_MENU_SELECT": 1,
         "S_PARTY_MEMBER_LIST": 7,
-        "S_PCBANGINVENTORY_DATALIST": 1,
         "S_PLAYER_CHANGE_MP": 1,
+        "S_REQUEST_DESPAWN_SERVANT": 1,
+        "S_REQUEST_SPAWN_SERVANT": 1,
         "S_SHOW_AWESOMIUMWEB_SHOP": 1,
         "S_SOCIAL": 1,
         "S_SPAWN_DROPITEM": 7,
