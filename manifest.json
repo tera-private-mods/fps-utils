@@ -3,8 +3,8 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "96b4dea1b39c9b29d5bddbbc67f56cd52f085070ad1f67bf952fcb077d4d5af4",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "c3a15186eaef9d4c307c438be23a14e6fa3fa991720347da7891487ca8b15808",
-        "lib/setting_migration.js": "69fe828a1275f9f336179e594d98e4751e7233d1134cd0502da4d48fb4f63ec2",
+        "lib/index.js": "b823bd16493d281c78e26879dd3b737fceed3c7c354694fbd682993153f565ec",
+        "lib/setting_migration.js": "4c038a6f817c1b5a0c3e3fbb16910ad1b8b4516d0e35bab5ee772746d1598d66",
         "module.json": "31cc9a81cd335d1a72a6a3debe25a959e3595a80f8dd5a3b07a0fa9b83c01793",
         "package.json": "a71e9eca8b30894586353a161b865359e6ce3de7bb89d443e93564f2ada1c717"
     },
