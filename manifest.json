@@ -3,10 +3,10 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "96b4dea1b39c9b29d5bddbbc67f56cd52f085070ad1f67bf952fcb077d4d5af4",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "c15c32df5b72ed959a6cb5d6e1173243e3144934d8e45b779d6f298ee71da0d1",
-        "lib/setting_migration.js": "4c038a6f817c1b5a0c3e3fbb16910ad1b8b4516d0e35bab5ee772746d1598d66",
-        "module.json": "31cc9a81cd335d1a72a6a3debe25a959e3595a80f8dd5a3b07a0fa9b83c01793",
-        "package.json": "a71e9eca8b30894586353a161b865359e6ce3de7bb89d443e93564f2ada1c717"
+        "lib/index.js": "27bc82ec857aaa0e0d9e46f05c9c54426aa280f709815141377598675ae6d74a",
+        "lib/setting_migration.js": "9f0816758b88300afd97ca8aaa8cfc0dadedcdda17713d6e709772a9c0dddcea",
+        "module.json": "2e105877c06e04aee1225aff0fff699d74cd1c250a975ea0c50f40f8772ea8b9",
+        "package.json": "a8aa5a079bc568096b2037f2777f9b01e97ba08ba62a515b7d6908f4bc6e1b51"
     },
     "defs": {
         "C_ADMIN": 1,
@@ -32,6 +32,8 @@
         "S_EXIT": 3,
         "S_FEARMOVE_END": 1,
         "S_FEARMOVE_STAGE": 1,
+        "S_FIELD_EVENT_ON_ENTER": "raw",
+        "S_FIELD_EVENT_ON_LEAVE": "raw",
         "S_FONT_SWAP_INFO": "raw",
         "S_GUILD_NAME": 1,
         "S_IMAGE_DATA": "raw",
