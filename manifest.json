@@ -3,7 +3,7 @@
         "README.md": "bc59f32c10752de9a4123dec9688be45e9e97bd5ef6cd20ecdf249635fafc333",
         "lib/data/npcData.json": "dad0fe8bf2942a36c9a33b324e43fdda9bcc3b411541d31ae9d01be5169bdfb7",
         "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "226224ed2d9012ca6ba256166c822f24e2f04539e002871b659fe06a4678a414",
+        "lib/index.js": "0cee4701bc45217cb7df444f11133664f263f9f3b50d8f3ac1a43afb2aafc351",
         "lib/setting_migration.js": "9f0816758b88300afd97ca8aaa8cfc0dadedcdda17713d6e709772a9c0dddcea",
         "module.json": "2e105877c06e04aee1225aff0fff699d74cd1c250a975ea0c50f40f8772ea8b9",
         "package.json": "a8aa5a079bc568096b2037f2777f9b01e97ba08ba62a515b7d6908f4bc6e1b51"
@@ -48,7 +48,7 @@
         "S_PARTY_MEMBER_LIST": 7,
         "S_PLAYER_CHANGE_MP": 1,
         "S_REQUEST_DESPAWN_SERVANT": 1,
-        "S_REQUEST_SPAWN_SERVANT": 2,
+        "S_REQUEST_SPAWN_SERVANT": 3,
         "S_SHOW_AWESOMIUMWEB_SHOP": 1,
         "S_SOCIAL": 1,
         "S_SPAWN_DROPITEM": 8,
