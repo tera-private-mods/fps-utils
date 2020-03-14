@@ -58,7 +58,7 @@
         "S_RESULT_EVENT_SEED": 2,
         "S_SOCIAL": 1,
         "S_SPAWN_DROPITEM": 8,
-        "S_SPAWN_EVENT_SEED": 1,
+        "S_SPAWN_EVENT_SEED": 2,
         "S_SPAWN_NPC": 11,
         "S_SPAWN_PROJECTILE": 5,
         "S_SPAWN_USER": 15,
