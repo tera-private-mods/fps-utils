@@ -1,12 +1,12 @@
 {
     "files": {
-        "README.md": "7eae31e8066dad35209a4833ce708b0aeb8bca60deb8574ff84b99792ddfe862",
-        "lib/data/npcData.json": "f59f23f654bd7d9ca2147fe40e82641088accaed9836cf742eb2ddaa6c575dd5",
-        "lib/data/skillString.json": "9d69876fea0be8e6ac5dd43b3fc74ea023f6b8a6145384f8f780dd977045d8ef",
-        "lib/index.js": "557b88d0a9e747076c386a8dce523fdf81c9abbc0996d4e130d9c078aefebf34",
-        "lib/setting_migration.js": "27d46c0f126e6068b317e60b0712750d9c9f12cf6b39b4570b54c20d489cea4d",
-        "module.json": "ffe3f50113c95d3dbfbfb8ed511adaf697c61ead7583d01544d90a5106277d6e",
-        "package.json": "e76af3d11b40f0e86094904d6433e150b7fb5a46fcb88d7cd6048d82146fe756"
+        "README.md": "1676aff23699a0054f6770c468b2c381020974d5a4b0c718346716f4d5d9c617",
+        "lib/data/npcData.json": "57c6e0ca4d6e996eb295868cf964c61322182c8df68c9787528a20c617bf356a",
+        "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
+        "lib/index.js": "bb8b744536f3074067cf645a5f999b07b81232559917c7232103355c7ada147a",
+        "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
+        "module.json": "3377ac0cca270f703aab8b21413724623fbb75cfbb1b2812d8a014694f4806e6",
+        "package.json": "cfce7f8421833b9d63eef6f93ca3efb48ec5f4c8dc82345c77708e596ff9aa1c"
     },
     "defs": {
         "C_ADMIN": 1,
@@ -70,6 +70,7 @@
         "S_UPDATE_ACHIEVEMENT_PROGRESS": 1,
         "S_UPDATE_EVENT_SEED_STATE": 4,
         "S_USER_APPEARANCE_CHANGE": 1,
+        "S_USER_CHANGE_FACE_CUSTOM": 2,
         "S_USER_EXTERNAL_CHANGE": 7,
         "S_USER_LOCATION": 5,
         "S_USER_MOVETYPE": 1,

@@ -12,13 +12,13 @@
 
 ## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
 
-## Suggestions/Issues/Reports of all kinds are welcome.
+## Suggestions/Issues/Reports are welcome.
   * If you have suggestions, need help, or want to comment on my coding, dm me on discord `@Risenio#1785` or leave an issue report.
 
 ## Credits
-Contributers:
-  - [HugeDong69](https://github.com/codeagon) - Super-Cozy developer.
-  - [Saegusae](https://github.com/Saegusae) - Original developer.
+Direct Contributers:
+  - [Saegusae](https://github.com/Saegusae)         - Original developer (No longer maintained).
+  - [HugeDong69](https://github.com/codeagon)       - Current maintained fork of Fps-utils.
   - [SerenTera](https://github.com/SerenTera)
   - [Kyoukaya](https://github.com/kyoukaya)
   - [SaltyMonkey](https://github.com/SaltyMonkey)
@@ -26,9 +26,9 @@ Contributers:
 
 ---
 
-Thanks to the following people for their help in maintaining this module.
-  - [Caali](https://github.com/caali-hackerman)
-  - [Pinkie Pie](https://github.com/pinkipi)
-  - [Bernkastel](https://github.com/Bernkastel-0)
+In-direct Contributers: 
   - [Kasea](https://github.com/Kaseaa)
-
+  - [Caali](https://github.com/caali-hackerman)     - Toolbox (Tera-proxy's fork) developer.
+  - [Bernkastel](https://github.com/Bernkastel-0)   - Original idea/ZFPS alternative script.
+  - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/Current maintained fork of Tera-proxy developer.
+  - [Meishu](https://github.com/meishuu)            - Original developer of Tera-proxy (No longer maintained).
