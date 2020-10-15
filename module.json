@@ -8,6 +8,7 @@
     "version": "19",
     "options": {
         "niceName": "FPS",
+        "cliName": "FPS",
         "guiName": "Fps Utils",
         "settingsVersion": 19,
         "settingsFile": "config.json",

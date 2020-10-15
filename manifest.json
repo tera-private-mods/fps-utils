@@ -1,11 +1,11 @@
 {
     "files": {
-        "README.md": "1676aff23699a0054f6770c468b2c381020974d5a4b0c718346716f4d5d9c617",
+        "README.md": "8c89fbefc91e4e75ee5981cf2f59834ae9f231c5179e150aaa0c2bedeaf79e37",
         "lib/data/npcData.json": "57c6e0ca4d6e996eb295868cf964c61322182c8df68c9787528a20c617bf356a",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
-        "lib/index.js": "5515abb9a4f9f467c17821e77bd8e40420a1c30f04a0cb53efa512012928dd7b",
+        "lib/index.js": "7f66965693e5be56ed7b44ba76a7a76a2d69d316f82b8b54f8974b847807882a",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
-        "module.json": "3377ac0cca270f703aab8b21413724623fbb75cfbb1b2812d8a014694f4806e6",
+        "module.json": "78da47cb0d20f744f00596e394fa8452e8ffeb5f80dcb08a220d0b4bff6ab8e4",
         "package.json": "cfce7f8421833b9d63eef6f93ca3efb48ec5f4c8dc82345c77708e596ff9aa1c"
     },
     "defs": {
@@ -57,11 +57,11 @@
         "S_REQUEST_SPAWN_SERVANT": 4,
         "S_RESULT_EVENT_SEED": 2,
         "S_SOCIAL": 1,
-        "S_SPAWN_DROPITEM": 8,
+        "S_SPAWN_DROPITEM": 9,
         "S_SPAWN_EVENT_SEED": 2,
         "S_SPAWN_NPC": 11,
         "S_SPAWN_PROJECTILE": 5,
-        "S_SPAWN_USER": 15,
+        "S_SPAWN_USER": 16,
         "S_START_ACTION_SCRIPT": 3,
         "S_START_COOLTIME_ITEM": 1,
         "S_START_USER_PROJECTILE": 9,

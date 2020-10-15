@@ -13,7 +13,7 @@
 ## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
 
 ## Suggestions/Issues/Reports are welcome.
-  * If you have suggestions, need help, or want to comment on my coding, dm me on discord `@Risenio#1785` or leave an issue report.
+  * If you have suggestions, need help, or want to comment on my coding, dm me on discord `@Risenio#6997` or leave an issue report.
 
 ## Credits
 Direct Contributers:
