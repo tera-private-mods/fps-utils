@@ -3,7 +3,7 @@
         "README.md": "8c89fbefc91e4e75ee5981cf2f59834ae9f231c5179e150aaa0c2bedeaf79e37",
         "lib/data/npcData.json": "57c6e0ca4d6e996eb295868cf964c61322182c8df68c9787528a20c617bf356a",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
-        "lib/index.js": "8d939a7c070e5e2ab9619e505d1f9354397b8c291902fbb053730459c8dd9882",
+        "lib/index.js": "3384bed90899e02a56a32ba44939b85edf88beff89c19214f78da0adc2823303",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
         "module.json": "11fae284a4b493d9e4c9b14e86710cf63449c582dfa4142c91e387b12ff63d1b",
         "package.json": "cfce7f8421833b9d63eef6f93ca3efb48ec5f4c8dc82345c77708e596ff9aa1c"
@@ -50,7 +50,7 @@
         "S_MOUNT_VEHICLE": 2,
         "S_NPC_LOCATION": 3,
         "S_NPC_MENU_SELECT": 1,
-        "S_PARTY_MEMBER_LIST": 7,
+        "S_PARTY_MEMBER_LIST": 8,
         "S_PLAYER_CHANGE_MP": 1,
         "S_QUEST_BALLOON": 1,
         "S_REQUEST_DESPAWN_SERVANT": 1,
