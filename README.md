@@ -21,14 +21,14 @@ Direct Contributers:
   - [HugeDong69](https://github.com/codeagon)       - ~~Most current maintained~~ [fork of Fps-utils](https://github.com/codeagon/fps-utils) (No longer maintained).
   - [SerenTera](https://github.com/SerenTera)
   - [Kyoukaya](https://github.com/kyoukaya)
-  - [SaltyMonkey](https://github.com/SaltyMonkey)    - Tera-Toolbox (Tera-proxy's fork) developer.
+  - [SaltyMonkey](https://github.com/SaltyMonkey)   - Current Tera-Toolbox (Tera-proxy's fork) developer.
   - [Leyki](https://github.com/Leyki)
 
 ---
 
 In-direct Contributers:
   - [Kasea](https://github.com/Kaseaa)
-  - [Caali](https://github.com/caali-hackerman)     - Tera-Toolbox (Tera-proxy's fork) developer.
+  - [Caali](https://github.com/caali-hackerman)     - Original Tera-Toolbox (Tera-proxy's fork) developer.
   - [Bernkastel](https://github.com/Bernkastel-0)   - Original idea/ZFPS alternative script.
   - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/Current maintained fork of Tera-proxy developer.
   - [Meishu](https://github.com/meishuu)            - Original developer of Tera-proxy (No longer maintained).
