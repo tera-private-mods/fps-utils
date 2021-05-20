@@ -4,10 +4,10 @@
 ## How to use.
   * Put the script folder "fps-utils" into the `mods` folder.
   * Log the game using the proxy.
-  * To get access to the built-in GUI type `!fps g` into the chat.
+  * To get access to the built-in GUI type `/!fps g` into the chat.
 
 ## Capability.
-  * Should work on any proxy.
+  * Should work on any proxy. (Tera-Proxy & Tera-Toolbox, *as long as they're up-to-date*)
   * No dependencies.
 
 ## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
@@ -17,18 +17,18 @@
 
 ## Credits
 Direct Contributers:
-  - [Saegusae](https://github.com/Saegusae)         - Original developer (No longer maintained).
-  - [HugeDong69](https://github.com/codeagon)       - Current maintained fork of Fps-utils.
+  - [Saegusae](https://github.com/Saegusae)         - [Original developer](https://github.com/Saegusae/fps-utils) (No longer maintained).
+  - [HugeDong69](https://github.com/codeagon)       - ~~Most current maintained~~ [fork of Fps-utils](https://github.com/codeagon/fps-utils) (No longer maintained).
   - [SerenTera](https://github.com/SerenTera)
   - [Kyoukaya](https://github.com/kyoukaya)
-  - [SaltyMonkey](https://github.com/SaltyMonkey)
+  - [SaltyMonkey](https://github.com/SaltyMonkey)    - Tera-Toolbox (Tera-proxy's fork) developer.
   - [Leyki](https://github.com/Leyki)
 
 ---
 
-In-direct Contributers: 
+In-direct Contributers:
   - [Kasea](https://github.com/Kaseaa)
-  - [Caali](https://github.com/caali-hackerman)     - Toolbox (Tera-proxy's fork) developer.
+  - [Caali](https://github.com/caali-hackerman)     - Tera-Toolbox (Tera-proxy's fork) developer.
   - [Bernkastel](https://github.com/Bernkastel-0)   - Original idea/ZFPS alternative script.
   - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/Current maintained fork of Tera-proxy developer.
   - [Meishu](https://github.com/meishuu)            - Original developer of Tera-proxy (No longer maintained).

@@ -1,9 +1,12 @@
 {
     "files": {
-        "README.md": "8c89fbefc91e4e75ee5981cf2f59834ae9f231c5179e150aaa0c2bedeaf79e37",
-        "lib/data/npcData.json": "57c6e0ca4d6e996eb295868cf964c61322182c8df68c9787528a20c617bf356a",
+        "README.md": "2761a747402655df9b944347b93257e219d3d7d34dba5cff320bc4872f99ce3a",
+        "lib/data/abnormalities.json": "54727de2123584eb0ff38ffca5e86601e3faf05e8dc3379c9a0fd6e5ede1ca0c",
+        "lib/data/miscData.json": "18e4ddbbdaeabf0c025cb06ffcf13f81b9b6eeed1c3d785c3238981639c4a01b",
+        "lib/data/npcData.json": "bcd1876e4266f71299a298221b2594e45bf87f143f276a62c60dd8a35b75acd7",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
-        "lib/index.js": "1cd62cf1d0bdcff37b39bd12ca0240506cdcde8362cb63362caef26261be1df0",
+        "lib/data/userSpawns.json": "50fa11179c14e3d5ff0f92d73f62f968331258e85e534102cde03dd6ad977463",
+        "lib/index.js": "b82cfe62bfa8431de57db658d83bccdcfbaddefe5712cd2951495ff39e180534",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
         "module.json": "11fae284a4b493d9e4c9b14e86710cf63449c582dfa4142c91e387b12ff63d1b",
         "package.json": "cfce7f8421833b9d63eef6f93ca3efb48ec5f4c8dc82345c77708e596ff9aa1c"
@@ -20,6 +23,7 @@
         "S_ABNORMALITY_BEGIN": 3,
         "S_ABNORMALITY_END": 1,
         "S_ABNORMALITY_REFRESH": 1,
+        "S_ABNORMALITY_SCALE_UP": 2,
         "S_ACTION_END": 5,
         "S_ACTION_STAGE": 9,
         "S_ANNOUNCE_UPDATE_NOTIFICATION": 1,
@@ -59,9 +63,9 @@
         "S_SOCIAL": 1,
         "S_SPAWN_DROPITEM": 9,
         "S_SPAWN_EVENT_SEED": 2,
-        "S_SPAWN_NPC": [11, 12],
+        "S_SPAWN_NPC": 12,
         "S_SPAWN_PROJECTILE": 5,
-        "S_SPAWN_USER": 16,
+        "S_SPAWN_USER": 17,
         "S_START_ACTION_SCRIPT": 3,
         "S_START_COOLTIME_ITEM": 1,
         "S_START_USER_PROJECTILE": 9,
@@ -72,7 +76,7 @@
         "S_USER_APPEARANCE_CHANGE": 1,
         "S_USER_CHANGE_FACE_CUSTOM": 2,
         "S_USER_EXTERNAL_CHANGE": 7,
-        "S_USER_LOCATION": 5,
+        "S_USER_LOCATION": 6,
         "S_USER_MOVETYPE": 1,
         "S_USER_STATUS": 3
     }
