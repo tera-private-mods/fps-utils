@@ -1,15 +1,15 @@
 {
     "files": {
-        "README.md": "cd3520efc57698fe4911c325eaf625afa7fc187d4d0a92ace17bc4076fce2d98",
+        "README.md": "2d76c64d0955d36bac7d529543fd3d932cdee23f8c768b104d4c6544b1bf5a86",
         "lib/data/abnormalities.json": "54727de2123584eb0ff38ffca5e86601e3faf05e8dc3379c9a0fd6e5ede1ca0c",
-        "lib/data/miscData.json": "18e4ddbbdaeabf0c025cb06ffcf13f81b9b6eeed1c3d785c3238981639c4a01b",
+        "lib/data/miscData.json": "4f36b0f6c847ddde5a1a35acf944f700f3e47e39ca23e58cbf06233af67ad251",
         "lib/data/npcData.json": "bcd1876e4266f71299a298221b2594e45bf87f143f276a62c60dd8a35b75acd7",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
         "lib/data/userSpawns.json": "50fa11179c14e3d5ff0f92d73f62f968331258e85e534102cde03dd6ad977463",
-        "lib/index.js": "363234495d86592781ad05febeaa0da0260b310e551d28f13183bd7012966c64",
+        "lib/index.js": "0505fb6e658fba802e9a99ba6e9f6e9d4b962aa761aad466743c84b50da37d60",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
         "module.json": "c23d04a44a1ccdca2b8fc03f547a9b44fa08527f8ad73bc81c8dec042f9b4dcf",
-        "package.json": "c42b019c3287d31caab85ab6ed13f31fa6f4c7e346da44f51200c63ff4ed1005"
+        "package.json": "dd0e950e7b5b537ff09d5f7772373d2b1d7a13840868d4b5981e46d8ba25d1b9"
     },
     "defs": {
         "C_ADMIN": 1,
@@ -54,7 +54,7 @@
         "S_MOUNT_VEHICLE": 2,
         "S_NPC_LOCATION": 3,
         "S_NPC_MENU_SELECT": 1,
-        "S_PARTY_MEMBER_LIST": 8,
+        "S_PARTY_MEMBER_LIST": 9,
         "S_PLAYER_CHANGE_MP": 1,
         "S_QUEST_BALLOON": 1,
         "S_REQUEST_DESPAWN_SERVANT": 1,

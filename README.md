@@ -18,7 +18,7 @@
 ## Credits
 Direct Contributers:
   - [Saegusae](https://github.com/Saegusae)         - [Original developer](https://github.com/Saegusae/fps-utils) (No longer maintained).
-  - [HugeDong69](https://github.com/codeagon)       - ~~Most current maintained~~ [fork of Fps-utils](https://github.com/codeagon/fps-utils) (No longer maintained).
+  - [Pentagon](https://github.com/codeagon)         - ~~Most current maintained~~ [fork of Fps-utils](https://github.com/codeagon/fps-utils) (No longer maintained).
   - [SerenTera](https://github.com/SerenTera)
   - [Kyoukaya](https://github.com/kyoukaya)
   - [SaltyMonkey](https://github.com/SaltyMonkey)   - Current Tera-Toolbox (Tera-proxy's fork) developer.
