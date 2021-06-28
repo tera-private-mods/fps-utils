@@ -6,7 +6,7 @@
         "lib/data/npcData.json": "bcd1876e4266f71299a298221b2594e45bf87f143f276a62c60dd8a35b75acd7",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
         "lib/data/userSpawns.json": "50fa11179c14e3d5ff0f92d73f62f968331258e85e534102cde03dd6ad977463",
-        "lib/index.js": "0505fb6e658fba802e9a99ba6e9f6e9d4b962aa761aad466743c84b50da37d60",
+        "lib/index.js": "199fd3b82f0140d7f4b41743540a8bcc1fa3297d7b4e850a32c1d0c73221e950",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
         "module.json": "c23d04a44a1ccdca2b8fc03f547a9b44fa08527f8ad73bc81c8dec042f9b4dcf",
         "package.json": "dd0e950e7b5b537ff09d5f7772373d2b1d7a13840868d4b5981e46d8ba25d1b9"
@@ -20,7 +20,7 @@
         "C_RESET_ALL_DUNGEON": 1,
         "C_RETURN_TO_LOBBY": 1,
         "C_SET_VISIBLE_RANGE": 1,
-        "S_ABNORMALITY_BEGIN": 3,
+        "S_ABNORMALITY_BEGIN": [3, 4],
         "S_ABNORMALITY_END": 1,
         "S_ABNORMALITY_REFRESH": 1,
         "S_ABNORMALITY_SCALE_UP": 2,
