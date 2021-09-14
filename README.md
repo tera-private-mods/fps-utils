@@ -30,5 +30,5 @@ In-direct Contributers:
   - [Kasea](https://github.com/Kaseaa)
   - [Caali](https://github.com/caali-hackerman)     - Original Tera-Toolbox (Tera-proxy's fork) developer.
   - [Bernkastel](https://github.com/Bernkastel-0)   - Original idea/ZFPS alternative script.
-  - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/Current maintained fork of Tera-proxy developer.
+  - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/~~Current maintained~~ fork of Tera-proxy developer (No longer maintained).
   - [Meishu](https://github.com/meishuu)            - Original developer of Tera-proxy (No longer maintained).
