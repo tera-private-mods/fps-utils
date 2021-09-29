@@ -1,15 +1,15 @@
 {
     "files": {
-        "README.md": "0badc4f6743b12946865dcb1f5c2ef77839ab507ab29a273ee6d3087f2624996",
+        "README.md": "f5c50ef82e8ba86477c3f97f92bf5e8b466b6742e84297b72d3f357f02ad26cb",
         "lib/data/abnormalities.json": "54727de2123584eb0ff38ffca5e86601e3faf05e8dc3379c9a0fd6e5ede1ca0c",
         "lib/data/miscData.json": "4f36b0f6c847ddde5a1a35acf944f700f3e47e39ca23e58cbf06233af67ad251",
         "lib/data/npcData.json": "bcd1876e4266f71299a298221b2594e45bf87f143f276a62c60dd8a35b75acd7",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
-        "lib/data/userSpawns.json": "50fa11179c14e3d5ff0f92d73f62f968331258e85e534102cde03dd6ad977463",
-        "lib/index.js": "26006a4d5c9efb940063082538993828a66a95156dfc5bad838ba89854730395",
+        "lib/data/userSpawns.json": "e82a593b3e5aa970542d8330dfe690049abad98691e8b90210f46cdc281b17a3",
+        "lib/index.js": "090f1cac356bc4561d1118d859b7320ab989ebc4945460ca362c80b3b2ce9051",
         "lib/setting_migration.js": "1821fbb5ed37672bd9a8daa54f8ab392e35aa6c38b1602c560865b3bf6a7c6a2",
-        "module.json": "c23d04a44a1ccdca2b8fc03f547a9b44fa08527f8ad73bc81c8dec042f9b4dcf",
-        "package.json": "dd0e950e7b5b537ff09d5f7772373d2b1d7a13840868d4b5981e46d8ba25d1b9"
+        "module.json": "1acb2a7c8a79d262c90412eacb5ab0f78c1c571f9d921858e4c9a893e90d5452",
+        "package.json": "c4741e35f2f35ea93f57f4eb5ff6de4cfd551ccc49687a2a809e2edcd74a587f"
     },
     "defs": {
         "C_ADMIN": 1,

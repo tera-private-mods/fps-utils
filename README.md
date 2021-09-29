@@ -4,10 +4,10 @@
 ## How to use.
   * Put the script folder "fps-utils" into the `mods` folder.
   * Log the game using the proxy.
-  * To get access to the built-in GUI type `/!fps g` into the chat.
+  * Get access to the built-in GUI via typing `/!fps g` into the chat.
 
 ## Capability.
-  * Should work on any proxy. (Tera-Proxy & Tera-Toolbox, *as long as they're up-to-date*)
+  * Should work on any proxy. ([Tera-Proxy](https://github.com/tera-proxy/tera-proxy) & [Tera-Toolbox](https://github.com/tera-toolbox/tera-toolbox), *as long as its up-to-date*)
   * No dependencies.
 
 ## List of commands can be found in [this Wiki](https://github.com/Risenio/fps-utils/wiki/Commands).
@@ -18,17 +18,17 @@
 ## Credits
 Direct Contributers:
   - [Saegusae](https://github.com/Saegusae)         - [Original developer](https://github.com/Saegusae/fps-utils) (No longer maintained).
-  - [Pentagon](https://github.com/codeagon)         - ~~Most current maintained~~ [fork of Fps-utils](https://github.com/codeagon/fps-utils) (No longer maintained).
+  - [Pentagon](https://github.com/codeagon)         - [Fps-utils's fork](https://github.com/codeagon/fps-utils) (No longer maintained).
   - [SerenTera](https://github.com/SerenTera)
   - [Kyoukaya](https://github.com/kyoukaya)
-  - [SaltyMonkey](https://github.com/SaltyMonkey)   - Current Tera-Toolbox (Tera-proxy's fork) developer.
+  - [SaltyMonkey](https://github.com/SaltyMonkey)   - Current [Tera-Toolbox (Tera-proxy's fork)](https://github.com/tera-toolbox/tera-toolbox) developer.
   - [Leyki](https://github.com/Leyki)
 
 ---
 
 In-direct Contributers:
-  - [Kasea](https://github.com/Kaseaa)
-  - [Caali](https://github.com/caali-hackerman)     - Original Tera-Toolbox (Tera-proxy's fork) developer.
+  - [Kasea](https://github.com/Kasea)
+  - [Caali](https://github.com/caali-hackerman)     - Original [Tera-Toolbox (Tera-proxy's fork)](https://github.com/tera-toolbox/tera-toolbox) developer.
   - [Bernkastel](https://github.com/Bernkastel-0)   - Original idea/ZFPS alternative script.
-  - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/~~Current maintained~~ fork of Tera-proxy developer (No longer maintained).
-  - [Meishu](https://github.com/meishuu)            - Original developer of Tera-proxy (No longer maintained).
+  - [Pinkie Pie](https://github.com/pinkipi)        - Original idea/~~Current maintained~~ [Tera-proxy's fork](https://github.com/tera-proxy/tera-proxy) developer (No longer maintained).
+  - [Meishu](https://github.com/meishuu)            - Original developer of [Tera-proxy](https://github.com/meishuu/tera-proxy) (No longer maintained & DMCA'd by EME).
