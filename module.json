@@ -13,5 +13,5 @@
         "settingsFile": "config.json",
         "settingsMigrator": "./lib/setting_migration.js"
     },
-    "servers": ["http://git.dev.hsdn.org/tera-v92/fps-utils/raw/master/"]
+    "servers": ["https://raw.githubusercontent.com/tera-private-mods/fps-utils/master/"]
 }
