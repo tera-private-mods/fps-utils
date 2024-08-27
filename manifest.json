@@ -2,7 +2,7 @@
     "files": {
         "README.md": "2d76c64d0955d36bac7d529543fd3d932cdee23f8c768b104d4c6544b1bf5a86",
         "lib/data/abnormalities.json": "54727de2123584eb0ff38ffca5e86601e3faf05e8dc3379c9a0fd6e5ede1ca0c",
-        "lib/data/miscData.json": "9b8728bdaf64da54b7e2badf35ceee572e2ff11b06e54169f65a7c677afb2aa8",
+        "lib/data/miscData.json": "6f2365d9d1c4fa7cfb8e680e351a1a322cbf09d964ccce86d57c7b883064f632",
         "lib/data/npcData.json": "bcd1876e4266f71299a298221b2594e45bf87f143f276a62c60dd8a35b75acd7",
         "lib/data/skillString.json": "90f7cf9e29f0c143ffe4650bebe85c097371507a23c9fd2a0ab6c877d5451e58",
         "lib/data/userSpawns.json": "50fa11179c14e3d5ff0f92d73f62f968331258e85e534102cde03dd6ad977463",
